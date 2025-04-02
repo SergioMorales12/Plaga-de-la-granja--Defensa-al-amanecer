@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cl6tplu7eq42w"]
+
+[ext_resource type="Texture2D" uid="uid://ckq43p42p7gdb" path="res://asserts/Cuervo.png" id="1_v540k"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bs70i"]
+
+[sub_resource type="Animation" id="Animation_cpn02"]
+resource_name = "lvl1"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xl8t6"]
+_data = {
+&"lvl1": SubResource("Animation_cpn02")
+}
+
+[node name="cuervo" type="Node2D"]
+
+[node name="Node2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D"]
+shape = SubResource("CapsuleShape2D_bs70i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_v540k")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xl8t6")
+}
