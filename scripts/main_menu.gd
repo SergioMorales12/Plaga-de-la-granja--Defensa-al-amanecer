@@ -1,6 +1,6 @@
 extends Control
 
-var mapSelectContainer : PanelContainer
+var mapSelectContainer : Node2D
 
 func _on_exit_button_pressed():
 	get_tree().quit()
