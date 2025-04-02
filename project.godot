@@ -25,3 +25,7 @@ window/stretch/mode="viewport"
 [dotnet]
 
 project/assembly_name="Plaga de la Granja- Defensa al Amanecer"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/ez_tiles/plugin.cfg")
