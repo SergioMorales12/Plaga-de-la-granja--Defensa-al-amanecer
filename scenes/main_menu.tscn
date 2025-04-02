@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw0x4jccrkiwj"]
+
+[ext_resource type="Texture2D" uid="uid://dcoitivj4cxju" path="res://asserts/MainMenu.jpg" id="1_6151g"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_pq4ax"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7tinr"]
+line_spacing = 10.0
+font_size = 69
+font_color = Color(0, 0, 0, 1)
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 0.658824)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pq4ax")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1919.0
+offset_bottom = 1150.0
+texture = ExtResource("1_6151g")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1921.0
+offset_bottom = 697.0
+text = "Plaga de la Granja: Defensa al Amanecer"
+label_settings = SubResource("LabelSettings_7tinr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.447
+anchor_top = 0.589
+anchor_right = 0.58
+anchor_bottom = 0.654
+offset_left = 13.7599
+offset_top = 64.8799
+offset_right = 13.3999
+offset_bottom = 64.6799
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Buttons"]
+layout_mode = 2
+
+[node name="startButton" type="Button" parent="Buttons/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Start Game"
+
+[node name="exitButton" type="Button" parent="Buttons/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Exit"
+
+[connection signal="pressed" from="Buttons/VBoxContainer/startButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Buttons/VBoxContainer/exitButton" to="." method="_on_exit_button_pressed"]
