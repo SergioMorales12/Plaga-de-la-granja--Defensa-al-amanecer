@@ -3,9 +3,6 @@
 [ext_resource type="Script" uid="uid://c6ev00y820xtc" path="res://scenes/enemi/cuervo1.gd" id="1_bs70i"]
 [ext_resource type="Texture2D" uid="uid://ckq43p42p7gdb" path="res://asserts/Cuervo.png" id="1_v540k"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_v540k"]
-radius = 19.0416
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_bs70i"]
 atlas = ExtResource("1_v540k")
 region = Rect2(0, 0, 32, 32)
@@ -28,22 +25,25 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_v540k"]
+radius = 20.7901
+
 [node name="cuervo" type="PathFollow2D" groups=["enemi"]]
 loop = false
 script = ExtResource("1_bs70i")
 runSpeed = 0.05
 
-[node name="area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="area2D"]
-position = Vector2(2, 4)
-scale = Vector2(1.01135, 0.966154)
-shape = SubResource("CircleShape2D_v540k")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="area2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(1, 2.38419e-07)
 scale = Vector2(1.21875, 1.1875)
 sprite_frames = SubResource("SpriteFrames_xl8t6")
 autoplay = "default"
 frame_progress = 0.260336
+
+[node name="area2D" type="Area2D" parent="." groups=["enemi"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area2D"]
+position = Vector2(1, 2)
+scale = Vector2(1.01135, 0.966154)
+shape = SubResource("CircleShape2D_v540k")

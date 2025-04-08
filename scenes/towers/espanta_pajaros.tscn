@@ -4,20 +4,23 @@
 [ext_resource type="Texture2D" uid="uid://e7xocg6dxhxe" path="res://asserts/espantapajaros.png" id="2_y8ytr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ee8iy"]
-radius = 125.0
+radius = 243.074
 
 [node name="espantaPajaros" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_5lbkk")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="sleep" type="Sprite2D" parent="."]
 texture_filter = 1
+scale = Vector2(1.83333, 1.73438)
 texture = ExtResource("2_y8ytr")
 hframes = 2
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="active" type="Sprite2D" parent="."]
 visible = false
 texture_filter = 1
+position = Vector2(0, 5.96046e-08)
+scale = Vector2(1.749, 1.734)
 texture = ExtResource("2_y8ytr")
 hframes = 2
 frame = 1
@@ -27,5 +30,5 @@ frame = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_ee8iy")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]

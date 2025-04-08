@@ -2333,10 +2333,13 @@ tile_set = SubResource("TileSet_qgkem")
 [node name="Enemigos_Defensas" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_c00y0")
 
+[node name="espantaPajaros2" parent="." instance=ExtResource("9_vsp40")]
+position = Vector2(1339, 852)
+
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_y0em0")
 script = ExtResource("7_vsp40")
-spawnerTime = 4
+spawnerTime = 5
 
 [node name="Obstaculo" type="Area2D" parent="."]
 position = Vector2(444, -77)
@@ -2377,4 +2380,4 @@ offset_right = 1283.0
 offset_bottom = 608.263
 
 [node name="espantaPajaros" parent="." instance=ExtResource("9_vsp40")]
-position = Vector2(640, 552)
+position = Vector2(611, 557)
