@@ -1,7 +1,49 @@
-[gd_scene load_steps=4 format=3 uid="uid://7m3yc8kjlxrr"]
+[gd_scene load_steps=10 format=3 uid="uid://7m3yc8kjlxrr"]
 
 [ext_resource type="Script" uid="uid://cppao04d7npjb" path="res://scripts/espanta_pajaros.gd" id="1_5lbkk"]
 [ext_resource type="Texture2D" uid="uid://e7xocg6dxhxe" path="res://asserts/espantapajaros.png" id="2_y8ytr"]
+[ext_resource type="Texture2D" uid="uid://d7xekmuhb61m" path="res://asserts/espantapajaroATQ.png" id="3_y8ytr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ee8iy"]
+atlas = ExtResource("3_y8ytr")
+region = Rect2(0, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0l4gi"]
+atlas = ExtResource("3_y8ytr")
+region = Rect2(48, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3h1h"]
+atlas = ExtResource("3_y8ytr")
+region = Rect2(96, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8ytr"]
+atlas = ExtResource("2_y8ytr")
+region = Rect2(0, 0, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jd46h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ee8iy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0l4gi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3h1h")
+}],
+"loop": true,
+"name": &"Atq",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8ytr")
+}],
+"loop": true,
+"name": &"sleep",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ee8iy"]
 radius = 243.074
@@ -10,25 +52,23 @@ radius = 243.074
 texture_filter = 1
 script = ExtResource("1_5lbkk")
 
-[node name="sleep" type="Sprite2D" parent="."]
-texture_filter = 1
-scale = Vector2(1.83333, 1.73438)
-texture = ExtResource("2_y8ytr")
-hframes = 2
-
-[node name="active" type="Sprite2D" parent="."]
-visible = false
-texture_filter = 1
-position = Vector2(0, 5.96046e-08)
-scale = Vector2(1.749, 1.734)
-texture = ExtResource("2_y8ytr")
-hframes = 2
-frame = 1
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.844, 1.734)
+sprite_frames = SubResource("SpriteFrames_jd46h")
+animation = &"sleep"
+autoplay = "sleep"
+frame_progress = 0.583199
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_ee8iy")
 
+[node name="Node2D" type="Node2D" parent="Area2D/CollisionShape2D"]
+position = Vector2(-30, -16)
+
+[node name="attack_timer" type="Timer" parent="."]
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]
+[connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]

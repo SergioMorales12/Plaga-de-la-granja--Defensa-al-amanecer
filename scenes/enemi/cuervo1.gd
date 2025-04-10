@@ -18,9 +18,13 @@ func _ready():
 func _process(delta: float) -> void:
 	loop_movement(delta)
 	
-	if not loop and progress_ratio >= 1.0:
+	if progress_ratio >= 1.0:
 		queue_free()
 
 func loop_movement(delta):
 	progress_ratio += runSpeed * delta
-	
+
+func get_damage(amount: float) -> void:
+	live -= amount
+	if live <= 0:
+		queue_free()

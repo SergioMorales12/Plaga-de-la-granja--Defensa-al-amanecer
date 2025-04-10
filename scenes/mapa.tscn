@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://cwtdmynui6cw8"]
+[gd_scene load_steps=38 format=4 uid="uid://cwtdmynui6cw8"]
 
 [ext_resource type="Texture2D" uid="uid://b7ng1525qaofi" path="res://asserts/Granja4.png" id="1_0skjy"]
 [ext_resource type="Script" uid="uid://cku5q5eelbss0" path="res://scripts/menuMapa.gd" id="1_6i2c2"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dbdklhgw7wydd" path="res://asserts/german-shephard-full-sprite-sheet-x300.png" id="3_csio4"]
 [ext_resource type="PackedScene" uid="uid://iopwhmejcr8b" path="res://addons/RadialMenu/RadialMenu.tscn" id="6_k7lwh"]
 [ext_resource type="Script" uid="uid://bbu42uj8krie2" path="res://scripts/path_2d_spawner.gd" id="7_vsp40"]
+[ext_resource type="PackedScene" uid="uid://cl6tplu7eq42w" path="res://scenes/enemi/cuervo.tscn" id="9_mt72o"]
 [ext_resource type="PackedScene" uid="uid://7m3yc8kjlxrr" path="res://scenes/towers/espanta_pajaros.tscn" id="9_vsp40"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_8ok7l"]
@@ -2341,6 +2342,10 @@ curve = SubResource("Curve2D_y0em0")
 script = ExtResource("7_vsp40")
 spawnerTime = 5
 
+[node name="cuervo" parent="Path2D" instance=ExtResource("9_mt72o")]
+position = Vector2(445, -116)
+rotation = 1.56882
+
 [node name="Obstaculo" type="Area2D" parent="."]
 position = Vector2(444, -77)
 
@@ -2380,4 +2385,4 @@ offset_right = 1283.0
 offset_bottom = 608.263
 
 [node name="espantaPajaros" parent="." instance=ExtResource("9_vsp40")]
-position = Vector2(611, 557)
+position = Vector2(552, 524)

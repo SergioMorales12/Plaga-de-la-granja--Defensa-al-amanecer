@@ -31,7 +31,8 @@ radius = 20.7901
 [node name="cuervo" type="PathFollow2D" groups=["enemi"]]
 loop = false
 script = ExtResource("1_bs70i")
-runSpeed = 0.05
+runSpeed = 0.03
+live = 50
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -41,7 +42,7 @@ sprite_frames = SubResource("SpriteFrames_xl8t6")
 autoplay = "default"
 frame_progress = 0.260336
 
-[node name="area2D" type="Area2D" parent="." groups=["enemi"]]
+[node name="area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="area2D"]
 position = Vector2(1, 2)

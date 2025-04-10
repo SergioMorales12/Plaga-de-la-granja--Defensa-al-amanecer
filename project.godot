@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Plaga de la Granja: Defensa al Amanecer"
-run/main_scene="uid://cw0x4jccrkiwj"
+run/main_scene="uid://bjhcgxlnpqflw"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://scripts/Global.gd"
 
 [display]
 
@@ -24,6 +28,10 @@ window/stretch/mode="viewport"
 [dotnet]
 
 project/assembly_name="Plaga de la Granja- Defensa al Amanecer"
+
+[editor]
+
+version_control/autoload_on_startup=true
 
 [editor_plugins]
 

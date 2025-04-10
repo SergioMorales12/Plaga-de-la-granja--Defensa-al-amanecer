@@ -43,10 +43,10 @@ anchor_left = 0.447
 anchor_top = 0.589
 anchor_right = 0.58
 anchor_bottom = 0.654
-offset_left = 13.7599
-offset_top = 64.8799
-offset_right = 13.3999
-offset_bottom = 64.6799
+offset_left = -24.24
+offset_top = -24.12
+offset_right = -24.6
+offset_bottom = 6.67999
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Buttons"]
 layout_mode = 2
@@ -62,22 +62,14 @@ size_flags_vertical = 3
 text = "Exit"
 
 [node name="MenuButton" type="MenuButton" parent="Buttons/VBoxContainer"]
+clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
 text = "Continue Game"
+autowrap_mode = 3
+clip_text = true
 switch_on_hover = true
-
-[node name="continueButton" type="Button" parent="Buttons/VBoxContainer/MenuButton"]
-visible = false
-layout_mode = 2
-offset_left = 260.0
-offset_top = -17.9999
-offset_right = 515.0
-offset_bottom = 13.0001
-size_flags_vertical = 3
-text = "Continue Game"
 
 [connection signal="pressed" from="Buttons/VBoxContainer/startButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Buttons/VBoxContainer/exitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="about_to_popup" from="Buttons/VBoxContainer/MenuButton" to="." method="_on_menu_button_about_to_popup"]
-[connection signal="pressed" from="Buttons/VBoxContainer/MenuButton/continueButton" to="." method="_on_continue_button_pressed"]
