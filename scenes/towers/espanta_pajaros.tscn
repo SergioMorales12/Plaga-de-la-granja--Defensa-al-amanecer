@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://7m3yc8kjlxrr"]
+[gd_scene load_steps=11 format=3 uid="uid://7m3yc8kjlxrr"]
 
 [ext_resource type="Script" uid="uid://cppao04d7npjb" path="res://scripts/espanta_pajaros.gd" id="1_5lbkk"]
 [ext_resource type="Texture2D" uid="uid://e7xocg6dxhxe" path="res://asserts/espantapajaros.png" id="2_y8ytr"]
@@ -48,6 +48,13 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ee8iy"]
 radius = 243.074
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y8ytr"]
+bg_color = Color(0, 0.6, 0.6, 0.607843)
+corner_radius_top_left = 250
+corner_radius_top_right = 250
+corner_radius_bottom_right = 250
+corner_radius_bottom_left = 250
+
 [node name="espantaPajaros" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_5lbkk")
@@ -68,6 +75,16 @@ shape = SubResource("CircleShape2D_ee8iy")
 position = Vector2(-30, -16)
 
 [node name="attack_timer" type="Timer" parent="."]
+
+[node name="Area" type="Panel" parent="."]
+visible = false
+modulate = Color(0, 1, 1, 0.411765)
+show_behind_parent = true
+offset_left = -244.0
+offset_top = -243.0
+offset_right = 243.0
+offset_bottom = 242.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_y8ytr")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]

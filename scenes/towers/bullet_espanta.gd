@@ -5,7 +5,7 @@ var direction: Vector2
 
 var speed: float = 0.0
 var damage: float = 10
-var pierce: int = 1
+var pierce: int = 10
 var time: float = 1.0
 
 func _process(delta):

@@ -1,10 +1,10 @@
 extends Node2D
 
-@export var damage = 0
+@export var damage = 10
 @export var speed = 0
 @export var range = 100
 
-@export var bulletSpeed := 900.0
+@export var bulletSpeed := 2000.0
 @export var bulletPierce := 1
 @export var attack_interval := 0.5  # Intervalo de ataque en segundos
 
@@ -29,7 +29,6 @@ func _process(_delta):
 
 func attack():
 	if current_target and is_instance_valid(current_target) and current_target in enemigos:
-		print(current_target)
 		$AnimatedSprite2D.play("Atq")
 		var projectileScene = preload("res://scenes/towers/bullet_espanta.tscn")
 		var projectile = projectileScene.instantiate()
@@ -68,7 +67,6 @@ func _on_area_exited(area: Area2D) -> void:
 	if area.is_in_group("enemi"):
 		enemigos.erase(area.get_parent())
 		if current_target == area.get_parent():
-			var overlapping_bodies = $Area2D.get_overlapping_areas()
 			var enemy_present = false
 			for body in enemigos:
 				if body.is_in_group("enemi"):
