@@ -105,7 +105,7 @@ scale = Vector2(3.00587, 2.4)
 sprite_frames = SubResource("SpriteFrames_bqo3e")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.943832
+frame_progress = 0.00563513
 
 [node name="colision" type="Area2D" parent="."]
 
