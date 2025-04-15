@@ -1,0 +1,137 @@
+[gd_scene load_steps=15 format=3 uid="uid://c323ipjct152v"]
+
+[ext_resource type="Script" uid="uid://c7wqvxm5b1r6e" path="res://scripts/molino.gd" id="1_lhowf"]
+[ext_resource type="Texture2D" uid="uid://p2fesy0norwu" path="res://asserts/molino.png" id="2_h0l80"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpga7"]
+atlas = ExtResource("2_h0l80")
+region = Rect2(0, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkqm7"]
+atlas = ExtResource("2_h0l80")
+region = Rect2(64, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdmnf"]
+atlas = ExtResource("2_h0l80")
+region = Rect2(128, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edw63"]
+atlas = ExtResource("2_h0l80")
+region = Rect2(192, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xe64u"]
+atlas = ExtResource("2_h0l80")
+region = Rect2(0, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxscl"]
+atlas = ExtResource("2_h0l80")
+region = Rect2(64, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmdh0"]
+atlas = ExtResource("2_h0l80")
+region = Rect2(128, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpvwa"]
+atlas = ExtResource("2_h0l80")
+region = Rect2(192, 0, 64, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bqo3e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpga7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bkqm7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdmnf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edw63")
+}],
+"loop": true,
+"name": &"atq",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xe64u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxscl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qmdh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpvwa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xe64u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qmdh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxscl")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lhowf"]
+radius = 32.0
+height = 88.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n66gk"]
+radius = 112.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oseg5"]
+bg_color = Color(0, 0.6, 0.6, 0.607843)
+corner_radius_top_left = 250
+corner_radius_top_right = 250
+corner_radius_bottom_right = 250
+corner_radius_bottom_left = 250
+
+[node name="molino" type="Node2D"]
+script = ExtResource("1_lhowf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1.90735e-06, 0)
+scale = Vector2(3.00587, 2.4)
+sprite_frames = SubResource("SpriteFrames_bqo3e")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.943832
+
+[node name="colision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="colision"]
+position = Vector2(0, 56)
+shape = SubResource("CapsuleShape2D_lhowf")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_n66gk")
+
+[node name="attack_timer" type="Timer" parent="."]
+wait_time = 0.7
+autostart = true
+
+[node name="Area" type="Panel" parent="."]
+visible = false
+modulate = Color(0, 1, 1, 0.411765)
+show_behind_parent = true
+offset_left = -112.0
+offset_top = -112.0
+offset_right = 112.0
+offset_bottom = 112.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_oseg5")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]
+[connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]

@@ -1,8 +1,6 @@
 extends Node2D
 
 @export var damage = 10
-@export var speed = 0
-@export var range = 100
 
 @export var bulletSpeed := 2000.0
 @export var bulletPierce := 1
@@ -43,11 +41,6 @@ func attack():
 func _on_attack_timer_timeout():
 	can_attack = true
 
-var draw_range = true
-
-func _draw():
-	if draw_range:
-		draw_circle(Vector2(0, 0), range, Color(0.24, 0.8, 0.65, 0.66), false, 1, true)
 
 func try_get_closest_target():
 	$AnimatedSprite2D.play("sleep")

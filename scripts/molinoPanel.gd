@@ -1,6 +1,6 @@
 extends Panel
 
-@export var tower = preload("res://scenes/towers/espanta_pajaros.tscn") 
+@export var tower = preload("res://scenes/towers/molino.tscn") 
 var currTile
 
 func _on_gui_input(event: InputEvent) -> void:
@@ -14,7 +14,7 @@ func _on_gui_input(event: InputEvent) -> void:
 	elif event is InputEventMouseMotion and event.button_mask == 1:
 		if get_child_count() >= 1:
 			get_child(1).global_position = event.global_position
-		var pathMap = get_tree().get_root().get_node("Mapa/Tilemap")
+	
 	elif event is InputEventMouseButton and event.button_mask == 0:
 		print("bye")
 		tempTower.get_node("Area").hide()

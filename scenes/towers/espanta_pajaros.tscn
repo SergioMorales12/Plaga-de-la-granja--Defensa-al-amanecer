@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://7m3yc8kjlxrr"]
+[gd_scene load_steps=12 format=3 uid="uid://7m3yc8kjlxrr"]
 
 [ext_resource type="Script" uid="uid://cppao04d7npjb" path="res://scripts/espanta_pajaros.gd" id="1_5lbkk"]
 [ext_resource type="Texture2D" uid="uid://e7xocg6dxhxe" path="res://asserts/espantapajaros.png" id="2_y8ytr"]
@@ -45,6 +45,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8ytr"]
+size = Vector2(29, 61)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_ee8iy"]
 radius = 243.074
 
@@ -66,13 +69,14 @@ animation = &"sleep"
 autoplay = "sleep"
 frame_progress = 0.583199
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 19.5)
+shape = SubResource("RectangleShape2D_y8ytr")
+
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_ee8iy")
-
-[node name="Node2D" type="Node2D" parent="Area2D/CollisionShape2D"]
-position = Vector2(-30, -16)
 
 [node name="attack_timer" type="Timer" parent="."]
 
