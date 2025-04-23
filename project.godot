@@ -40,3 +40,4 @@ enabled=PackedStringArray("res://addons/ez_tiles/plugin.cfg")
 [global_group]
 
 enemi=""
+towers=""

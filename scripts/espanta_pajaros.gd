@@ -4,11 +4,11 @@ extends Node2D
 
 @export var bulletSpeed := 2000.0
 @export var bulletPierce := 1
-@export var attack_interval := 0.5  # Intervalo de ataque en segundos
+@export var attack_interval := 1  # Intervalo de ataque en segundos
 
 var enemigos = []
 var current_target = null
-var can_attack = true
+var can_attack = false
 
 func _ready():
 	$Area2D.monitoring = true

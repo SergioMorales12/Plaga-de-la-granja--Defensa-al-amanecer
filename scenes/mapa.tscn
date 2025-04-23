@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://cwtdmynui6cw8"]
+[gd_scene load_steps=39 format=4 uid="uid://cwtdmynui6cw8"]
 
 [ext_resource type="Texture2D" uid="uid://b7ng1525qaofi" path="res://asserts/Granja4.png" id="1_0skjy"]
 [ext_resource type="Script" uid="uid://cku5q5eelbss0" path="res://scripts/menuMapa.gd" id="1_6i2c2"]
@@ -1391,6 +1391,7 @@ use_texture_padding = false
 7:8/0/terrains_peering_bit/bottom_side = 0
 7:8/0/terrains_peering_bit/bottom_left_corner = 0
 7:8/0/terrains_peering_bit/left_side = 0
+16:10/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ayk4v"]
 texture = ExtResource("3_csio4")
@@ -2305,9 +2306,6 @@ _data = {
 }
 point_count = 24
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7lvpn"]
-radius = 24.7338
-
 [node name="Mapa" type="Node2D"]
 script = ExtResource("1_6i2c2")
 
@@ -2348,44 +2346,6 @@ spawnerTime = 3
 position = Vector2(445, -116)
 rotation = 1.56882
 
-[node name="Obstaculo" type="Area2D" parent="."]
-position = Vector2(444, -77)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Obstaculo"]
-position = Vector2(0, -3)
-polygon = PackedVector2Array(0, 1, -52, 1, -50, 399, -363, 416, -368, 1030, 304, 1030, 318, 548, 396, 543, 404, 1089, 677, 1089, 690, 1158, 1138, 1152, 1148, 786, 1263, 767, 1268, 486, 1123, 471, 1113, 398, 1224, 284, 1163, 240, 1004, 398, 1006, 539, 1163, 552, 1167, 663, 1025, 670, 1010, 610, 961, 575, 689, 576, 683, 992, 794, 1048, 796, 687, 900, 683, 913, 771, 1037, 787, 1033, 1056, 797, 1052, 683, 994, 498, 989, 497, 448, 212, 450, 210, 932, -250, 928, -257, 520, 40, 515, 54, 509, 60, -9)
-
-[node name="4" type="CollisionShape2D" parent="Obstaculo"]
-position = Vector2(1250, 854)
-shape = SubResource("CircleShape2D_7lvpn")
-
-[node name="3" type="CollisionShape2D" parent="Obstaculo"]
-position = Vector2(-33, 724)
-shape = SubResource("CircleShape2D_7lvpn")
-
-[node name="2" type="CollisionShape2D" parent="Obstaculo"]
-position = Vector2(-256.638, 211.173)
-shape = SubResource("CircleShape2D_7lvpn")
-
-[node name="1" type="CollisionShape2D" parent="Obstaculo"]
-position = Vector2(206, 314)
-shape = SubResource("CircleShape2D_7lvpn")
-
-[node name="6" type="CollisionShape2D" parent="Obstaculo"]
-position = Vector2(1412, 532)
-shape = SubResource("CircleShape2D_7lvpn")
-
-[node name="5" type="CollisionShape2D" parent="Obstaculo"]
-position = Vector2(1311, 1130)
-shape = SubResource("CircleShape2D_7lvpn")
-
-[node name="RadialMenu" parent="." instance=ExtResource("6_k7lwh")]
-custom_minimum_size = Vector2(300, 222.263)
-offset_left = 983.0
-offset_top = 386.0
-offset_right = 1283.0
-offset_bottom = 608.263
-
 [node name="towers" type="Node2D" parent="."]
 
 [node name="espantaPajaros" parent="towers" instance=ExtResource("9_vsp40")]
@@ -2397,3 +2357,10 @@ position = Vector2(800, 480)
 [node name="panel_torretas" parent="." instance=ExtResource("11_k3j34")]
 offset_left = 1792.0
 offset_right = 1792.0
+
+[node name="RadialMenu" parent="." instance=ExtResource("6_k7lwh")]
+custom_minimum_size = Vector2(300, 222.263)
+offset_left = 983.0
+offset_top = 386.0
+offset_right = 1283.0
+offset_bottom = 608.263

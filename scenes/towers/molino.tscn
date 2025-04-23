@@ -107,7 +107,7 @@ animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.00783369
 
-[node name="colision" type="Area2D" parent="."]
+[node name="colision" type="Area2D" parent="." groups=["towers"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="colision"]
 position = Vector2(0, 56)

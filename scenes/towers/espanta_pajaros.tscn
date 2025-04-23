@@ -69,7 +69,9 @@ animation = &"sleep"
 autoplay = "sleep"
 frame_progress = 0.583199
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="colision" type="Area2D" parent="." groups=["towers"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="colision"]
 position = Vector2(-0.5, 19.5)
 shape = SubResource("RectangleShape2D_y8ytr")
 

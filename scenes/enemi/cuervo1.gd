@@ -1,7 +1,7 @@
 extends PathFollow2D
 
 @export var runSpeed = 0.0
-@export var damage = 0
+@export var damage = 10
 @export var live = 50
 
 func _ready():
@@ -26,6 +26,5 @@ func loop_movement(delta):
 
 func get_damage(amount: float) -> void:
 	live -= amount
-	print(live)
 	if live <= 0:
 		queue_free()
