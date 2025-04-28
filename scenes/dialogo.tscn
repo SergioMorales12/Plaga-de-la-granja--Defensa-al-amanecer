@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7ttemqxwsknd"]
+
+[ext_resource type="Texture2D" uid="uid://oe2aqh8x2l7f" path="res://asserts/dialogo.png" id="1_qv0hs"]
+
+[node name="dialogo" type="Control"]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -318.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.296
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.127998
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_qv0hs")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.296
+anchor_right = 1.0
+anchor_bottom = 0.799
+offset_left = 39.0
+offset_top = 14.872
+offset_right = -39.0
+offset_bottom = -13.082
+text = "Buenas tardes te preseto un juego que te hara sudar sangre"
+fit_content = true

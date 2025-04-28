@@ -18,7 +18,7 @@ func _on_gui_input(event: InputEvent) -> void:
 		if tempTower:
 			tempTower.global_position = event.global_position # Actualiza la posición de la torreta
 			
-			if tempTower.get_node("colision").get_overlapping_bodies().size() <1 and is_tower(tempTower):
+			if tempTower.get_node("colision").get_overlapping_bodies().size() <1 and isTower(tempTower):
 				canPlace = true
 			else:
 				canPlace = false
@@ -45,8 +45,8 @@ func _on_gui_input(event: InputEvent) -> void:
 				tempTower.queue_free() # Elimina la torreta si no se puede colocar
 			tempTower = null # Resetea la variable de la torreta temporal
 
-func is_tower(towers: Node):
-	var overlapping_areas = tempTower.get_node("colision").get_overlapping_areas()
+func isTower(towers: Node):
+	var overlapping_areas = towers.get_node("colision").get_overlapping_areas()
 	for area in overlapping_areas:
 		if area.is_in_group("towers"):
 			return false

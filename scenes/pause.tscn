@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgibybapb8ujb"]
+
+[ext_resource type="Script" uid="uid://bjr6kmam8a5dh" path="res://scripts/pause.gd" id="1_f1d2v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f1d2v"]
+font_size = 96
+
+[node name="Pause" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_f1d2v")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.168627, 0.168627, 0.168627, 0.47451)
+
+[node name="Label" type="Label" parent="."]
+visible = false
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -169.0
+offset_right = 169.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Paused"
+label_settings = SubResource("LabelSettings_f1d2v")
+
+[node name="buttons" type="VBoxContainer" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -134.0
+offset_right = 80.0
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="start" type="Button" parent="buttons"]
+layout_mode = 2
+text = "Sing up"
+
+[node name="login" type="Button" parent="buttons"]
+layout_mode = 2
+text = "Login"
+
+[node name="guest" type="Button" parent="buttons"]
+layout_mode = 2
+text = "Continue as a guest"
+
+[node name="exitButton" type="Button" parent="buttons"]
+layout_mode = 2
+text = "Exit"

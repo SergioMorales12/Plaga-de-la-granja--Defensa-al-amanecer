@@ -46,7 +46,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y8ytr"]
-size = Vector2(29, 61)
+size = Vector2(29, 83)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ee8iy"]
 radius = 243.074
@@ -72,10 +72,11 @@ frame_progress = 0.583199
 [node name="colision" type="Area2D" parent="." groups=["towers"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="colision"]
-position = Vector2(-0.5, 19.5)
+position = Vector2(-0.5, 8.5)
 shape = SubResource("RectangleShape2D_y8ytr")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_ee8iy")
