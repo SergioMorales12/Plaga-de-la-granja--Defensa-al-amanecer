@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bjhcgxlnpqflw"]
 
 [ext_resource type="Script" uid="uid://bw1bt64fnfi2k" path="res://scripts/login.gd" id="1_nw41r"]
-[ext_resource type="Texture2D" uid="uid://dcoitivj4cxju" path="res://asserts/MainMenu.jpg" id="1_pymad"]
+[ext_resource type="Texture2D" uid="uid://dcoitivj4cxju" path="res://asserts/map/MainMenu.jpg" id="1_pymad"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nw41r"]
 line_spacing = 10.0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b7ttemqxwsknd"]
 
-[ext_resource type="Texture2D" uid="uid://oe2aqh8x2l7f" path="res://asserts/dialogo.png" id="1_qv0hs"]
+[ext_resource type="Texture2D" uid="uid://oe2aqh8x2l7f" path="res://asserts/map/dialogo.png" id="1_qv0hs"]
 
 [node name="dialogo" type="Control"]
 layout_mode = 3

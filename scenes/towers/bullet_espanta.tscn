@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cpmpl41dpqsna"]
 
-[ext_resource type="Texture2D" uid="uid://d7xekmuhb61m" path="res://asserts/espantapajaroATQ.png" id="1_kg2mf"]
+[ext_resource type="Texture2D" uid="uid://d7xekmuhb61m" path="res://asserts/towers/espantapajaroATQ.png" id="1_kg2mf"]
 [ext_resource type="Script" uid="uid://cdodopf2fd0h8" path="res://scenes/towers/bullet_espanta.gd" id="1_m2n5h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m2n5h"]

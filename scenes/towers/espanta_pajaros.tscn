@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://7m3yc8kjlxrr"]
 
 [ext_resource type="Script" uid="uid://cppao04d7npjb" path="res://scripts/espanta_pajaros.gd" id="1_5lbkk"]
-[ext_resource type="Texture2D" uid="uid://e7xocg6dxhxe" path="res://asserts/espantapajaros.png" id="2_y8ytr"]
-[ext_resource type="Texture2D" uid="uid://d7xekmuhb61m" path="res://asserts/espantapajaroATQ.png" id="3_y8ytr"]
+[ext_resource type="Texture2D" uid="uid://e7xocg6dxhxe" path="res://asserts/towers/espantapajaros.png" id="2_y8ytr"]
+[ext_resource type="Texture2D" uid="uid://d7xekmuhb61m" path="res://asserts/towers/espantapajaroATQ.png" id="3_y8ytr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ee8iy"]
 atlas = ExtResource("3_y8ytr")

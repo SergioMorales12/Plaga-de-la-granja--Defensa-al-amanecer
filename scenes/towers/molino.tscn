@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://c323ipjct152v"]
 
 [ext_resource type="Script" uid="uid://c7wqvxm5b1r6e" path="res://scripts/molino.gd" id="1_lhowf"]
-[ext_resource type="Texture2D" uid="uid://p2fesy0norwu" path="res://asserts/molino.png" id="2_h0l80"]
+[ext_resource type="Texture2D" uid="uid://p2fesy0norwu" path="res://asserts/towers/molino.png" id="2_h0l80"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rpga7"]
 atlas = ExtResource("2_h0l80")
