@@ -2325,9 +2325,9 @@ sources/0 = SubResource("TileSetAtlasSource_f61sj")
 
 [sub_resource type="Curve2D" id="Curve2D_y0em0"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 445, -116, 0, 0, 0, 0, 446, 390, 0, 0, 0, 0, 125, 385, 0, 0, 0, 0, 128, 902, 0, 0, 0, 0, 703, 913, 0, 0, 0, 0, 713, 425, 0, 0, 0, 0, 883, 430, 0, 0, 0, 0, 896, 957, 0, 0, 0, 0, 1195, 966, 0, 0, 0, 0, 1194, 1044, 0, 0, 0, 0, 1355, 1053, 0, 0, 0, 0, 1526, 1029, 0, 0, 0, 0, 1526, 657, 0, 0, 0, 0, 1403, 649, 0, 0, 0, 0, 1392, 559, 0, 0, 0, 0, 1197, 566, 0, 0, 0, 0, 1192, 1045, 0, 0, 0, 0, 1550, 1036, 0, 0, 0, 0, 1543, 645, 0, 0, 0, 0, 1665, 648, 0, 0, 0, 0, 1675, 441, 0, 0, 0, 0, 1504, 428, 0, 0, 0, 0, 1502.1, 328.934, 0, 0, 0, 0, 1640, 167)
+"points": PackedVector2Array(0, 0, 0, 0, 375, -127, 0, 0, 0, 0, 452.086, -125.756, 0, 0, 0, 0, 446, 390, 0, 0, 0, 0, 125, 385, 0, 0, 0, 0, 128, 902, 0, 0, 0, 0, 703, 913, 0, 0, 0, 0, 713, 425, 0, 0, 0, 0, 883, 430, 0, 0, 0, 0, 896, 957, 0, 0, 0, 0, 1195, 966, 0, 0, 0, 0, 1194, 1044, 0, 0, 0, 0, 1355, 1053, 0, 0, 0, 0, 1526, 1029, 0, 0, 0, 0, 1526, 657, 0, 0, 0, 0, 1403, 649, 0, 0, 0, 0, 1392, 559, 0, 0, 0, 0, 1197, 566, 0, 0, 0, 0, 1192, 1045, 0, 0, 0, 0, 1550, 1036, 0, 0, 0, 0, 1543, 645, 0, 0, 0, 0, 1665, 648, 0, 0, 0, 0, 1675, 441, 0, 0, 0, 0, 1504, 428, 0, 0, 0, 0, 1502.1, 328.934, 0, 0, 0, 0, 1640, 167)
 }
-point_count = 24
+point_count = 25
 
 [node name="Mapa" type="Node2D"]
 script = ExtResource("1_6i2c2")
@@ -2363,20 +2363,20 @@ script = ExtResource("7_vsp40")
 spawnerTime = 3
 
 [node name="Scorpion" parent="Path2D" instance=ExtResource("8_ijeqm")]
-position = Vector2(445, -116)
-rotation = 1.56882
+position = Vector2(375, -127)
+rotation = 0.0161365
 
 [node name="cuervo" parent="Path2D" instance=ExtResource("9_mt72o")]
-position = Vector2(445, -116)
-rotation = 1.56882
+position = Vector2(375, -127)
+rotation = 0.0161365
 
 [node name="towers" type="Node2D" parent="."]
 
 [node name="espantaPajaros" parent="towers" instance=ExtResource("9_vsp40")]
-position = Vector2(624, 664)
+position = Vector2(267, 507)
 
 [node name="molino" parent="towers" instance=ExtResource("11_pu8w0")]
-position = Vector2(800, 480)
+position = Vector2(411, 434)
 
 [node name="panel_torretas" parent="." instance=ExtResource("11_k3j34")]
 offset_left = 1792.0

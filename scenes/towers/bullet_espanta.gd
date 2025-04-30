@@ -16,8 +16,11 @@ func _process(delta):
 
 func _on_area_entered(area: Area2D) -> void:
 	var obj = area.get_parent()
+	if pierce < 1:
+		queue_free()
 	if obj.is_in_group("enemi"):
 		pierce -= 1
+		print("pam")
 		obj.get_damage(damage)
 	if pierce == 0:
 		queue_free()
