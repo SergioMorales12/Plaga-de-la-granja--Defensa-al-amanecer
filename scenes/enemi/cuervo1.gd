@@ -4,6 +4,8 @@ extends PathFollow2D
 @export var damage = 10
 @export var live = 50
 
+var is_dead = false
+
 func _ready():
 	var area = Area2D.new()
 	var collision_shape = CollisionShape2D.new()
@@ -27,4 +29,5 @@ func loop_movement(delta):
 func get_damage(amount: float) -> void:
 	live -= amount
 	if live <= 0:
+		is_dead = true
 		queue_free()

@@ -19,14 +19,14 @@ func _ready():
 	attack_timer.start()
 
 func _process(_delta):
-	if current_target and is_instance_valid(current_target) and current_target in enemigos:
+	if current_target and is_instance_valid(current_target) and current_target in enemigos and !current_target.is_dead:
 		if can_attack:
 			attack()
 	else:
 		try_get_closest_target()
 
 func attack():
-	if current_target and is_instance_valid(current_target) and current_target in enemigos:
+	if current_target and is_instance_valid(current_target) and current_target in enemigos :
 		$AnimatedSprite2D.play("Atq")
 		var projectileScene = preload("res://scenes/towers/bullet_espanta.tscn")
 		var projectile = projectileScene.instantiate()

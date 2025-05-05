@@ -14,8 +14,10 @@ func _ready():
 func _process(_delta):
 	if enemigos.size() >= 1:
 		if can_attack:
-			can_attack = false
-			atq()
+			for i in enemigos:
+				if !i.is_dead:
+					can_attack = false
+					atq()
 
 func atq():
 	if enemigos.size() >= 1:

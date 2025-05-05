@@ -2373,10 +2373,10 @@ rotation = 0.0161365
 [node name="towers" type="Node2D" parent="."]
 
 [node name="espantaPajaros" parent="towers" instance=ExtResource("9_vsp40")]
-position = Vector2(267, 507)
+position = Vector2(136, 1004)
 
 [node name="molino" parent="towers" instance=ExtResource("11_pu8w0")]
-position = Vector2(411, 434)
+position = Vector2(54, 807)
 
 [node name="panel_torretas" parent="." instance=ExtResource("11_k3j34")]
 offset_left = 1792.0

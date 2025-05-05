@@ -346,7 +346,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_xrw46")
 }],
 "loop": false,
-"name": &"dieDown",
+"name": &"diedown",
 "speed": 5.0
 }, {
 "frames": [{
@@ -375,7 +375,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_wkebe")
 }],
 "loop": false,
-"name": &"dieLeft",
+"name": &"dieleft",
 "speed": 5.0
 }, {
 "frames": [{
@@ -404,7 +404,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_wwg2k")
 }],
 "loop": false,
-"name": &"dieRight",
+"name": &"dieright",
 "speed": 5.0
 }, {
 "frames": [{
@@ -433,7 +433,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_x2xd5")
 }],
 "loop": false,
-"name": &"dieUp",
+"name": &"dieup",
 "speed": 5.0
 }, {
 "frames": [{
@@ -565,9 +565,9 @@ script = ExtResource("1_qnwgn")
 texture_filter = 1
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_jwjdy")
-animation = &"dieLeft"
+animation = &"dieup"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["enemi"]]
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]

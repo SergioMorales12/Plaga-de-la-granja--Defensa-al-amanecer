@@ -1,23 +1,24 @@
 extends PathFollow2D
 
-@export var runSpeed = 0.03
+@export var runSpeed = 0.07
 @export var damage = 10
 @export var live = 50
 
 var previous_position: Vector2
 var is_dead: bool = false
+var direction = null
 
 func _ready():
 	previous_position = global_position
-	var area = Area2D.new()
-	var collision_shape = CollisionShape2D.new()
-	var shape = CircleShape2D.new()
-	shape.radius = 10
-	collision_shape.shape = shape
-	
-	area.add_child(collision_shape)
-	add_child(area)
-	area.add_to_group("enemi")
+	#var area = Area2D.new()
+	#var collision_shape = CollisionShape2D.new()
+	#var shape = CircleShape2D.new()
+	#shape.radius = 10
+	#collision_shape.shape = shape
+	#
+	#area.add_child(collision_shape)
+	#add_child(area)
+	#area.add_to_group("enemi")
 
 func _process(delta: float) -> void:
 	if is_dead:
@@ -25,7 +26,7 @@ func _process(delta: float) -> void:
 	
 	loop_movement(delta)
 	var animated_sprite = $AnimatedSprite2D
-	var direction = get_direction()
+	direction = get_direction()
 	
 	if live > 0:
 		animated_sprite.play(direction)
@@ -51,7 +52,7 @@ func get_direction() -> String:
 		else:
 			return "up"
 
-func get_damage(amount: float) -> void:
+func get_damage(amount: float):
 	live -= amount
 	var animated_sprite = $AnimatedSprite2D
 	
@@ -59,8 +60,9 @@ func get_damage(amount: float) -> void:
 		is_dead = true
 		animated_sprite.stop()
 		print("muerto")
-		animated_sprite.play("dieLeft")
+		animated_sprite.play("die"+direction)
 		$Timer.start()
+	return is_dead
 
 func _on_timeout() -> void:
 	print("out")
