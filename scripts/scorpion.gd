@@ -1,6 +1,6 @@
 extends PathFollow2D
 
-@export var runSpeed = 0.07
+@export var runSpeed = 1.03
 @export var damage = 10
 @export var live = 50
 
@@ -34,6 +34,7 @@ func _process(delta: float) -> void:
 	previous_position = global_position
 	
 	if progress_ratio >= 1.0:
+		%Hp.Text = "queeee"
 		queue_free()
 
 func loop_movement(delta: float) -> void:
@@ -62,7 +63,6 @@ func get_damage(amount: float):
 		print("muerto")
 		animated_sprite.play("die"+direction)
 		$Timer.start()
-	return is_dead
 
 func _on_timeout() -> void:
 	print("out")

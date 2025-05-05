@@ -2315,9 +2315,8 @@ pattern_14 = SubResource("TileMapPattern_y85fu")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f61sj"]
 texture = ExtResource("1_0skjy")
+texture_region_size = Vector2i(32, 32)
 1:1/0 = 0
-1:2/0 = 0
-2:2/0 = 0
 2:1/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_qgkem"]

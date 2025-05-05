@@ -23,16 +23,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 0.639893
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="Label" type="VBoxContainer" parent="Panel"]
 texture_filter = 3
 layout_mode = 2
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 112.0
 offset_bottom = 91.0
-text = "HP:
-Lvl:
-Time:"
+
+[node name="Hp" type="Label" parent="Panel/Label"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "❤"
+horizontal_alignment = 2
+
+[node name="Gold" type="Label" parent="Panel/Label"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "🥫"
+horizontal_alignment = 2
+
+[node name="Lvl" type="Label" parent="Panel/Label"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Lvl:"
 
 [node name="FlowContainer" type="FlowContainer" parent="Panel"]
 layout_mode = 1
