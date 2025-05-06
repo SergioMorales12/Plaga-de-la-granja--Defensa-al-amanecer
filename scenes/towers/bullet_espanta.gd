@@ -20,7 +20,6 @@ func _on_area_entered(area: Area2D) -> void:
 		queue_free()
 	if obj.is_in_group("enemi"):
 		pierce -= 1
-		print("pam")
 		obj.get_damage(damage)
 	if pierce == 0:
 		queue_free()

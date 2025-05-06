@@ -1,24 +1,19 @@
 extends PathFollow2D
 
-@export var runSpeed = 1.03
-@export var damage = 10
+var dificulty = Player.dificulty
+
+@export var runSpeed = 0.07
+@export var damage = 50  
 @export var live = 50
+@export var reward = 50
 
 var previous_position: Vector2
 var is_dead: bool = false
 var direction = null
 
+
 func _ready():
 	previous_position = global_position
-	#var area = Area2D.new()
-	#var collision_shape = CollisionShape2D.new()
-	#var shape = CircleShape2D.new()
-	#shape.radius = 10
-	#collision_shape.shape = shape
-	#
-	#area.add_child(collision_shape)
-	#add_child(area)
-	#area.add_to_group("enemi")
 
 func _process(delta: float) -> void:
 	if is_dead:
@@ -33,8 +28,8 @@ func _process(delta: float) -> void:
 	
 	previous_position = global_position
 	
-	if progress_ratio >= 1.0:
-		%Hp.Text = "queeee"
+	if progress_ratio >= 0.99:
+		Player.reduce_player_life(damage)
 		queue_free()
 
 func loop_movement(delta: float) -> void:
@@ -60,10 +55,9 @@ func get_damage(amount: float):
 	if live <= 0:
 		is_dead = true
 		animated_sprite.stop()
-		print("muerto")
+		Player.add_player_gold(reward)
 		animated_sprite.play("die"+direction)
 		$Timer.start()
 
 func _on_timeout() -> void:
-	print("out")
 	queue_free()

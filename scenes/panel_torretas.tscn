@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dd7648vr35fwd"]
+[gd_scene load_steps=7 format=3 uid="uid://dd7648vr35fwd"]
 
 [ext_resource type="PackedScene" uid="uid://wpa1itv5jsjd" path="res://scenes/espanta.tscn" id="1_0v6n7"]
+[ext_resource type="Script" uid="uid://w80mcs40n62n" path="res://scenes/player.gd" id="1_u7ojl"]
 [ext_resource type="PackedScene" uid="uid://beyfb6dg5dp5o" path="res://scenes/molino.tscn" id="2_xxsy2"]
 [ext_resource type="Texture2D" uid="uid://pwglm1r82t6s" path="res://asserts/ui/start.png" id="4_u7ojl"]
 [ext_resource type="Texture2D" uid="uid://1gxn85nn6r8j" path="res://asserts/ui/accelerate.png" id="4_wa3ac"]
@@ -13,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_u7ojl")
 
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(128, 1080)
@@ -23,7 +25,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 0.639893
 
-[node name="Label" type="VBoxContainer" parent="Panel"]
+[node name="Stats" type="VBoxContainer" parent="Panel"]
 texture_filter = 3
 layout_mode = 2
 offset_left = 16.0
@@ -31,22 +33,14 @@ offset_top = 16.0
 offset_right = 112.0
 offset_bottom = 91.0
 
-[node name="Hp" type="Label" parent="Panel/Label"]
-unique_name_in_owner = true
+[node name="Hp" type="Label" parent="Panel/Stats"]
 layout_mode = 2
-text = "❤"
-horizontal_alignment = 2
 
-[node name="Gold" type="Label" parent="Panel/Label"]
-unique_name_in_owner = true
+[node name="Gold" type="Label" parent="Panel/Stats"]
 layout_mode = 2
-text = "🥫"
-horizontal_alignment = 2
 
-[node name="Lvl" type="Label" parent="Panel/Label"]
-unique_name_in_owner = true
+[node name="Wave" type="Label" parent="Panel/Stats"]
 layout_mode = 2
-text = "Lvl:"
 
 [node name="FlowContainer" type="FlowContainer" parent="Panel"]
 layout_mode = 1
@@ -103,3 +97,12 @@ texture_filter = 1
 position = Vector2(56, 0)
 scale = Vector2(2.5, 2.5)
 texture_normal = ExtResource("5_aecy3")
+
+[node name="DamageOverlay" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1926, 1078)
+layout_direction = 3
+layout_mode = 0
+offset_left = -146.0
+offset_right = 1837.0
+offset_bottom = 1078.0
+color = Color(0.58, 0, 0, 0)

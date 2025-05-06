@@ -1,7 +1,6 @@
-[gd_scene load_steps=41 format=4 uid="uid://cwtdmynui6cw8"]
+[gd_scene load_steps=40 format=4 uid="uid://cwtdmynui6cw8"]
 
 [ext_resource type="Texture2D" uid="uid://b7ng1525qaofi" path="res://asserts/map/Granja4.png" id="1_0skjy"]
-[ext_resource type="Script" uid="uid://cku5q5eelbss0" path="res://scripts/menuMapa.gd" id="1_6i2c2"]
 [ext_resource type="Texture2D" uid="uid://cgskpnle1ekd6" path="res://asserts/map/valla.png" id="1_hyyyu"]
 [ext_resource type="Texture2D" uid="uid://cgumfmtdn1fx6" path="res://asserts/towers/chomp_idle.png" id="1_p2dhc"]
 [ext_resource type="Texture2D" uid="uid://bp2neply6ysf7" path="res://asserts/map/32x32_DEMO.png" id="2_uqaia"]
@@ -2329,7 +2328,6 @@ _data = {
 point_count = 25
 
 [node name="Mapa" type="Node2D"]
-script = ExtResource("1_6i2c2")
 
 [node name="Fondo" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -2359,7 +2357,7 @@ tile_set = SubResource("TileSet_c00y0")
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_y0em0")
 script = ExtResource("7_vsp40")
-spawnerTime = 3
+spawnerTime = 2
 
 [node name="Scorpion" parent="Path2D" instance=ExtResource("8_ijeqm")]
 position = Vector2(375, -127)

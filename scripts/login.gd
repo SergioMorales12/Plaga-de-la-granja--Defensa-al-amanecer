@@ -1,7 +1,5 @@
 extends Control
 
-
-
 func _on_start_pressed() -> void:
 	if login_correct():
 		Global.change_scene("res://scenes/main_menu.tscn")
