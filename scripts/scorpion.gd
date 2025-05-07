@@ -2,9 +2,9 @@ extends PathFollow2D
 
 var dificulty = Player.dificulty
 
-@export var runSpeed = 0.07
-@export var damage = 50  
-@export var live = 50
+@export var runSpeed = 0.04
+@export var damage = 10  
+@export var live = 90
 @export var reward = 50
 
 var previous_position: Vector2

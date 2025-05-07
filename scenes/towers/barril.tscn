@@ -1,0 +1,89 @@
+[gd_scene load_steps=10 format=3 uid="uid://8ds3mtkru1ti"]
+
+[ext_resource type="Script" uid="uid://b0kh4ssc5qxy2" path="res://scripts/barril.gd" id="1_gtdq3"]
+[ext_resource type="Texture2D" uid="uid://bg5gpaa0m3joy" path="res://asserts/towers/Barril.png" id="2_0jb46"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdt64"]
+atlas = ExtResource("2_0jb46")
+region = Rect2(0, 576, 72, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p38xi"]
+atlas = ExtResource("2_0jb46")
+region = Rect2(81, 576, 72, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apims"]
+atlas = ExtResource("2_0jb46")
+region = Rect2(0, 512, 75, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hvbvc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdt64")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p38xi")
+}],
+"loop": true,
+"name": &"atq",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apims")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wvhp2"]
+radius = 45.0
+height = 98.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fi6c4"]
+radius = 456.004
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8dg65"]
+bg_color = Color(0, 0.6, 0.6, 0.607843)
+corner_radius_top_left = 250
+corner_radius_top_right = 250
+corner_radius_bottom_right = 250
+corner_radius_bottom_left = 250
+
+[node name="Barril" type="Node2D"]
+script = ExtResource("1_gtdq3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1.90735e-06, 0)
+scale = Vector2(3.00587, 2.4)
+sprite_frames = SubResource("SpriteFrames_hvbvc")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.923508
+
+[node name="colision" type="Area2D" parent="." groups=["towers"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="colision"]
+position = Vector2(-13, 41)
+shape = SubResource("CapsuleShape2D_wvhp2")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_fi6c4")
+
+[node name="attack_timer" type="Timer" parent="."]
+wait_time = 0.7
+autostart = true
+
+[node name="Area" type="Panel" parent="."]
+visible = false
+modulate = Color(0, 1, 1, 0.411765)
+show_behind_parent = true
+offset_left = -112.0
+offset_top = -112.0
+offset_right = 112.0
+offset_bottom = 112.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8dg65")

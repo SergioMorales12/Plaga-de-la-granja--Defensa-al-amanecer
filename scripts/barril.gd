@@ -12,7 +12,7 @@ var can_attack = false
 
 
 func _process(_delta):
-	if current_target and current_target in enemigos and !current_target.is_dead:
+	if current_target and is_instance_valid(current_target) and current_target in enemigos and !current_target.is_dead:
 		if can_attack:
 			attack()
 	else:
@@ -20,8 +20,8 @@ func _process(_delta):
 
 func attack():
 	if current_target and is_instance_valid(current_target) and current_target in enemigos :
-		$AnimatedSprite2D.play("Atq")
-		var projectileScene = preload("res://scenes/towers/bullet_espanta.tscn")
+		$AnimatedSprite2D.play("atq")
+		var projectileScene = preload("res://scenes/towers/bullet_barril.tscn")
 		var projectile = projectileScene.instantiate()
 		projectile.damage = damage
 		projectile.speed = bulletSpeed
@@ -36,10 +36,12 @@ func _on_attack_timer_timeout():
 
 
 func try_get_closest_target():
-	$AnimatedSprite2D.play("sleep")
-	if !enemigos.is_empty() :
-		current_target = enemigos.back()
-
+	$AnimatedSprite2D.play("idle")
+	var overlapping_bodies = $Area2D.get_overlapping_areas()
+	for body in overlapping_bodies:
+		if body.is_in_group("enemi"):
+			current_target = body
+			break
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemi"):
