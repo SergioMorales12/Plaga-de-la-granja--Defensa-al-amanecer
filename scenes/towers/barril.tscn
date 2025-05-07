@@ -38,35 +38,35 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wvhp2"]
-radius = 45.0
-height = 98.0
+radius = 24.0
+height = 48.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fi6c4"]
 radius = 456.004
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8dg65"]
 bg_color = Color(0, 0.6, 0.6, 0.607843)
-corner_radius_top_left = 250
-corner_radius_top_right = 250
-corner_radius_bottom_right = 250
-corner_radius_bottom_left = 250
+corner_radius_top_left = 445
+corner_radius_top_right = 445
+corner_radius_bottom_right = 445
+corner_radius_bottom_left = 445
 
 [node name="Barril" type="Node2D"]
 script = ExtResource("1_gtdq3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1.90735e-06, 0)
-scale = Vector2(3.00587, 2.4)
+position = Vector2(8, -22)
+scale = Vector2(1.5448, 1.46563)
 sprite_frames = SubResource("SpriteFrames_hvbvc")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.923508
+frame_progress = 0.775335
 
 [node name="colision" type="Area2D" parent="." groups=["towers"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="colision"]
-position = Vector2(-13, 41)
+position = Vector2(1, 0)
 shape = SubResource("CapsuleShape2D_wvhp2")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -79,11 +79,13 @@ wait_time = 0.7
 autostart = true
 
 [node name="Area" type="Panel" parent="."]
-visible = false
 modulate = Color(0, 1, 1, 0.411765)
 show_behind_parent = true
-offset_left = -112.0
-offset_top = -112.0
-offset_right = 112.0
-offset_bottom = 112.0
+offset_left = -458.0
+offset_top = -454.0
+offset_right = 456.0
+offset_bottom = 456.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_8dg65")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]

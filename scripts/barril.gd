@@ -1,10 +1,10 @@
 extends Node2D
 
-@export var damage = 10
+@export var damage = 50
 
-@export var bulletSpeed := 2000.0
+@export var bulletSpeed := 1000.0
 @export var bulletPierce := 1
-@export var attack_interval := 1  # Intervalo de ataque en segundos
+@export var attack_interval := 2  # Intervalo de ataque en segundos
 
 var enemigos = []
 var current_target = null
@@ -14,6 +14,7 @@ var can_attack = false
 func _process(_delta):
 	if current_target and is_instance_valid(current_target) and current_target in enemigos and !current_target.is_dead:
 		if can_attack:
+			print("atq")
 			attack()
 	else:
 		try_get_closest_target()
@@ -36,12 +37,10 @@ func _on_attack_timer_timeout():
 
 
 func try_get_closest_target():
+	print(enemigos)
 	$AnimatedSprite2D.play("idle")
-	var overlapping_bodies = $Area2D.get_overlapping_areas()
-	for body in overlapping_bodies:
-		if body.is_in_group("enemi"):
-			current_target = body
-			break
+	if !enemigos.is_empty() :
+		current_target = enemigos.back()
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemi"):
