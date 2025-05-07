@@ -37,7 +37,6 @@ func _on_attack_timer_timeout():
 
 
 func try_get_closest_target():
-	print(enemigos)
 	$AnimatedSprite2D.play("idle")
 	if !enemigos.is_empty() :
 		current_target = enemigos.back()

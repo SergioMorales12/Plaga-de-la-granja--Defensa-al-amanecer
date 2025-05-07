@@ -61,7 +61,7 @@ scale = Vector2(1.5448, 1.46563)
 sprite_frames = SubResource("SpriteFrames_hvbvc")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.775335
+frame_progress = 0.191994
 
 [node name="colision" type="Area2D" parent="." groups=["towers"]]
 
@@ -79,6 +79,7 @@ wait_time = 0.7
 autostart = true
 
 [node name="Area" type="Panel" parent="."]
+visible = false
 modulate = Color(0, 1, 1, 0.411765)
 show_behind_parent = true
 offset_left = -458.0
