@@ -5,6 +5,9 @@ var timer = 0
 
 var enemi1 = preload("res://scenes/enemi/scorpion.tscn") 
 
+func _ready() -> void:
+	Player._init_ui()
+
 func _process(delta: float) -> void:
 	timer += delta
 	

@@ -12,10 +12,12 @@ var damage_overlay
 
 func _ready():
 	await get_tree().process_frame
-	_init_ui()
+	call_deferred("_init_ui")
 
 
 func _init_ui():
+	print_tree()
+
 	hp_label = get_node_or_null("/root/Mapa/panel_torretas/Panel/Stats/Hp")
 	gold_label = get_node_or_null("/root/Mapa/panel_torretas/Panel/Stats/Gold")
 	wave_label = get_node_or_null("/root/Mapa/panel_torretas/Panel/Stats/Wave")
@@ -23,7 +25,9 @@ func _init_ui():
 	if damage_overlay:
 		damage_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	update_ui()
+	
 
+	
 func reduce_player_life(amount):
 	amount *= dificulty
 	player_life -= amount
@@ -38,7 +42,7 @@ func add_player_gold(amount):
 func update_ui():
 	if not hp_label or not gold_label or not wave_label:
 		print("UI no inicializada aún, se omite actualización")
-		return  # ← salir sin hacer nada si no están listos
+		return
 
 	hp_label.text = "HP: " + str(player_life)
 	gold_label.text = "Gold: " + str(player_gold)

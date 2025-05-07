@@ -10,13 +10,6 @@ var enemigos = []
 var current_target = null
 var can_attack = false
 
-func _ready():
-	$Area2D.monitoring = true
-	set_process(true)
-	var attack_timer = $attack_timer
-	attack_timer.wait_time = attack_interval
-	attack_timer.one_shot = false
-	attack_timer.start()
 
 func _process(_delta):
 	if current_target and is_instance_valid(current_target) and current_target in enemigos and !current_target.is_dead:

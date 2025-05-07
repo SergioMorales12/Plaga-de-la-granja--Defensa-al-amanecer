@@ -57,8 +57,7 @@ func _on_exit_button_pressed():
 	get_tree().quit()
 
 func _on_start_button_pressed():
-	if not mapSelectContainer:
-		Global.change_scene("res://scenes/mapa.tscn")
+	Global.change_scene("res://scenes/mapa.tscn")
 
 
 func _on_continue_button_pressed():

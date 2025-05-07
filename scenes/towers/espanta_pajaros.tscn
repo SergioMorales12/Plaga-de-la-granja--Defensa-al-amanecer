@@ -82,6 +82,7 @@ visible = false
 shape = SubResource("CircleShape2D_ee8iy")
 
 [node name="attack_timer" type="Timer" parent="."]
+autostart = true
 
 [node name="Area" type="Panel" parent="."]
 visible = false

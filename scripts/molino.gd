@@ -8,7 +8,6 @@ var can_attack = true
 var can_place = true
 
 func _ready():
-	$Area2D.monitoring = true
 	set_process(true)
 
 func _process(_delta):
