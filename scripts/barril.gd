@@ -42,7 +42,9 @@ func _on_attack_timer_timeout():
 
 func try_get_closest_target():
 	if !enemigos.is_empty():
-		current_target = enemigos.back()
+		for enemigo in enemigos:
+			if enemigo.progress > current_target.progress:
+				current_target = enemigos
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemi"):

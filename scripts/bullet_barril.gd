@@ -2,15 +2,15 @@ extends Node2D
 
 var target = null
 var direction: Vector2
-
 var speed: float = 0.0
 var damage: float = 10
 var pierce: int = 0
 var time: float = 1.0
 var previousTarget
+var impacted: bool = false  
 
 func _process(delta):
-	if target:
+	if target and not impacted:
 		if not direction:
 			direction = (target - position).normalized()
 		position += direction * speed * delta
@@ -26,14 +26,10 @@ func reached(target1):
 		pierce -= 1
 		target1.get_damage(damage)
 		$AnimatedSprite2D.play("impact")
-	if pierce < 1:
-		queue_free()
-	if pierce <= 0:
-		queue_free()
+		impacted = true 
 
 func _on_timer_timeout() -> void:
 	queue_free()
-
 
 func _on_animation_finished() -> void:
 	queue_free()
