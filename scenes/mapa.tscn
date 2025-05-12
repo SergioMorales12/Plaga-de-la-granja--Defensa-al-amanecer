@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://cwtdmynui6cw8"]
+[gd_scene load_steps=39 format=4 uid="uid://cwtdmynui6cw8"]
 
 [ext_resource type="Texture2D" uid="uid://b7ng1525qaofi" path="res://asserts/map/Granja4.png" id="1_0skjy"]
 [ext_resource type="Texture2D" uid="uid://cgskpnle1ekd6" path="res://asserts/map/valla.png" id="1_hyyyu"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://iopwhmejcr8b" path="res://addons/RadialMenu/RadialMenu.tscn" id="6_k7lwh"]
 [ext_resource type="Script" uid="uid://bbu42uj8krie2" path="res://scripts/path_2d_spawner.gd" id="7_vsp40"]
 [ext_resource type="PackedScene" uid="uid://dpimiyfhgom4j" path="res://scenes/enemi/scorpion.tscn" id="8_ijeqm"]
-[ext_resource type="PackedScene" uid="uid://7m3yc8kjlxrr" path="res://scenes/towers/espanta_pajaros.tscn" id="9_vsp40"]
 [ext_resource type="PackedScene" uid="uid://dd7648vr35fwd" path="res://scenes/panel_torretas.tscn" id="11_k3j34"]
 [ext_resource type="PackedScene" uid="uid://c323ipjct152v" path="res://scenes/towers/molino.tscn" id="11_pu8w0"]
 [ext_resource type="PackedScene" uid="uid://cgibybapb8ujb" path="res://scenes/pause.tscn" id="13_66cqs"]
@@ -2365,8 +2364,8 @@ rotation = 0.0161365
 
 [node name="towers" type="Node2D" parent="."]
 
-[node name="espantaPajaros" parent="towers" instance=ExtResource("9_vsp40")]
-position = Vector2(136, 1004)
+[node name="Barril" parent="towers" instance=ExtResource("13_ijeqm")]
+position = Vector2(1044, 539)
 
 [node name="molino" parent="towers" instance=ExtResource("11_pu8w0")]
 position = Vector2(54, 807)
@@ -2383,6 +2382,3 @@ offset_right = 1283.0
 offset_bottom = 608.263
 
 [node name="Pause" parent="." instance=ExtResource("13_66cqs")]
-
-[node name="Barril" parent="." instance=ExtResource("13_ijeqm")]
-position = Vector2(565, 464)

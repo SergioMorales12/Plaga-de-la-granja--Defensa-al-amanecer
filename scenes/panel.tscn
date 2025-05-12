@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://wpa1itv5jsjd"]
+
+[ext_resource type="Script" uid="uid://b0y4fuitc2g3o" path="res://scripts/panel.gd" id="1_0ndxw"]
+
+[node name="panel" type="Panel"]
+custom_minimum_size = Vector2(96, 104)
+anchors_preset = -1
+anchor_right = 0.05
+anchor_bottom = 0.096
+offset_bottom = 0.32
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0ndxw")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

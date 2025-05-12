@@ -2,6 +2,7 @@ extends Node2D
 
 @export var damage = 10
 @export var attack_interval := 0.5  # Intervalo de ataque en segundos
+@export var escala: float = 0.5
 
 var enemigos = []
 var can_attack = true

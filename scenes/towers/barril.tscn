@@ -24,7 +24,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_p38xi")
 }],
-"loop": true,
+"loop": false,
 "name": &"atq",
 "speed": 5.0
 }, {
@@ -56,17 +56,17 @@ script = ExtResource("1_gtdq3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(8, -22)
 scale = Vector2(1.5448, 1.46563)
 sprite_frames = SubResource("SpriteFrames_hvbvc")
-animation = &"idle"
+animation = &"atq"
 autoplay = "idle"
-frame_progress = 0.191994
+frame = 1
+frame_progress = 1.0
 
 [node name="colision" type="Area2D" parent="." groups=["towers"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="colision"]
-position = Vector2(1, 0)
+position = Vector2(-9, 22)
 shape = SubResource("CapsuleShape2D_wvhp2")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -88,5 +88,7 @@ offset_right = 456.0
 offset_bottom = 456.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_8dg65")
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]
+[connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]

@@ -76,7 +76,6 @@ position = Vector2(-0.5, 8.5)
 shape = SubResource("RectangleShape2D_y8ytr")
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_ee8iy")

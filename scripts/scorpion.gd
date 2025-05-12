@@ -49,6 +49,7 @@ func get_direction() -> String:
 			return "up"
 
 func get_damage(amount: float):
+	print(amount)
 	live -= amount
 	var animated_sprite = $AnimatedSprite2D
 	

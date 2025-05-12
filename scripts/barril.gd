@@ -5,19 +5,23 @@ extends Node2D
 @export var bulletSpeed := 1000.0
 @export var bulletPierce := 1
 @export var attack_interval := 2  # Intervalo de ataque en segundos
+@export var escala: float = 0.8
 
 var enemigos = []
 var current_target = null
-var can_attack = false
+var can_attack = true
 
+func _ready() -> void:
+	$attack_timer.wait_time = attack_interval
 
 func _process(_delta):
 	if current_target and is_instance_valid(current_target) and current_target in enemigos and !current_target.is_dead:
+
 		if can_attack:
-			print("atq")
 			attack()
 	else:
-		try_get_closest_target()
+		$AnimatedSprite2D.play("idle")
+		#try_get_closest_target()
 
 func attack():
 	if current_target and is_instance_valid(current_target) and current_target in enemigos :
@@ -27,7 +31,7 @@ func attack():
 		projectile.damage = damage
 		projectile.speed = bulletSpeed
 		projectile.pierce = bulletPierce
-		projectile.position = Vector2(-30, -16) + position
+		projectile.position = Vector2(0, -47.008) + position
 		projectile.target = current_target.position
 		get_parent().add_child(projectile)
 		can_attack = false
@@ -37,8 +41,7 @@ func _on_attack_timer_timeout():
 
 
 func try_get_closest_target():
-	$AnimatedSprite2D.play("idle")
-	if !enemigos.is_empty() :
+	if !enemigos.is_empty():
 		current_target = enemigos.back()
 
 func _on_area_entered(area: Area2D) -> void:
@@ -60,3 +63,7 @@ func _on_area_exited(area: Area2D) -> void:
 			if not enemy_present:
 				current_target = null
 				set_process(true)
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	$AnimatedSprite2D.play("idle")
