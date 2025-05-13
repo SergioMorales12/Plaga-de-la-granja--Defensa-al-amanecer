@@ -45,7 +45,7 @@ func try_get_closest_target():
 		for enemigo in enemigos:
 			if enemigo.progress > current_target.progress:
 				print( "enemigo cambiado")
-				current_target = enemigos
+				current_target = enemigo
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemi"):

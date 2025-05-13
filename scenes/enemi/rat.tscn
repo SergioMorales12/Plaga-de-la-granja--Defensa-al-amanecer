@@ -392,7 +392,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5wpo4"]
 size = Vector2(80, 36)
 
-[node name="Rat" type="PathFollow2D"]
+[node name="Rat" type="PathFollow2D" groups=["enemi"]]
 rotates = false
 script = ExtResource("1_ey65g")
 
@@ -401,7 +401,7 @@ texture_filter = 1
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_8jdy2")
 animation = &"up"
-frame_progress = 0.78867
+frame_progress = 0.280028
 
 [node name="Area2D" type="Area2D" parent="." groups=["enemi"]]
 
@@ -412,3 +412,5 @@ shape = SubResource("RectangleShape2D_5wpo4")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.7
 one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timeout"]
