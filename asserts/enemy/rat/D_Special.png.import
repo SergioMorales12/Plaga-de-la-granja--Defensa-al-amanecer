@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckvq5cp4w2ych"
-path="res://.godot/imported/S_Attack.png-94bee733ee6e7f2282055767a6a1a6e2.ctex"
+uid="uid://7qsfglukwnl6"
+path="res://.godot/imported/D_Special.png-e928980a5af9f03490c28d30635445ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asserts/rat/S_Attack.png"
-dest_files=["res://.godot/imported/S_Attack.png-94bee733ee6e7f2282055767a6a1a6e2.ctex"]
+source_file="res://asserts/enemy/rat/D_Special.png"
+dest_files=["res://.godot/imported/D_Special.png-e928980a5af9f03490c28d30635445ae.ctex"]
 
 [params]
 

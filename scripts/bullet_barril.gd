@@ -5,8 +5,8 @@ var direction: Vector2
 var speed: float = 0.0
 var damage: float = 10
 var pierce: int = 0
-var time: float = 1.0
-var previousTarget
+var time: float = 2.0
+var previousTarget: Node = null
 var impacted: bool = false  
 
 func _process(delta):
@@ -22,11 +22,17 @@ func _on_area_entered(area: Area2D) -> void:
 
 func reached(target1):
 	if target1.is_in_group("enemi") and target1 != previousTarget:
-		previousTarget = target
+		previousTarget = target1
 		pierce -= 1
-		target1.get_damage(damage)
-		$AnimatedSprite2D.play("impact")
+		apply_explosion_damage()
 		impacted = true 
+		
+func apply_explosion_damage():
+	$AnimatedSprite2D.play("impact")
+	for area in $ExplosionArea.get_overlapping_areas():
+		var obj = area.get_parent()
+		if obj.is_in_group("enemi"):
+			obj.get_damage(damage)
 
 func _on_timer_timeout() -> void:
 	queue_free()

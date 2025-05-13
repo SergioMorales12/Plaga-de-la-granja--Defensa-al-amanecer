@@ -4,7 +4,7 @@ extends Node2D
 
 @export var bulletSpeed := 1000.0
 @export var bulletPierce := 1
-@export var attack_interval := 2  # Intervalo de ataque en segundos
+@export var attack_interval := 2  
 @export var escala: float = 0.8
 
 var enemigos = []
@@ -18,14 +18,14 @@ func _process(_delta):
 	if current_target and is_instance_valid(current_target) and current_target in enemigos and !current_target.is_dead:
 
 		if can_attack:
-			attack()
+			$AnimatedSprite2D.play("atq")
 	else:
 		$AnimatedSprite2D.play("idle")
-		#try_get_closest_target()
+		try_get_closest_target()
 
 func attack():
 	if current_target and is_instance_valid(current_target) and current_target in enemigos :
-		$AnimatedSprite2D.play("atq")
+		
 		var projectileScene = preload("res://scenes/towers/bullet_barril.tscn")
 		var projectile = projectileScene.instantiate()
 		projectile.damage = damage
@@ -44,6 +44,7 @@ func try_get_closest_target():
 	if !enemigos.is_empty():
 		for enemigo in enemigos:
 			if enemigo.progress > current_target.progress:
+				print( "enemigo cambiado")
 				current_target = enemigos
 
 func _on_area_entered(area: Area2D) -> void:
@@ -68,4 +69,5 @@ func _on_area_exited(area: Area2D) -> void:
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:
+	attack()
 	$AnimatedSprite2D.play("idle")

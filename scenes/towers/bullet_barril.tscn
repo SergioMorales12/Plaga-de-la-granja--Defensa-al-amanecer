@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cboelr8aqvqjg"]
+[gd_scene load_steps=20 format=3 uid="uid://cboelr8aqvqjg"]
 
 [ext_resource type="Texture2D" uid="uid://bg5gpaa0m3joy" path="res://asserts/towers/Barril.png" id="1_0q6ay"]
 [ext_resource type="Script" uid="uid://cr00bhay7ljxf" path="res://scripts/bullet_barril.gd" id="1_e8tts"]
@@ -103,13 +103,16 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_p3ubl")
 }],
-"loop": true,
+"loop": false,
 "name": &"impact",
 "speed": 10.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tlytw"]
-radius = 18.0
+radius = 22.2036
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e8tts"]
+radius = 74.4312
 
 [node name="bullet_barril" type="Node2D"]
 script = ExtResource("1_e8tts")
@@ -121,7 +124,8 @@ scale = Vector2(1.75, 1.8125)
 sprite_frames = SubResource("SpriteFrames_e8tts")
 animation = &"impact"
 autoplay = "idle"
-frame_progress = 0.396184
+frame = 11
+frame_progress = 1.0
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -130,6 +134,11 @@ shape = SubResource("CircleShape2D_tlytw")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="ExplosionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea"]
+shape = SubResource("CircleShape2D_e8tts")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wuodmv7ichwm"
-path="res://.godot/imported/D_Death.png-47676e9d011dd86c2038a7a683bb3e6b.ctex"
+uid="uid://tuy6nvpsps5p"
+path="res://.godot/imported/S_Run.png-ffb1a041651e687f477097b5816783bf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asserts/rat/D_Death.png"
-dest_files=["res://.godot/imported/D_Death.png-47676e9d011dd86c2038a7a683bb3e6b.ctex"]
+source_file="res://asserts/enemy/rat/S_Run.png"
+dest_files=["res://.godot/imported/S_Run.png-ffb1a041651e687f477097b5816783bf.ctex"]
 
 [params]
 
