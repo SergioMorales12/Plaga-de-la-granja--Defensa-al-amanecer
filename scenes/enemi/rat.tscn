@@ -395,13 +395,15 @@ size = Vector2(80, 36)
 [node name="Rat" type="PathFollow2D" groups=["enemi"]]
 rotates = false
 script = ExtResource("1_ey65g")
+runSpeed = 0.08
+damage = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_8jdy2")
 animation = &"up"
-frame_progress = 0.280028
+frame_progress = 0.203166
 
 [node name="Area2D" type="Area2D" parent="." groups=["enemi"]]
 

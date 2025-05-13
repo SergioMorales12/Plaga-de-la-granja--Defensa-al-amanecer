@@ -1,27 +1,112 @@
-[gd_scene load_steps=7 format=3 uid="uid://cl6tplu7eq42w"]
+[gd_scene load_steps=17 format=3 uid="uid://cl6tplu7eq42w"]
 
 [ext_resource type="Script" uid="uid://c6ev00y820xtc" path="res://scenes/enemi/cuervo1.gd" id="1_bs70i"]
-[ext_resource type="Texture2D" uid="uid://ckq43p42p7gdb" path="res://asserts/enemy/Cuervo.png" id="1_v540k"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bs70i"]
-atlas = ExtResource("1_v540k")
-region = Rect2(0, 0, 32, 32)
+[ext_resource type="Texture2D" uid="uid://b7hvb6m1yq20x" path="res://asserts/enemy/monster3.png" id="2_bs70i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cpn02"]
-atlas = ExtResource("1_v540k")
-region = Rect2(32, 0, 32, 32)
+atlas = ExtResource("2_bs70i")
+region = Rect2(648, 256, 72, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xl8t6"]
+atlas = ExtResource("2_bs70i")
+region = Rect2(720, 256, 72, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apxhc"]
+atlas = ExtResource("2_bs70i")
+region = Rect2(792, 256, 72, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h577d"]
+atlas = ExtResource("2_bs70i")
+region = Rect2(648, 320, 72, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhu2m"]
+atlas = ExtResource("2_bs70i")
+region = Rect2(720, 320, 72, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w25lp"]
+atlas = ExtResource("2_bs70i")
+region = Rect2(792, 320, 72, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_reo15"]
+atlas = ExtResource("2_bs70i")
+region = Rect2(648, 384, 72, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sh20k"]
+atlas = ExtResource("2_bs70i")
+region = Rect2(720, 384, 72, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7d2u6"]
+atlas = ExtResource("2_bs70i")
+region = Rect2(792, 384, 72, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tun1b"]
+atlas = ExtResource("2_bs70i")
+region = Rect2(648, 448, 72, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nowa"]
+atlas = ExtResource("2_bs70i")
+region = Rect2(720, 448, 72, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xovc1"]
+atlas = ExtResource("2_bs70i")
+region = Rect2(792, 448, 72, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xl8t6"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bs70i")
+"texture": SubResource("AtlasTexture_cpn02")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cpn02")
+"texture": SubResource("AtlasTexture_xl8t6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apxhc")
 }],
 "loop": true,
-"name": &"default",
+"name": &"down",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h577d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhu2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w25lp")
+}],
+"loop": true,
+"name": &"left",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_reo15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sh20k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7d2u6")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tun1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nowa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xovc1")
+}],
+"loop": true,
+"name": &"up",
 "speed": 5.0
 }]
 
@@ -29,7 +114,7 @@ animations = [{
 radius = 22.7654
 
 [node name="cuervo" type="PathFollow2D" groups=["enemi"]]
-loop = false
+rotates = false
 script = ExtResource("1_bs70i")
 runSpeed = 0.03
 
@@ -38,12 +123,16 @@ texture_filter = 1
 position = Vector2(1, 2.38419e-07)
 scale = Vector2(1.21875, 1.1875)
 sprite_frames = SubResource("SpriteFrames_xl8t6")
-autoplay = "default"
-frame_progress = 0.260336
+animation = &"right"
+autoplay = "down"
 
-[node name="area2D" type="Area2D" parent="."]
+[node name="area2D" type="Area2D" parent="." groups=["enemi"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="area2D"]
 position = Vector2(1, 2)
 scale = Vector2(1.01135, 0.966154)
 shape = SubResource("CircleShape2D_v540k")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true

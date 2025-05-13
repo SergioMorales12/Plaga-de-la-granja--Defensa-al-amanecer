@@ -60,3 +60,5 @@ text = "Continue as a guest"
 [node name="exitButton" type="Button" parent="buttons"]
 layout_mode = 2
 text = "Exit"
+
+[connection signal="pressed" from="buttons/login" to="." method="_on_login_pressed"]

@@ -6,3 +6,7 @@ func _physics_process(delta: float):
 		$ColorRect.visible = not $ColorRect.visible
 		$Label.visible = not $Label.visible
 		$buttons.visible = not $buttons.visible
+
+
+func _on_login_pressed() -> void:
+	Global.change_scene("res://scenes/main_menu.tscn")

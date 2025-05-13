@@ -1,33 +1,65 @@
 extends PathFollow2D
 
-@export var runSpeed = 0.0
-@export var damage = 10
-@export var live = 50
+var dificulty = Player.dificulty
 
-var is_dead = false
+@export var runSpeed = 0.04
+@export var damage = 10  
+@export var live = 90
+@export var reward = 50
+
+var previous_position: Vector2
+var is_dead: bool = false
+var direction = null
+
 
 func _ready():
-	var area = Area2D.new()
-	var collision_shape = CollisionShape2D.new()
-	var shape = CircleShape2D.new()
-	shape.radius = 10
-	collision_shape.shape = shape
-	
-	area.add_child(collision_shape)
-	add_child(area)
-	area.add_to_group("enemi")
+	previous_position = global_position
 
 func _process(delta: float) -> void:
-	loop_movement(delta)
+	if is_dead:
+		return
 	
-	if progress_ratio >= 1.0:
+	loop_movement(delta)
+	var animated_sprite = $AnimatedSprite2D
+	direction = get_direction()
+	
+	if live > 0:
+		animated_sprite.play(direction)
+	
+	previous_position = global_position
+	
+	if progress_ratio >= 0.99:
+		Player.reduce_player_life(damage)
 		queue_free()
 
-func loop_movement(delta):
+func loop_movement(delta: float) -> void:
 	progress_ratio += runSpeed * delta
 
-func get_damage(amount: float) -> void:
+func get_direction() -> String:
+	var velocity = global_position - previous_position
+	if abs(velocity.x) > abs(velocity.y):
+		if velocity.x > 0:
+			return "right"
+		else:
+			return "left"
+	else:
+		if velocity.y > 0:
+			return "down"
+		else:
+			return "up"
+
+func get_damage(amount: float):
+	print(amount)
 	live -= amount
+	var animated_sprite = $AnimatedSprite2D
+	
 	if live <= 0:
 		is_dead = true
+		animated_sprite.stop()
+		Player.add_player_gold(reward)
 		queue_free()
+		#animated_sprite.play("die"+direction)
+		#$Timer.start()
+
+func _on_timeout() -> void:
+	queue_free()

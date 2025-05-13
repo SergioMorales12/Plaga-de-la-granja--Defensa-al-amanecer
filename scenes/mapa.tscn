@@ -2356,11 +2356,13 @@ tile_set = SubResource("TileSet_c00y0")
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_y0em0")
 script = ExtResource("7_vsp40")
-spawnerTime = 2
 
 [node name="Scorpion" parent="Path2D" instance=ExtResource("8_ijeqm")]
 position = Vector2(375, -127)
 rotation = 0.0161365
+
+[node name="Timer" type="Timer" parent="Path2D"]
+autostart = true
 
 [node name="towers" type="Node2D" parent="."]
 
@@ -2382,3 +2384,5 @@ offset_right = 1283.0
 offset_bottom = 608.263
 
 [node name="Pause" parent="." instance=ExtResource("13_66cqs")]
+
+[connection signal="timeout" from="Path2D/Timer" to="Path2D" method="_on_timer_timeout"]

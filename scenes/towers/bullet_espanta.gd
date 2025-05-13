@@ -24,7 +24,7 @@ func _on_area_entered(area: Area2D) -> void:
 func reached(target1):
 	print(pierce)
 	if target1.is_in_group("enemi") and target1 != previousTarget:
-		previousTarget = target
+		previousTarget = target1
 		pierce -= 1
 		print(pierce)
 		target1.get_damage(damage)
