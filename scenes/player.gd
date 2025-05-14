@@ -12,6 +12,10 @@ var damage_overlay
 
 func _ready():
 	await get_tree().process_frame
+	print("iniciando player")
+	player_life = 100
+	player_gold = 1000
+	wave = 1
 	call_deferred("_init_ui")
 
 
@@ -57,4 +61,7 @@ func update_ui():
 		damage_overlay.color = color
 
 	if player_life <= 0:
+		player_life = 100
+		player_gold = 1000
+		wave = 1
 		Global.change_scene("res://scenes/main_menu.tscn")

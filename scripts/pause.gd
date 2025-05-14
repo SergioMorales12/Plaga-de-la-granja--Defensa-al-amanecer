@@ -9,4 +9,4 @@ func _physics_process(delta: float):
 
 
 func _on_login_pressed() -> void:
-	Global.change_scene("res://scenes/main_menu.tscn")
+	Global.restart_scene()
