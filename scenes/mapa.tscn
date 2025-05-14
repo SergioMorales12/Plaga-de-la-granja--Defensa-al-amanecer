@@ -2368,6 +2368,7 @@ autostart = true
 
 [node name="Barril" parent="towers" instance=ExtResource("13_ijeqm")]
 position = Vector2(1044, 539)
+bulletSpeed = 1500.0
 
 [node name="molino" parent="towers" instance=ExtResource("11_pu8w0")]
 position = Vector2(54, 807)

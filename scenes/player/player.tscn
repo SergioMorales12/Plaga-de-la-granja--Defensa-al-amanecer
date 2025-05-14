@@ -30,4 +30,3 @@ layout_mode = 2
 [node name="hp" type="Label" parent="VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Hp: 100/100"

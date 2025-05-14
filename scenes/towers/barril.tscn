@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://8ds3mtkru1ti"]
+[gd_scene load_steps=11 format=3 uid="uid://8ds3mtkru1ti"]
 
 [ext_resource type="Script" uid="uid://b0kh4ssc5qxy2" path="res://scripts/barril.gd" id="1_gtdq3"]
 [ext_resource type="Texture2D" uid="uid://bg5gpaa0m3joy" path="res://asserts/towers/Barril.png" id="2_0jb46"]
@@ -51,6 +51,9 @@ corner_radius_top_right = 445
 corner_radius_bottom_right = 445
 corner_radius_bottom_left = 445
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_gtdq3"]
+radius = 35.13
+
 [node name="Barril" type="Node2D"]
 script = ExtResource("1_gtdq3")
 
@@ -70,6 +73,7 @@ position = Vector2(-9, 22)
 shape = SubResource("CapsuleShape2D_wvhp2")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_fi6c4")
@@ -87,6 +91,10 @@ offset_top = -454.0
 offset_right = 456.0
 offset_bottom = 456.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_8dg65")
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2(-7, 12)
+shape = SubResource("CircleShape2D_gtdq3")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]

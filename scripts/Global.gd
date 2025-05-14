@@ -1,22 +1,17 @@
 extends Node
 
-# Ruta al archivo de guardado
 var FILE_PATH := "res://Games/save_games.json"
 
-# Referencia al contenedor de selección de mapa (puede asignarse dinámicamente)
 var map_select_container: Node2D
 
-# Guarda la ruta de la escena actual
 var current_scene_path: String = ""
 
-# Cambiar a una nueva escena
 func change_scene(new_scene_path: String) -> void:
 	current_scene_path = new_scene_path
 	get_tree().change_scene_to_file(new_scene_path)
 	print("Cambiando a la escena:", new_scene_path)
 	print_stack()
 
-# Reiniciar la escena actual
 func restart_scene() -> void:
 	if current_scene_path != "":
 		get_tree().change_scene_to_file(current_scene_path)
@@ -24,22 +19,19 @@ func restart_scene() -> void:
 	else:
 		push_error("No se ha cargado ninguna escena para reiniciar.")
 
-# Cambiar a un nuevo mapa (similar a cambiar escena, pero desde un contenedor de mapas)
 func change_map(map_path: String) -> void:
 	if map_select_container:
-		map_select_container.queue_free()  # Elimina el contenedor anterior si existe
-	map_select_container = load(map_path).instantiate()
+		map_select_container.queue_free()  
+		map_select_container = load(map_path).instantiate()
 	get_tree().current_scene.add_child(map_select_container)
 	print("Mapa cambiado a:", map_path)
 
-# Guardar datos de juego (opcional)
 func save_game(data: Dictionary) -> void:
 	var file = FileAccess.open(FILE_PATH, FileAccess.WRITE)
 	file.store_string(JSON.stringify(data))
 	file.close()
 	print("Juego guardado en:", FILE_PATH)
 
-# Cargar datos de juego (opcional)
 func load_game() -> Dictionary:
 	if FileAccess.file_exists(FILE_PATH):
 		var file = FileAccess.open(FILE_PATH, FileAccess.READ)

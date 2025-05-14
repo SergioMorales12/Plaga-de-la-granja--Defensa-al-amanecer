@@ -63,3 +63,7 @@ func _on_area_exited(area: Area2D) -> void:
 			if not enemy_present:
 				current_target = null
 				set_process(true)
+
+
+func _on_touch_screen_button_pressed() -> void:
+	pass # Replace with function body.

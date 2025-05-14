@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://7m3yc8kjlxrr"]
+[gd_scene load_steps=13 format=3 uid="uid://7m3yc8kjlxrr"]
 
 [ext_resource type="Script" uid="uid://cppao04d7npjb" path="res://scripts/espanta_pajaros.gd" id="1_5lbkk"]
 [ext_resource type="Texture2D" uid="uid://e7xocg6dxhxe" path="res://asserts/towers/espantapajaros.png" id="2_y8ytr"]
@@ -51,6 +51,10 @@ size = Vector2(29, 83)
 [sub_resource type="CircleShape2D" id="CircleShape2D_ee8iy"]
 radius = 243.074
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y8ytr"]
+radius = 16.28
+height = 99.1
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y8ytr"]
 bg_color = Color(0, 0.6, 0.6, 0.607843)
 corner_radius_top_left = 250
@@ -70,15 +74,20 @@ autoplay = "sleep"
 frame_progress = 0.583199
 
 [node name="colision" type="Area2D" parent="." groups=["towers"]]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="colision"]
 position = Vector2(-0.5, 8.5)
 shape = SubResource("RectangleShape2D_y8ytr")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_ee8iy")
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+shape = SubResource("CapsuleShape2D_y8ytr")
 
 [node name="attack_timer" type="Timer" parent="."]
 autostart = true
@@ -95,4 +104,5 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_y8ytr")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]
+[connection signal="pressed" from="TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
 [connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]

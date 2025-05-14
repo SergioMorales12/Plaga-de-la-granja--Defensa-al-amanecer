@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dd7648vr35fwd"]
+[gd_scene load_steps=8 format=3 uid="uid://dd7648vr35fwd"]
 
 [ext_resource type="PackedScene" uid="uid://wpa1itv5jsjd" path="res://scenes/panel.tscn" id="1_0v6n7"]
 [ext_resource type="PackedScene" uid="uid://7m3yc8kjlxrr" path="res://scenes/towers/espanta_pajaros.tscn" id="2_gwili"]
-[ext_resource type="PackedScene" uid="uid://beyfb6dg5dp5o" path="res://scenes/molino.tscn" id="2_xxsy2"]
-[ext_resource type="Script" uid="uid://b0y4fuitc2g3o" path="res://scripts/panel.gd" id="3_u7ojl"]
+[ext_resource type="PackedScene" uid="uid://c323ipjct152v" path="res://scenes/towers/molino.tscn" id="3_aecy3"]
 [ext_resource type="PackedScene" uid="uid://8ds3mtkru1ti" path="res://scenes/towers/barril.tscn" id="4_aecy3"]
 [ext_resource type="Texture2D" uid="uid://pwglm1r82t6s" path="res://asserts/ui/start.png" id="4_u7ojl"]
 [ext_resource type="Texture2D" uid="uid://1gxn85nn6r8j" path="res://asserts/ui/accelerate.png" id="4_wa3ac"]
@@ -58,9 +57,9 @@ theme_override_constants/v_separation = 8
 layout_mode = 2
 tower = ExtResource("2_gwili")
 
-[node name="molino" parent="Panel/FlowContainer" instance=ExtResource("2_xxsy2")]
+[node name="molino" parent="Panel/FlowContainer" instance=ExtResource("1_0v6n7")]
 layout_mode = 2
-script = ExtResource("3_u7ojl")
+tower = ExtResource("3_aecy3")
 
 [node name="barril" parent="Panel/FlowContainer" instance=ExtResource("1_0v6n7")]
 layout_mode = 2
