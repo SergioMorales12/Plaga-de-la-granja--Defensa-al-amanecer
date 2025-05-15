@@ -46,7 +46,7 @@ func spawn_enemies():
 	var new_enemi3 = enemi3.instantiate()
 	var new_enemi4 = enemi4.instantiate()
 
-	add_child(new_enemi1)
-	add_child(new_enemi2)
-	add_child(new_enemi3)
+	#add_child(new_enemi1)
+	#add_child(new_enemi2)
+	#add_child(new_enemi3)
 	add_child(new_enemi4)

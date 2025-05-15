@@ -1,0 +1,189 @@
+[gd_scene load_steps=21 format=3 uid="uid://dpvfu7eokceta"]
+
+[ext_resource type="Script" uid="uid://5txls8pqoofe" path="res://scripts/microwave.gd" id="1_pe6jw"]
+[ext_resource type="Texture2D" uid="uid://bg5gpaa0m3joy" path="res://asserts/towers/Barril.png" id="2_utnue"]
+[ext_resource type="Texture2D" uid="uid://bbmi76jtni3rc" path="res://asserts/towers/Lightning_III_128x48.png" id="3_pe6jw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2aft"]
+atlas = ExtResource("2_utnue")
+region = Rect2(64, 420, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18mg8"]
+atlas = ExtResource("2_utnue")
+region = Rect2(128, 420, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4qd1"]
+atlas = ExtResource("2_utnue")
+region = Rect2(0, 420, 64, 70)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xeu37"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2aft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18mg8")
+}],
+"loop": false,
+"name": &"atq",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4qd1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7v0nj"]
+radius = 24.0
+height = 48.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pe6jw"]
+size = Vector2(227, 98.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w3eu7"]
+bg_color = Color(0, 0.6, 0.6, 0.607843)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxmr2"]
+atlas = ExtResource("3_pe6jw")
+region = Rect2(0, 0, 128, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_njtgs"]
+atlas = ExtResource("3_pe6jw")
+region = Rect2(128, 0, 128, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olad3"]
+atlas = ExtResource("3_pe6jw")
+region = Rect2(256, 0, 128, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wuy4u"]
+atlas = ExtResource("3_pe6jw")
+region = Rect2(0, 48, 128, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3h7q3"]
+atlas = ExtResource("3_pe6jw")
+region = Rect2(128, 48, 128, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yv2lx"]
+atlas = ExtResource("3_pe6jw")
+region = Rect2(256, 48, 128, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mspg2"]
+atlas = ExtResource("3_pe6jw")
+region = Rect2(0, 96, 128, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71lsg"]
+atlas = ExtResource("3_pe6jw")
+region = Rect2(128, 96, 128, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3r58"]
+atlas = ExtResource("3_pe6jw")
+region = Rect2(256, 96, 128, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_utnue"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxmr2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_njtgs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olad3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wuy4u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3h7q3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yv2lx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olad3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wuy4u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3h7q3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yv2lx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mspg2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71lsg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3r58")
+}],
+"loop": false,
+"name": &"rayos",
+"speed": 15.0
+}]
+
+[node name="Microwave" type="Node2D"]
+script = ExtResource("1_pe6jw")
+damage = 100
+attack_interval = 1.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.5448, 1.46563)
+sprite_frames = SubResource("SpriteFrames_xeu37")
+animation = &"atq"
+autoplay = "idle"
+
+[node name="colision" type="Area2D" parent="." groups=["towers"]]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="colision"]
+position = Vector2(3, 5)
+shape = SubResource("CapsuleShape2D_7v0nj")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+texture_filter = 1
+position = Vector2(-114, -32)
+shape = SubResource("RectangleShape2D_pe6jw")
+
+[node name="attack_timer" type="Timer" parent="."]
+wait_time = 0.7
+autostart = true
+
+[node name="Area" type="Panel" parent="."]
+visible = false
+modulate = Color(0, 1, 1, 0.411765)
+show_behind_parent = true
+offset_left = -229.0
+offset_top = -81.0
+offset_right = -1.0
+offset_bottom = 18.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_w3eu7")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-114, -33)
+scale = Vector2(1.78125, 2.04167)
+sprite_frames = SubResource("SpriteFrames_utnue")
+animation = &"rayos"
+flip_h = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]
+[connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]
+[connection signal="animation_finished" from="AnimatedSprite2D2" to="." method="_on_animation_finished"]
