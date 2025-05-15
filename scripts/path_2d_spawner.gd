@@ -16,7 +16,7 @@ func _ready() -> void:
 	spawner_timer = Timer.new()
 	spawner_timer.wait_time = spawner_time
 	spawner_timer.one_shot = false
-	spawner_timer.autostart = false  # <- NO autostart todavía
+	spawner_timer.autostart = false  
 	add_child(spawner_timer)
 
 	# Conectar la señal

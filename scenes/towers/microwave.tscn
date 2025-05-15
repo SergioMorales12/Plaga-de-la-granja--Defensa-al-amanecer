@@ -38,9 +38,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7v0nj"]
-radius = 24.0
-height = 48.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_utnue"]
+size = Vector2(26, 49)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pe6jw"]
 size = Vector2(227, 98.5)
@@ -147,11 +146,10 @@ animation = &"atq"
 autoplay = "idle"
 
 [node name="colision" type="Area2D" parent="." groups=["towers"]]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="colision"]
-position = Vector2(3, 5)
-shape = SubResource("CapsuleShape2D_7v0nj")
+position = Vector2(2, 6.5)
+shape = SubResource("RectangleShape2D_utnue")
 
 [node name="Area2D" type="Area2D" parent="."]
 
