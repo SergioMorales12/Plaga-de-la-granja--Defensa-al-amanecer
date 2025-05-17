@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://c7xl3famv44dk"]
+
+[ext_resource type="Script" uid="uid://bcsp7yhccni2e" path="res://scripts/button_og.gd" id="1_7vxc3"]
+[ext_resource type="Texture2D" uid="uid://bslrcibow6hq1" path="res://asserts/ui/UI/UI Big Play Button.png" id="2_ybxkk"]
+[ext_resource type="FontFile" uid="uid://cuo0ktsc7a7mt" path="res://scenes/Tagesschrift-Regular.ttf" id="3_008ed"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7vxc3"]
+texture = ExtResource("2_ybxkk")
+region_rect = Rect2(98.8794, 3.79321, 90.2918, 25.3063)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f1us2"]
+texture = ExtResource("2_ybxkk")
+region_rect = Rect2(98.9033, 3.80671, 90.2378, 25.204)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ukn0e"]
+texture = ExtResource("2_ybxkk")
+region_rect = Rect2(2.84847, 1.79091, 90.4332, 27.4974)
+
+[sub_resource type="LabelSettings" id="LabelSettings_d7ukk"]
+font = ExtResource("3_008ed")
+font_size = 62
+font_color = Color(0.713726, 0.537255, 0.384314, 1)
+
+[node name="ButtonOg" type="Control"]
+custom_minimum_size = Vector2(66, 100)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 245.0
+offset_bottom = 100.0
+script = ExtResource("1_7vxc3")
+
+[node name="Button" type="Button" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(66.565, 100)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_7vxc3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_f1us2")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ukn0e")
+
+[node name="Label" type="Label" parent="Button"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit"
+label_settings = SubResource("LabelSettings_d7ukk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

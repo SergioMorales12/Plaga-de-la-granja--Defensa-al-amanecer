@@ -1,9 +1,48 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgibybapb8ujb"]
+[gd_scene load_steps=15 format=3 uid="uid://cgibybapb8ujb"]
 
 [ext_resource type="Script" uid="uid://bjr6kmam8a5dh" path="res://scripts/pause.gd" id="1_f1d2v"]
+[ext_resource type="Texture2D" uid="uid://cu1n6ns7tdyom" path="res://asserts/ui/UI/Menu.png" id="2_jn4bt"]
+[ext_resource type="FontFile" uid="uid://bsj04qcskhcmu" path="res://asserts/ui/Tagesschrift-Regular.ttf" id="3_r1fnm"]
+[ext_resource type="Texture2D" uid="uid://bslrcibow6hq1" path="res://asserts/ui/UI/UI Big Play Button.png" id="4_wen6a"]
+[ext_resource type="FontFile" uid="uid://cuo0ktsc7a7mt" path="res://scenes/Tagesschrift-Regular.ttf" id="5_cml1b"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_f1d2v"]
-font_size = 96
+[sub_resource type="LabelSettings" id="LabelSettings_1xtef"]
+font = ExtResource("3_r1fnm")
+font_size = 221
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r1fnm"]
+texture = ExtResource("4_wen6a")
+region_rect = Rect2(98.8794, 3.79321, 90.2918, 25.3063)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wen6a"]
+texture = ExtResource("4_wen6a")
+region_rect = Rect2(98.9033, 3.80671, 90.2378, 25.204)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cml1b"]
+texture = ExtResource("4_wen6a")
+region_rect = Rect2(2.84847, 1.79091, 90.4332, 27.4974)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xmhi0"]
+font = ExtResource("5_cml1b")
+font_size = 62
+font_color = Color(0.713726, 0.537255, 0.384314, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jn4bt"]
+texture = ExtResource("4_wen6a")
+region_rect = Rect2(98.8794, 3.79321, 90.2918, 25.3063)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1xtef"]
+texture = ExtResource("4_wen6a")
+region_rect = Rect2(98.9033, 3.80671, 90.2378, 25.204)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xmhi0"]
+texture = ExtResource("4_wen6a")
+region_rect = Rect2(2.84847, 1.79091, 90.4332, 27.4974)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xw83q"]
+font = ExtResource("5_cml1b")
+font_size = 62
+font_color = Color(0.713726, 0.537255, 0.384314, 1)
 
 [node name="Pause" type="CanvasLayer"]
 process_mode = 3
@@ -18,47 +57,134 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.168627, 0.168627, 0.168627, 0.47451)
 
-[node name="Label" type="Label" parent="."]
-visible = false
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = -1
+anchor_left = 0.211458
+anchor_top = 0.0430556
+anchor_right = 0.788542
+anchor_bottom = 0.956944
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_jn4bt")
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.145307
+anchor_right = 0.854693
+anchor_bottom = 0.302938
+grow_horizontal = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_1xtef")
+metadata/_edit_use_anchors_ = true
+
+[node name="buttons" type="VBoxContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.109206
+anchor_top = 0.406282
+anchor_right = 0.437726
+anchor_bottom = 0.896657
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Resume" type="Button" parent="TextureRect/buttons"]
+texture_filter = 1
+custom_minimum_size = Vector2(66.565, 100)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_r1fnm")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wen6a")
+theme_override_styles/normal = SubResource("StyleBoxTexture_cml1b")
+
+[node name="Label" type="Label" parent="TextureRect/buttons/Resume"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -169.0
-offset_right = 169.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Paused"
-label_settings = SubResource("LabelSettings_f1d2v")
+text = "Resume"
+label_settings = SubResource("LabelSettings_xmhi0")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="buttons" type="VBoxContainer" parent="."]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -80.0
-offset_top = -134.0
-offset_right = 80.0
-offset_bottom = 134.0
+[node name="Restart" type="Button" parent="TextureRect/buttons"]
+texture_filter = 1
+custom_minimum_size = Vector2(66.565, 100)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_jn4bt")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_1xtef")
+theme_override_styles/normal = SubResource("StyleBoxTexture_xmhi0")
+
+[node name="Label" type="Label" parent="TextureRect/buttons/Restart"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+text = "Restart"
+label_settings = SubResource("LabelSettings_xw83q")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="start" type="Button" parent="buttons"]
+[node name="Save" type="Button" parent="TextureRect/buttons"]
+texture_filter = 1
+custom_minimum_size = Vector2(66.565, 100)
 layout_mode = 2
-text = "Sing up"
+theme_override_styles/hover = SubResource("StyleBoxTexture_r1fnm")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wen6a")
+theme_override_styles/normal = SubResource("StyleBoxTexture_cml1b")
 
-[node name="login" type="Button" parent="buttons"]
+[node name="Label" type="Label" parent="TextureRect/buttons/Save"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Save Game"
+label_settings = SubResource("LabelSettings_xmhi0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenu" type="Button" parent="TextureRect/buttons"]
+texture_filter = 1
+custom_minimum_size = Vector2(66.565, 100)
 layout_mode = 2
-text = "Login"
+theme_override_styles/hover = SubResource("StyleBoxTexture_jn4bt")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_1xtef")
+theme_override_styles/normal = SubResource("StyleBoxTexture_xmhi0")
 
-[node name="guest" type="Button" parent="buttons"]
-layout_mode = 2
-text = "Continue as a guest"
+[node name="Label" type="Label" parent="TextureRect/buttons/MainMenu"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Main Menu"
+label_settings = SubResource("LabelSettings_xw83q")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="exitButton" type="Button" parent="buttons"]
-layout_mode = 2
-text = "Exit"
+[node name="HScrollBar" type="HScrollBar" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.512635
+anchor_top = 0.47771
+anchor_right = 0.879964
+anchor_bottom = 0.507092
+grow_horizontal = 0
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="buttons/login" to="." method="_on_login_pressed"]
+[connection signal="pressed" from="TextureRect/buttons/Resume" to="." method="_on_replay_pressed"]
+[connection signal="pressed" from="TextureRect/buttons/Save" to="." method="_on_save_pressed"]

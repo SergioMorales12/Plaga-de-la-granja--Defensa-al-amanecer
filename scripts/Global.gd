@@ -12,6 +12,14 @@ func change_scene(new_scene_path: String) -> void:
 	print("Cambiando a la escena:", new_scene_path)
 	print_stack()
 
+func restart_map() -> void:
+	if map_select_container != null:
+		get_tree().change_scene_to_file(map_select_container.get_path())
+		print("Reiniciando escena:", current_scene_path)
+	else:
+		push_error("No se ha cargado ninguna escena para reiniciar.")
+
+
 func restart_scene() -> void:
 	if current_scene_path != "":
 		get_tree().change_scene_to_file(current_scene_path)

@@ -4,7 +4,7 @@ var player_life = 100
 var player_gold = 1000
 var wave = 1
 var dificulty = 1
-
+var info : Dictionary
 var hp_label
 var gold_label
 var wave_label

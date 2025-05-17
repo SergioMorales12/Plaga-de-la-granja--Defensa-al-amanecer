@@ -40,4 +40,3 @@ func __on_dialogue_finished() -> void:
 func __on_dialogue_canceled() -> void:
 	print("Dialogue Canceled! Exiting...")
 	get_tree().quit()
-

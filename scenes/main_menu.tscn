@@ -52,6 +52,7 @@ offset_bottom = 6.67999
 layout_mode = 2
 
 [node name="startButton" type="Button" parent="Buttons/VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
 size_flags_vertical = 3
 text = "Start Game"
