@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://cw0x4jccrkiwj"]
+[gd_scene load_steps=6 format=3 uid="uid://cw0x4jccrkiwj"]
 
-[ext_resource type="Texture2D" uid="uid://dcoitivj4cxju" path="res://asserts/map/MainMenu.jpg" id="1_6151g"]
 [ext_resource type="Script" uid="uid://bjtyxeei0d0hd" path="res://scripts/main_menu.gd" id="1_pq4ax"]
+[ext_resource type="Texture2D" uid="uid://d18p0tafiraip" path="res://asserts/ui/fondo.png" id="2_bqqt6"]
+[ext_resource type="FontFile" uid="uid://bsj04qcskhcmu" path="res://asserts/ui/Tagesschrift-Regular.ttf" id="3_wu84c"]
+[ext_resource type="Theme" uid="uid://bmf31mho1mjjt" path="res://scenes/UII/Sprout-Lands-UI-0.2.0/Sprout-Lands-UI-0.2.0/addons/sprout_lands_ui/content/sprout_lands_theme.tres" id="4_wu84c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7tinr"]
 line_spacing = 10.0
+font = ExtResource("3_wu84c")
 font_size = 69
-font_color = Color(0, 0, 0, 1)
+font_color = Color(0.984314, 0.984314, 0.964706, 1)
 shadow_size = 3
 shadow_color = Color(0, 0, 0, 0.658824)
 
@@ -23,7 +26,7 @@ script = ExtResource("1_pq4ax")
 layout_mode = 0
 offset_right = 1919.0
 offset_bottom = 1150.0
-texture = ExtResource("1_6151g")
+texture = ExtResource("2_bqqt6")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
@@ -47,6 +50,7 @@ offset_left = -24.24
 offset_top = -24.12
 offset_right = -24.6
 offset_bottom = 6.67999
+theme = ExtResource("4_wu84c")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Buttons"]
 layout_mode = 2

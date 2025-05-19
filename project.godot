@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*res://scripts/Global.gd"
 Player="*res://scenes/player.gd"
+MadTalkGlobals="*res://addons/madtalk/runtime/MadTalkGlobals.tscn"
 
 [display]
 
@@ -36,7 +37,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/ez_tiles/plugin.cfg")
+enabled=PackedStringArray("res://addons/madtalk/plugin.cfg")
 
 [global_group]
 

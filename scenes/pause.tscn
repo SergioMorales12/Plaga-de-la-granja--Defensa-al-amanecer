@@ -1,10 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://cgibybapb8ujb"]
+[gd_scene load_steps=19 format=3 uid="uid://cgibybapb8ujb"]
 
 [ext_resource type="Script" uid="uid://bjr6kmam8a5dh" path="res://scripts/pause.gd" id="1_f1d2v"]
 [ext_resource type="Texture2D" uid="uid://cu1n6ns7tdyom" path="res://asserts/ui/UI/Menu.png" id="2_jn4bt"]
 [ext_resource type="FontFile" uid="uid://bsj04qcskhcmu" path="res://asserts/ui/Tagesschrift-Regular.ttf" id="3_r1fnm"]
 [ext_resource type="Texture2D" uid="uid://bslrcibow6hq1" path="res://asserts/ui/UI/UI Big Play Button.png" id="4_wen6a"]
 [ext_resource type="FontFile" uid="uid://cuo0ktsc7a7mt" path="res://scenes/Tagesschrift-Regular.ttf" id="5_cml1b"]
+[ext_resource type="Theme" uid="uid://bmf31mho1mjjt" path="res://scenes/UII/Sprout-Lands-UI-0.2.0/Sprout-Lands-UI-0.2.0/addons/sprout_lands_ui/content/sprout_lands_theme.tres" id="6_r1fnm"]
+[ext_resource type="Texture2D" uid="uid://bukliuuijok1x" path="res://scenes/UII/Sprout-Lands-UI-0.2.0/Sprout-Lands-UI-0.2.0/addons/sprout_lands_ui/content/assets/SkipButton.png" id="7_wen6a"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1xtef"]
 font = ExtResource("3_r1fnm")
@@ -44,6 +46,14 @@ font = ExtResource("5_cml1b")
 font_size = 62
 font_color = Color(0.713726, 0.537255, 0.384314, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_cml1b"]
+font = ExtResource("3_r1fnm")
+font_size = 91
+
+[sub_resource type="LabelSettings" id="LabelSettings_wen6a"]
+font = ExtResource("3_r1fnm")
+font_size = 34
+
 [node name="Pause" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_f1d2v")
@@ -58,6 +68,7 @@ grow_vertical = 2
 color = Color(0.168627, 0.168627, 0.168627, 0.47451)
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 texture_filter = 1
 anchors_preset = -1
 anchor_left = 0.211458
@@ -175,16 +186,72 @@ label_settings = SubResource("LabelSettings_xw83q")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HScrollBar" type="HScrollBar" parent="TextureRect"]
+[node name="Volumen" type="Label" parent="TextureRect"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.512635
-anchor_top = 0.47771
-anchor_right = 0.879964
-anchor_bottom = 0.507092
-grow_horizontal = 0
-grow_vertical = 2
+anchor_left = 0.065
+anchor_top = 0.013
+anchor_right = 0.065
+anchor_bottom = 0.013
+offset_left = 533.981
+offset_top = 339.669
+offset_right = 916.981
+offset_bottom = 458.669
+text = "Volume"
+label_settings = SubResource("LabelSettings_cml1b")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="TextureRect"]
+layout_mode = 0
+offset_left = 601.001
+offset_top = 467.5
+offset_right = 996.001
+offset_bottom = 524.5
+theme = ExtResource("6_r1fnm")
+
+[node name="CheckButton" type="CheckButton" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.535199
+anchor_top = 0.600304
+anchor_right = 0.893501
+anchor_bottom = 0.699595
+offset_right = -6.10352e-05
+theme = ExtResource("6_r1fnm")
 metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="TextureRect/CheckButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.302267
+anchor_top = 0.270408
+anchor_right = 0.697733
+anchor_bottom = 0.729592
+grow_horizontal = 2
+grow_vertical = 2
+text = "Auto Save "
+label_settings = SubResource("LabelSettings_wen6a")
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.695848
+anchor_top = 0.769504
+anchor_right = 0.83574
+anchor_bottom = 0.870821
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="TextureRect/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = ExtResource("6_r1fnm")
+icon = ExtResource("7_wen6a")
+icon_alignment = 1
+expand_icon = true
 
 [connection signal="pressed" from="TextureRect/buttons/Resume" to="." method="_on_replay_pressed"]
 [connection signal="pressed" from="TextureRect/buttons/Save" to="." method="_on_save_pressed"]

@@ -1,0 +1,95 @@
+[gd_scene load_steps=12 format=3 uid="uid://kgiaqctu7wkn"]
+
+[ext_resource type="Texture2D" uid="uid://cb3m0m6bgwlw1" path="res://asserts/towers/ViejoDialogo.png" id="1_6d8r6"]
+[ext_resource type="Script" uid="uid://b4f6ybfpq4qnh" path="res://scripts/dialogos.gd" id="1_pjmqm"]
+[ext_resource type="Texture2D" uid="uid://coh45u1oo8pmt" path="res://asserts/towers/ViejoDialogo2.png" id="2_28dc4"]
+[ext_resource type="Texture2D" uid="uid://dpk4u08ddao7g" path="res://asserts/ui/UI/Sprite sheet for Basic Pack.png" id="3_pjmqm"]
+[ext_resource type="FontFile" uid="uid://bsj04qcskhcmu" path="res://asserts/ui/Tagesschrift-Regular.ttf" id="4_v38nn"]
+[ext_resource type="Texture2D" uid="uid://o6ugh17ds856" path="res://asserts/towers/dialogeSkiper.png" id="6_v38nn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmsdk"]
+atlas = ExtResource("1_6d8r6")
+region = Rect2(0, 0, 190, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgya4"]
+atlas = ExtResource("2_28dc4")
+region = Rect2(0, 0, 190, 187)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2mehd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmsdk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgya4")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a1nu8"]
+texture = ExtResource("3_pjmqm")
+region_rect = Rect2(424.891, 255.482, 109.363, 38.5982)
+
+[sub_resource type="LabelSettings" id="LabelSettings_luk6u"]
+font = ExtResource("4_v38nn")
+font_size = 55
+font_color = Color(0.984314, 0.984314, 0.964706, 1)
+
+[node name="Dialogos" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pjmqm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(278, 645)
+scale = Vector2(4.5, 4.5)
+sprite_frames = SubResource("SpriteFrames_2mehd")
+animation = &"talk"
+autoplay = "talk"
+frame_progress = 0.470828
+
+[node name="Control" type="Panel" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24375
+anchor_top = 0.626852
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_a1nu8")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0688705
+anchor_top = 0.16129
+anchor_right = 0.96832
+anchor_bottom = 0.858561
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_luk6u")
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1836, 986)
+scale = Vector2(5, 5)
+texture = ExtResource("6_v38nn")
+hframes = 2
+frame = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
