@@ -79,3 +79,8 @@ func isTower(towers: Node):
 		if area.is_in_group("towers"):
 			return false
 	return true
+
+
+func _on_settings_pressed() -> void:
+	Global.change_scene("res://scenes/pause.tscn")
+	Pause.pause()

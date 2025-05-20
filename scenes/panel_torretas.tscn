@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://dd7648vr35fwd"]
 
 [ext_resource type="PackedScene" uid="uid://wpa1itv5jsjd" path="res://scenes/panel.tscn" id="1_0v6n7"]
+[ext_resource type="Theme" uid="uid://bmf31mho1mjjt" path="res://scenes/UII/Sprout-Lands-UI-0.2.0/Sprout-Lands-UI-0.2.0/addons/sprout_lands_ui/content/sprout_lands_theme.tres" id="1_gwili"]
 [ext_resource type="PackedScene" uid="uid://7m3yc8kjlxrr" path="res://scenes/towers/espanta_pajaros.tscn" id="2_gwili"]
 [ext_resource type="PackedScene" uid="uid://c323ipjct152v" path="res://scenes/towers/molino.tscn" id="3_aecy3"]
 [ext_resource type="PackedScene" uid="uid://8ds3mtkru1ti" path="res://scenes/towers/barril.tscn" id="4_aecy3"]
-[ext_resource type="Texture2D" uid="uid://pwglm1r82t6s" path="res://asserts/ui/start.png" id="4_u7ojl"]
-[ext_resource type="Texture2D" uid="uid://1gxn85nn6r8j" path="res://asserts/ui/accelerate.png" id="4_wa3ac"]
-[ext_resource type="Texture2D" uid="uid://c81h2iy36jw8j" path="res://asserts/ui/restart.png" id="5_aecy3"]
 [ext_resource type="PackedScene" uid="uid://dpvfu7eokceta" path="res://scenes/towers/microwave.tscn" id="5_gwili"]
+[ext_resource type="Texture2D" uid="uid://bukliuuijok1x" path="res://scenes/UII/Sprout-Lands-UI-0.2.0/Sprout-Lands-UI-0.2.0/addons/sprout_lands_ui/content/assets/SkipButton.png" id="7_d0j78"]
+[ext_resource type="Texture2D" uid="uid://dqu5s7weeacx4" path="res://asserts/ui/UI/Ajustes.png" id="8_gwili"]
 
 [node name="panel_torretas" type="Control"]
 layout_mode = 3
@@ -25,6 +25,7 @@ anchor_left = 0.933
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 0.639893
+theme = ExtResource("1_gwili")
 
 [node name="Stats" type="VBoxContainer" parent="Panel"]
 texture_filter = 3
@@ -91,17 +92,22 @@ offset_top = 1024.0
 offset_right = 112.0
 offset_bottom = 831.8
 
-[node name="pause_start" type="TouchScreenButton" parent="Panel/buttons"]
+[node name="x2" type="Button" parent="Panel/buttons"]
 texture_filter = 1
-scale = Vector2(2.5, 2.5)
-texture_normal = ExtResource("4_u7ojl")
-texture_pressed = ExtResource("4_wa3ac")
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+toggle_mode = true
+icon = ExtResource("7_d0j78")
+icon_alignment = 1
+expand_icon = true
 
-[node name="restart" type="TouchScreenButton" parent="Panel/buttons"]
+[node name="settings" type="Button" parent="Panel/buttons"]
 texture_filter = 1
-position = Vector2(56, 0)
-scale = Vector2(2.5, 2.5)
-texture_normal = ExtResource("5_aecy3")
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+icon = ExtResource("8_gwili")
+icon_alignment = 1
+expand_icon = true
 
 [node name="DamageOverlay" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(1926, 1078)
@@ -111,3 +117,5 @@ offset_left = -146.0
 offset_right = 1837.0
 offset_bottom = 1078.0
 color = Color(0.58, 0, 0, 0)
+
+[connection signal="pressed" from="Panel/buttons/settings" to="Panel/FlowContainer/espanta" method="_on_settings_pressed"]

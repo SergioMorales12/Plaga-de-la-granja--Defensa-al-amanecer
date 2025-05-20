@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogData" load_steps=73 format=3 uid="uid://dxkjjrap15vxu"]
+[gd_resource type="Resource" script_class="DialogData" load_steps=76 format=3 uid="uid://dxkjjrap15vxu"]
 
 [ext_resource type="Script" uid="uid://bw2q2eucjkylk" path="res://addons/madtalk/components/resources/DialogData.gd" id="1_giduu"]
 [ext_resource type="Script" uid="uid://c2bv5lwcvdmrb" path="res://addons/madtalk/components/resources/DialogNodeItemData.gd" id="2_48vp3"]
@@ -21,7 +21,6 @@ condition_type = 0
 condition_values = []
 effect_type = 0
 effect_values = []
-port_index = -1
 
 [sub_resource type="Resource" id="4"]
 script = ExtResource("2_48vp3")
@@ -88,7 +87,6 @@ condition_type = 10
 condition_values = []
 effect_type = 1
 effect_values = ["my_var", 5.0]
-port_index = -1
 
 [sub_resource type="Resource" id="Resource_jrxya"]
 script = ExtResource("2_48vp3")
@@ -133,7 +131,6 @@ condition_type = 0
 condition_values = []
 effect_type = 0
 effect_values = []
-port_index = -1
 
 [sub_resource type="Resource" id="8"]
 script = ExtResource("2_48vp3")
@@ -902,6 +899,39 @@ sheet_description = ""
 next_sequence_id = 1
 nodes = [SubResource("kur6e")]
 
+[sub_resource type="Resource" id="1q7su"]
+script = ExtResource("2_48vp3")
+item_type = 1
+connected_to_id = -1
+message_speaker_id = ""
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = ""
+message_voice_clip_locales = {}
+message_text_locales = {}
+message_hide_on_end = 0
+condition_type = 0
+condition_values = [50.0]
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="0xflh"]
+script = ExtResource("4_f2ijm")
+sequence_id = 0
+position = Vector2(0, 0)
+comment = ""
+items = [SubResource("1q7su")]
+options = []
+continue_sequence_id = -1
+continue_port_index = 1
+
+[sub_resource type="Resource" id="fm8pi"]
+script = ExtResource("5_vkpn8")
+sheet_id = "new_sheet_2"
+sheet_description = ""
+next_sequence_id = 1
+nodes = [SubResource("0xflh")]
+
 [resource]
 script = ExtResource("1_giduu")
 version = 1.0
@@ -911,5 +941,6 @@ sheets = {
 "external_menu": SubResource("15"),
 "localized": SubResource("Resource_cvf4j"),
 "minimum_menu": SubResource("Resource_s3y14"),
-"new_sheet_1": SubResource("Resource_mjnvi")
+"new_sheet_1": SubResource("Resource_mjnvi"),
+"new_sheet_2": SubResource("fm8pi")
 }
