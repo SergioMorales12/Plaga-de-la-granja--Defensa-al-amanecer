@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://cwtdmynui6cw8"]
+[gd_scene load_steps=39 format=4 uid="uid://cwtdmynui6cw8"]
 
 [ext_resource type="Texture2D" uid="uid://b7ng1525qaofi" path="res://asserts/map/Granja4.png" id="1_0skjy"]
 [ext_resource type="Texture2D" uid="uid://cgskpnle1ekd6" path="res://asserts/map/valla.png" id="1_hyyyu"]
@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dbdklhgw7wydd" path="res://asserts/towers/german-shephard-full-sprite-sheet-x300.png" id="3_csio4"]
 [ext_resource type="PackedScene" uid="uid://iopwhmejcr8b" path="res://addons/RadialMenu/RadialMenu.tscn" id="6_k7lwh"]
 [ext_resource type="Script" uid="uid://bbu42uj8krie2" path="res://scripts/path_2d_spawner.gd" id="7_vsp40"]
-[ext_resource type="PackedScene" uid="uid://dpimiyfhgom4j" path="res://scenes/enemi/scorpion.tscn" id="8_ijeqm"]
 [ext_resource type="PackedScene" uid="uid://dd7648vr35fwd" path="res://scenes/panel_torretas.tscn" id="11_k3j34"]
+[ext_resource type="FontFile" uid="uid://cuo0ktsc7a7mt" path="res://scenes/Tagesschrift-Regular.ttf" id="12_pu8w0"]
 [ext_resource type="PackedScene" uid="uid://dpvfu7eokceta" path="res://scenes/towers/microwave.tscn" id="13_2bj6j"]
 [ext_resource type="PackedScene" uid="uid://cgibybapb8ujb" path="res://scenes/pause.tscn" id="13_66cqs"]
 
@@ -2325,6 +2325,10 @@ _data = {
 }
 point_count = 25
 
+[sub_resource type="LabelSettings" id="LabelSettings_66cqs"]
+font = ExtResource("12_pu8w0")
+font_size = 106
+
 [node name="Mapa" type="Node2D"]
 
 [node name="Fondo" type="TileMapLayer" parent="."]
@@ -2357,10 +2361,6 @@ curve = SubResource("Curve2D_y0em0")
 script = ExtResource("7_vsp40")
 spawner_time = 10.0
 
-[node name="Scorpion" parent="Path2D" instance=ExtResource("8_ijeqm")]
-position = Vector2(375, -127)
-rotation = 0.0161365
-
 [node name="Timer" type="Timer" parent="Path2D"]
 autostart = true
 
@@ -2380,9 +2380,18 @@ offset_top = 386.0
 offset_right = 1283.0
 offset_bottom = 608.263
 
-[node name="Pause" parent="." instance=ExtResource("13_66cqs")]
-
 [node name="Microwave2" parent="." instance=ExtResource("13_2bj6j")]
 position = Vector2(925, 443)
+
+[node name="Rondas" type="Label" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+size_flags_vertical = 1
+label_settings = SubResource("LabelSettings_66cqs")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Pause" parent="." instance=ExtResource("13_66cqs")]
 
 [connection signal="timeout" from="Path2D/Timer" to="Path2D" method="_on_timer_timeout"]

@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://wpa1itv5jsjd"]
+[gd_scene load_steps=4 format=3 uid="uid://wpa1itv5jsjd"]
 
 [ext_resource type="Script" uid="uid://b0y4fuitc2g3o" path="res://scripts/panel.gd" id="1_0ndxw"]
+[ext_resource type="FontFile" uid="uid://cuo0ktsc7a7mt" path="res://scenes/Tagesschrift-Regular.ttf" id="2_ixbsq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wdgw4"]
+font = ExtResource("2_ixbsq")
+font_size = 13
 
 [node name="panel" type="Panel"]
 custom_minimum_size = Vector2(96, 104)
@@ -11,5 +16,18 @@ offset_bottom = 0.32
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0ndxw")
+
+[node name="Price" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1.0
+offset_bottom = 17.0
+grow_horizontal = 0
+label_settings = SubResource("LabelSettings_wdgw4")
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

@@ -46,7 +46,7 @@ func update_ui():
 
 	hp_label.text = "HP: " + str(player_life)
 	gold_label.text = "Gold: " + str(player_gold)
-	wave_label.text = "Wave: " + str(wave)
+	wave_label.text = "Day: " + str(wave)
 
 	var hp_percent = clamp(float(player_life) / 100.0, 0.0, 1.0)
 	var alpha = (1.0 - hp_percent) * 0.5

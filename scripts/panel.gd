@@ -3,11 +3,18 @@ extends Panel
 @export var tower : PackedScene # Carga la escena de la torreta
 var tempTower # Variable para almacenar la torreta temporal
 var canPlace = false # Variable para verificar si se puede colocar la torreta
+var price
+var canBuy = false # Nueva variable para controlar si el jugador puede comprar
 
 func _ready() -> void:
 	if tower:
 		var preview = tower.instantiate()
-
+		price = preview.price
+		$Price.text = "$" + str(price)
+		
+		# Verificar si el jugador tiene suficiente oro
+		check_gold()
+		
 		# Desactiva lógica para que sea solo una vista previa visual
 		if preview.has_node("Area2D"):
 			preview.get_node("Area2D").process_mode = Node.PROCESS_MODE_DISABLED
@@ -29,22 +36,32 @@ func _ready() -> void:
 
 		add_child(preview)
 
-
-
+func check_gold():
+	# Verifica si el jugador tiene suficiente oro
+	if Player.player_gold >= price:
+		canBuy = true
+		modulate = Color(1, 1, 1) # Color normal
+	else:
+		canBuy = false
+		modulate = Color(0.5, 0.5, 0.5) # Grisado para indicar que no se puede comprar
 
 func _on_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_mask == 1: # Al hacer clic con el botón izquierdo del ratón
-		tempTower = tower.instantiate() # Instancia la torreta
-		add_child(tempTower) # Añade la torreta como hijo del panel
+	check_gold()
+	if not canBuy:  # Si no hay suficiente oro, ignorar toda interacción
+		return
 		
-		tempTower.set_physics_process(true) # Activa el procesamiento de física
+	if event is InputEventMouseButton and event.button_mask == 1:  
+		tempTower = tower.instantiate() 
+		add_child(tempTower) 
+		
+		tempTower.set_physics_process(true)  
 		tempTower.get_node("Area").show()
-		tempTower.get_node("Area2D").hide() # Muestra el área de la torreta
+		tempTower.get_node("Area2D").hide()  
 		tempTower.get_node("Area2D").process_mode = Node.PROCESS_MODE_DISABLED
 		
-	elif event is InputEventMouseMotion and event.button_mask == 1: # Al mover el ratón con el botón izquierdo presionado
+	elif event is InputEventMouseMotion and event.button_mask == 1:  
 		if tempTower:
-			tempTower.global_position = event.global_position # Actualiza la posición de la torreta
+			tempTower.global_position = event.global_position  
 			
 			if tempTower.get_node("colision").get_overlapping_bodies().size() <1 and isTower(tempTower):
 				canPlace = true
@@ -52,13 +69,14 @@ func _on_gui_input(event: InputEvent) -> void:
 				canPlace = false
 			
 			if event.global_position.x >= 1792:
-				tempTower.get_node("Area").modulate = Color(1, 0, 0) # Cambia el color del área a rojo si x >= 1792
+				tempTower.get_node("Area").modulate = Color(1, 0, 0)  
 			else:
-				tempTower.get_node("Area").modulate = Color(1, 1, 1) if canPlace else Color(1, 0, 0) # Cambia el color del área según si hay colisión
+				tempTower.get_node("Area").modulate = Color(1, 1, 1) if canPlace else Color(1, 0, 0)  
 
-	elif event is InputEventMouseButton and event.button_mask == 0: # Al soltar el botón izquierdo del ratón
+	elif event is InputEventMouseButton and event.button_mask == 0:  
 		if tempTower:
 			if event.global_position.x >= 1792:
+				print("mwwwwwwwwwwwwwwwwwwwww")
 				if get_child_count() > 1:
 					get_child(1).queue_free()
 			tempTower.get_node("Area").hide() # Oculta el área de la torreta
@@ -69,10 +87,19 @@ func _on_gui_input(event: InputEvent) -> void:
 				tempTower.global_position = event.global_position # Actualiza la posición de la torreta
 				tempTower.set_physics_process(true) # Reactiva el procesamiento de física
 				tempTower.get_node("Area2D").process_mode = Node.PROCESS_MODE_INHERIT
+				
+				# Restar el oro al jugador
+				Player.player_gold -= price
+				# Actualizar la UI del oro (asumiendo que tienes un método para esto)
+				if Player.has_method("update_gold_ui"):
+					Player.update_gold_ui()
+				# Verificar de nuevo el oro disponible
+				check_gold()
 			else:
 				tempTower.queue_free() # Elimina la torreta si no se puede colocar
 			tempTower = null # Resetea la variable de la torreta temporal
 
+# El resto de tus funciones permanecen igual...
 func isTower(towers: Node):
 	var overlapping_areas = towers.get_node("colision").get_overlapping_areas()
 	for area in overlapping_areas:
@@ -80,7 +107,5 @@ func isTower(towers: Node):
 			return false
 	return true
 
-
 func _on_settings_pressed() -> void:
-	Global.change_scene("res://scenes/pause.tscn")
-	Pause.pause()
+	Input.action_press("pause")

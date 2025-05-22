@@ -71,18 +71,6 @@ tower = ExtResource("4_aecy3")
 layout_mode = 2
 tower = ExtResource("5_gwili")
 
-[node name="espanta4" parent="Panel/FlowContainer" instance=ExtResource("1_0v6n7")]
-layout_mode = 2
-
-[node name="espanta5" parent="Panel/FlowContainer" instance=ExtResource("1_0v6n7")]
-layout_mode = 2
-
-[node name="espanta6" parent="Panel/FlowContainer" instance=ExtResource("1_0v6n7")]
-layout_mode = 2
-
-[node name="espanta7" parent="Panel/FlowContainer" instance=ExtResource("1_0v6n7")]
-layout_mode = 2
-
 [node name="buttons" type="HBoxContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1

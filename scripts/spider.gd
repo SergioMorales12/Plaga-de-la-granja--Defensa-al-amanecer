@@ -1,6 +1,7 @@
 extends PathFollow2D
 
 var dificulty = Player.dificulty
+signal enemy_died
 
 @export var runSpeed = 0.05
 @export var damage = 10  
@@ -30,6 +31,7 @@ func _process(delta: float) -> void:
 	
 	if progress_ratio >= 0.99:
 		Player.reduce_player_life(damage)
+		emit_signal("enemy_died")
 		queue_free()
 
 func loop_movement(delta: float) -> void:
@@ -49,7 +51,6 @@ func get_direction() -> String:
 			return "up"
 
 func get_damage(amount: float):
-	print(amount)
 	live -= amount
 	var animated_sprite = $AnimatedSprite2D
 	
@@ -57,6 +58,7 @@ func get_damage(amount: float):
 		is_dead = true
 		animated_sprite.stop()
 		Player.add_player_gold(reward)
+		emit_signal("enemy_died")
 		queue_free()
 		#animated_sprite.play("die"+direction)
 		#$Timer.start()

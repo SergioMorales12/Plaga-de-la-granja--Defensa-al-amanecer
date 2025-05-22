@@ -1,52 +1,153 @@
 extends Path2D
 
 @export var spawner_time: float = 2.0
+@export var base_enemies_per_wave: int = 4
+@export var wave_scaling_factor: float = 0.8
+@export var min_spawn_delay: float = 0.2
+@export var time_between_waves: float = 5.0
 
-var enemi1 = preload("res://scenes/enemi/scorpion.tscn") 
-var enemi2 = preload("res://scenes/enemi/rat.tscn") 
-var enemi3 = preload("res://scenes/enemi/cuervo.tscn") 
-var enemi4 = preload("res://scenes/enemi/spider.tscn") 
 
-var spawner_timer: Timer
+var enemy_scenes = {
+	"scorpion": preload("res://scenes/enemi/scorpion.tscn"),
+	"rat": preload("res://scenes/enemi/rat.tscn"),
+	"cuervo": preload("res://scenes/enemi/cuervo.tscn"),
+	"spider": preload("res://scenes/enemi/spider.tscn")
+}
+
+var enemies_alive: int = 0
+var current_wave_enemies: int = 0
+var spawning: bool = false
+var current_wave: int = 1
+var wave_active: bool = false
 
 func _ready() -> void:
-	print("Path2D listo")
 
-	# Crear y añadir el Timer
-	spawner_timer = Timer.new()
-	spawner_timer.wait_time = spawner_time
-	spawner_timer.one_shot = false
-	spawner_timer.autostart = false  
-	add_child(spawner_timer)
 
-	# Conectar la señal
-	spawner_timer.timeout.connect(_on_timer_timeout)
-
-	# Iniciar el timer de forma segura una vez en el árbol
-	call_deferred("_start_timer")
-
-	# UI
 	if Player:
 		Player._init_ui()
+		if Player.wave == null:
+			Player.wave = 1
+		current_wave = Player.wave
+	
+	await get_tree().create_timer(1.0).timeout  # Pequeño delay inicial
+	start_wave()
 
-func _start_timer():
-	# Este método se ejecuta *después* de que el nodo esté en escena
-	if spawner_timer.is_inside_tree():
-		spawner_timer.start()
+func start_wave() -> void:
+	if spawning:
+		return
+	
+	spawning = true
+	wave_active = true
+	current_wave_enemies = 0
+	enemies_alive = 0
+	
+	var wave = current_wave
+	var enemies_to_spawn = base_enemies_per_wave + int(wave * wave_scaling_factor)
+	
+	print("====================================")
+	print("🌊 Comenzando oleada %d con %d enemigos" % [wave, enemies_to_spawn])
+	
+	# Oleada de jefe cada 10 niveles
+	if wave % 10 == 0:
+		await spawn_boss_wave(wave)
+	# Oleada especial cada 5 niveles
+	elif wave % 5 == 0:
+		await spawn_special_wave(wave, enemies_to_spawn)
+	# Oleada normal
 	else:
-		await get_tree().process_frame
-		spawner_timer.start()
+		await spawn_normal_wave(wave, enemies_to_spawn)
+	
+	# Esperar a que todos los enemigos sean instanciados
+	await get_tree().create_timer(0.5).timeout
+	spawning = false
 
-func _on_timer_timeout() -> void:
-	spawn_enemies()
+func spawn_boss_wave(wave: int) -> void:
+	print("👑 ¡Oleada de Jefe! (Nivel %d)" % wave)
+	await get_tree().create_timer(1.0).timeout
+	
+	var boss = enemy_scenes["scorpion"].instantiate()
+	boss.runSpeed *= 1.5
+	boss.live *= 5
+	boss.damage *= 2
+	boss.reward *= 10
+	boss.scale *= 2.2
+	
+	boss.runSpeed -= 0.02 / wave
+	boss.live += 10 * wave
+	boss.reward += 5 * wave
+	
+	connect_enemy(boss)
+	add_child(boss)
+	enemies_alive += 1
+	current_wave_enemies += 1
 
-func spawn_enemies():
-	var new_enemi1 = enemi1.instantiate()
-	var new_enemi2 = enemi2.instantiate()
-	var new_enemi3 = enemi3.instantiate()
-	var new_enemi4 = enemi4.instantiate()
+func spawn_special_wave(wave: int, base_count: int) -> void:
+	print("🔥 Oleada especial: Enjambre de ratas (Nivel %d)" % wave)
+	var total_enemies = base_count + 5
+	
+	for i in range(total_enemies):
+		await spawn_enemy_delayed(enemy_scenes["rat"], wave, i * min_spawn_delay)
 
-	#add_child(new_enemi1)
-	#add_child(new_enemi2)
-	#add_child(new_enemi3)
-	add_child(new_enemi4)
+func spawn_normal_wave(wave: int, enemies_to_spawn: int) -> void:
+	for i in range(enemies_to_spawn):
+		var enemy_scene = select_enemy_for_wave(wave)
+		await spawn_enemy_delayed(enemy_scene, wave, i * 0.3)
+
+func select_enemy_for_wave(wave: int) -> PackedScene:
+	var rand = randi_range(0, 100)
+	
+	if wave >= 10 and rand > 85:
+		return enemy_scenes["cuervo"]
+	elif wave >= 6 and rand > 70:
+		return enemy_scenes["scorpion"]
+	elif wave >= 4 and rand > 50:
+		return enemy_scenes["spider"]
+	else:
+		return enemy_scenes["rat"]
+
+func spawn_enemy_delayed(enemy_scene: PackedScene, wave: int, delay: float) -> void:
+	await get_tree().create_timer(delay).timeout
+	
+	if not wave_active:   
+		return
+	
+	var enemy = enemy_scene.instantiate()
+	# Escalar estadísticas según la oleada
+	enemy.runSpeed += 0.005 * wave
+	enemy.live += 5 * wave
+	enemy.reward += 1 * wave
+	
+	connect_enemy(enemy)
+	add_child(enemy)
+	enemies_alive += 1
+	current_wave_enemies += 1
+
+func connect_enemy(enemy: Node) -> void:
+	if not enemy.has_signal("enemy_died"):
+		push_warning("Enemigo %s no tiene señal enemy_died" % enemy.name)
+		return
+	
+	if not enemy.enemy_died.is_connected(_on_enemy_died):
+		enemy.enemy_died.connect(_on_enemy_died.bind(enemy))
+
+func _on_enemy_died(_enemy:Node) -> void:
+	enemies_alive -= 1
+	current_wave_enemies -= 1
+	
+	print("Enemigos restantes: %d/%d" % [enemies_alive, current_wave_enemies])
+	
+	if current_wave_enemies <= 0 and not spawning and wave_active:
+		end_wave()
+
+func end_wave() -> void:
+	wave_active = false
+	current_wave += 1
+	Player.wave = current_wave
+	print("✅ Oleada completada. Preparando oleada %d..." % current_wave)
+	
+	# Esperar tiempo entre oleadas
+	await get_tree().create_timer(time_between_waves).timeout
+	
+	# Verificar que el jugador aún esté vivo antes de empezar nueva oleada
+	if Player and Player.player_life > 0:
+		start_wave()
