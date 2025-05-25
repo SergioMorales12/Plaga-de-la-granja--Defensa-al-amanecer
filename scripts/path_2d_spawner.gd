@@ -22,7 +22,7 @@ var wave_active: bool = false
 
 func _ready() -> void:
 
-
+	Dialogic.start("intro_tutorial")
 	if Player:
 		Player._init_ui()
 		if Player.wave == null:

@@ -1,0 +1,44 @@
+title: intro_tutorial
+
+[start]
+n: Granjero Loco
+t: ¿Lo hueles? Es el dulce aroma del fin del mundo... ¡y del estiércol fresco! ¡Ajá!
+-> [¿Dónde estoy...?] goto awareness
+-> [¿Qué es ese bicho con sombrero?] goto scarecrow
+
+[awareness]
+n: Granjero Loco
+t: Estás en MI granja. No es cualquier granja... ¡es la fortaleza del último hombre cuerdo de Europa! ¡YO!
+-> [¿Y qué hago aquí?] goto how_you_got_here
+
+[how_you_got_here]
+n: Granjero Loco
+t: Viniste por ayuda... o por leche. Pero ahora formas parte del escuadrón anti-apocalipsis. No hay devoluciones.
+-> [Está bien...] goto scarecrow
+
+[scarecrow]
+n: Granjero Loco
+t: ¡Ese es mi espantapájaros lanzarrocas! Lo llamo: "Carlitos". Me dijeron que estaba loco... ¿quién ríe ahora?
+-> [¿Lanza rocas de verdad?] goto rocks
+-> [¿Por qué Carlitos...?] goto name_reason
+
+[rocks]
+n: Granjero Loco
+t: ¡Claro que lanza rocas! Y si lo miras feo, también. Mira, arrástralo donde quieras y aplasta a esos bichejos mutantes.
+-> [¿Y si me equivoco?] goto error
+-> [Listo, a pelear] goto start_wave
+
+[name_reason]
+n: Granjero Loco
+t: Carlitos era mi suegro. No me dejaba tocar su tractor. Ahora él *es* el tractor.
+-> [Eso es inquietante...] goto rocks
+
+[error]
+n: Granjero Loco
+t: Si te equivocas... pues morimos. Pero con estilo, como debe ser.
+-> [Genial...] goto start_wave
+
+[start_wave]
+n: Granjero Loco
+t: Vienen ratas, cuervos, escorpiones, políticos... ¡prepárate para defender lo que queda de esta maldita cosecha!
+-> [¡Estoy listo!] end

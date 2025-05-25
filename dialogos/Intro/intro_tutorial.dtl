@@ -1,0 +1,16 @@
+"Granjero Loco": ¿Lo hueles? ¡Es el dulce aroma del fin del mundo... y del estiércol fresco! ¡Ajá!
+- ¿Dónde estoy...?
+- ¿Qué es ese bicho con sombrero?
+
+# awareness
+"Granjero Loco": Estás en MI granja. ¡La fortaleza del último hombre cuerdo de Europa! ¡YO!
+- ¿Y qué hago aquí?
+
+# how_you_got_here
+"Granjero Loco": Viniste por ayuda... o por leche. Ahora eres parte del escuadrón anti-apocalipsis. No hay devoluciones.
+- Está bien...
+
+# scarecrow
+"Granjero Loco": ¡Ese es Carlitos! Mi espantapájaros lanzarrocas. Me dijeron que estaba loco... ¿quién ríe ahora?
+- ¿Lanza rocas de verdad?
+- ¿Por qué Carlitos...? -> jump name_reason
