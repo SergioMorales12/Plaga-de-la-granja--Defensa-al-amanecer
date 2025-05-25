@@ -29,7 +29,7 @@ func _ready() -> void:
 			Player.wave = 1
 		current_wave = Player.wave
 	
-	await get_tree().create_timer(1.0).timeout  # Pequeño delay inicial
+	await get_tree().create_timer(1.0).timeout  
 	start_wave()
 
 func start_wave() -> void:
@@ -64,10 +64,9 @@ func start_wave() -> void:
 func spawn_boss_wave(wave: int) -> void:
 	print("👑 ¡Oleada de Jefe! (Nivel %d)" % wave)
 	await get_tree().create_timer(1.0).timeout
-	
-	var boss = enemy_scenes["scorpion"].instantiate()
+	var boss = select_enemy_for_wave(wave).instantiate()
 	boss.runSpeed *= 1.5
-	boss.live *= 5
+	boss.live *= 5.5
 	boss.damage *= 2
 	boss.reward *= 10
 	boss.scale *= 2.2
@@ -82,11 +81,11 @@ func spawn_boss_wave(wave: int) -> void:
 	current_wave_enemies += 1
 
 func spawn_special_wave(wave: int, base_count: int) -> void:
-	print("🔥 Oleada especial: Enjambre de ratas (Nivel %d)" % wave)
+	print("🔥 Oleada especial: Enjambre (Nivel %d)" % wave)
 	var total_enemies = base_count + 5
-	
+	var enjambre = select_enemy_for_wave(wave)
 	for i in range(total_enemies):
-		await spawn_enemy_delayed(enemy_scenes["rat"], wave, i * min_spawn_delay)
+		await spawn_enemy_delayed(enjambre, wave,  min_spawn_delay)
 
 func spawn_normal_wave(wave: int, enemies_to_spawn: int) -> void:
 	for i in range(enemies_to_spawn):
@@ -143,6 +142,9 @@ func end_wave() -> void:
 	wave_active = false
 	current_wave += 1
 	Player.wave = current_wave
+	Player.update_ui()
+	$Rondas.text = "Day " +str(current_wave) 
+	$UI.start()
 	print("✅ Oleada completada. Preparando oleada %d..." % current_wave)
 	
 	# Esperar tiempo entre oleadas
@@ -150,4 +152,9 @@ func end_wave() -> void:
 	
 	# Verificar que el jugador aún esté vivo antes de empezar nueva oleada
 	if Player and Player.player_life > 0:
+		$Rondas.text = "" 
 		start_wave()
+
+
+func _on_ui_timeout() -> void:
+	$Rondas.text = ""

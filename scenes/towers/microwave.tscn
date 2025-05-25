@@ -27,7 +27,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"atq",
-"speed": 2.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -42,7 +42,7 @@ animations = [{
 size = Vector2(26, 49)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pe6jw"]
-size = Vector2(227, 98.5)
+size = Vector2(237.5, 113.25)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w3eu7"]
 bg_color = Color(0, 0.6, 0.6, 0.607843)
@@ -155,7 +155,7 @@ shape = SubResource("RectangleShape2D_utnue")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 texture_filter = 1
-position = Vector2(-114, -32)
+position = Vector2(-119.25, -24.625)
 shape = SubResource("RectangleShape2D_pe6jw")
 
 [node name="attack_timer" type="Timer" parent="."]
@@ -166,11 +166,12 @@ autostart = true
 visible = false
 modulate = Color(0, 1, 1, 0.411765)
 show_behind_parent = true
-offset_left = -229.0
+offset_left = -238.0
 offset_top = -81.0
 offset_right = -1.0
-offset_bottom = 18.0
+offset_bottom = 33.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_w3eu7")
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

@@ -1,10 +1,13 @@
 extends Panel
 
-@export var tower : PackedScene # Carga la escena de la torreta
-var tempTower # Variable para almacenar la torreta temporal
-var canPlace = false # Variable para verificar si se puede colocar la torreta
+@export var tower : PackedScene  
+var tempTower  
+var canPlace = false  
 var price
-var canBuy = false # Nueva variable para controlar si el jugador puede comprar
+var canBuy = false  
+
+func _process(_delta: float) -> void:
+		check_gold()
 
 func _ready() -> void:
 	if tower:
@@ -16,16 +19,19 @@ func _ready() -> void:
 		check_gold()
 		
 		# Desactiva lógica para que sea solo una vista previa visual
+		if preview.get("can_attack") != null:
+			preview.set("can_attack", false)
+
+
+
 		if preview.has_node("Area2D"):
 			preview.get_node("Area2D").process_mode = Node.PROCESS_MODE_DISABLED
 		if preview.has_node("Area"):
 			preview.get_node("Area").hide()
 		if preview.has_node("colision"):
 			preview.get_node("colision").monitoring = false
-
-		# Reproduce animación
 		if preview.has_node("AnimatedSprite2D"):
-			preview.get_node("AnimatedSprite2D").play()
+			preview.get_node("AnimatedSprite2D").stop() 
 
 		# Escalado desde variable 'escala'
 		var escala = preview.get("escala") 
@@ -40,17 +46,17 @@ func check_gold():
 	# Verifica si el jugador tiene suficiente oro
 	if Player.player_gold >= price:
 		canBuy = true
-		modulate = Color(1, 1, 1) # Color normal
+		modulate = Color(1, 1, 1)
 	else:
 		canBuy = false
-		modulate = Color(0.5, 0.5, 0.5) # Grisado para indicar que no se puede comprar
+		modulate = Color(0.5, 0.5, 0.5) 
 
 func _on_gui_input(event: InputEvent) -> void:
 	check_gold()
-	if not canBuy:  # Si no hay suficiente oro, ignorar toda interacción
+	if not canBuy:
 		return
 		
-	if event is InputEventMouseButton and event.button_mask == 1:  
+	if event is InputEventMouseButton and event.button_mask == 1:
 		tempTower = tower.instantiate() 
 		add_child(tempTower) 
 		
@@ -58,7 +64,7 @@ func _on_gui_input(event: InputEvent) -> void:
 		tempTower.get_node("Area").show()
 		tempTower.get_node("Area2D").hide()  
 		tempTower.get_node("Area2D").process_mode = Node.PROCESS_MODE_DISABLED
-		
+
 	elif event is InputEventMouseMotion and event.button_mask == 1:  
 		if tempTower:
 			tempTower.global_position = event.global_position  
@@ -69,16 +75,15 @@ func _on_gui_input(event: InputEvent) -> void:
 				canPlace = false
 			
 			if event.global_position.x >= 1792:
-				tempTower.get_node("Area").modulate = Color(1, 0, 0)  
+				tempTower.get_node("Area").modulate = Color(1, 0, 0)
 			else:
 				tempTower.get_node("Area").modulate = Color(1, 1, 1) if canPlace else Color(1, 0, 0)  
 
 	elif event is InputEventMouseButton and event.button_mask == 0:  
 		if tempTower:
-			if event.global_position.x >= 1792:
-				print("mwwwwwwwwwwwwwwwwwwwww")
-				if get_child_count() > 1:
-					get_child(1).queue_free()
+			if event.global_position.x >= 1784:
+				canPlace = false
+
 			tempTower.get_node("Area").hide() # Oculta el área de la torreta
 			if canPlace:
 				var path = get_tree().get_root().get_node("Mapa/towers") # Obtiene el nodo donde se colocará la torreta
@@ -90,7 +95,8 @@ func _on_gui_input(event: InputEvent) -> void:
 				
 				# Restar el oro al jugador
 				Player.player_gold -= price
-				# Actualizar la UI del oro (asumiendo que tienes un método para esto)
+				Player.update_ui()
+				# Actualizar la UI del oro 
 				if Player.has_method("update_gold_ui"):
 					Player.update_gold_ui()
 				# Verificar de nuevo el oro disponible
@@ -109,3 +115,11 @@ func isTower(towers: Node):
 
 func _on_settings_pressed() -> void:
 	Input.action_press("pause")
+	
+
+
+func _on_x_2_toggled(button_pressed: bool) -> void:
+	if button_pressed:
+		Engine.time_scale = 2.0
+	else:
+		Engine.time_scale = 1.0

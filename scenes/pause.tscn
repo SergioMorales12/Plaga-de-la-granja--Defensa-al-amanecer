@@ -253,4 +253,6 @@ icon_alignment = 1
 expand_icon = true
 
 [connection signal="pressed" from="TextureRect/buttons/Resume" to="." method="_on_replay_pressed"]
+[connection signal="pressed" from="TextureRect/buttons/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="TextureRect/buttons/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="TextureRect/buttons/MainMenu" to="." method="_on_main_menu_pressed"]

@@ -35,3 +35,11 @@ func _on_settings_pressed() -> void:
 func _on_save_pressed() -> void:
 	if Player and Player.has("info"):
 		Global.save_game(Player.info)
+
+
+func _on_restart_pressed() -> void:
+	Global.restart_map()
+
+
+func _on_main_menu_pressed() -> void:
+	Global.change_scene("res://scenes/main_menu.tscn")

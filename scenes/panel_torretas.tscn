@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dd7648vr35fwd"]
+[gd_scene load_steps=10 format=3 uid="uid://dd7648vr35fwd"]
 
 [ext_resource type="PackedScene" uid="uid://wpa1itv5jsjd" path="res://scenes/panel.tscn" id="1_0v6n7"]
 [ext_resource type="Theme" uid="uid://bmf31mho1mjjt" path="res://scenes/UII/Sprout-Lands-UI-0.2.0/Sprout-Lands-UI-0.2.0/addons/sprout_lands_ui/content/sprout_lands_theme.tres" id="1_gwili"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c323ipjct152v" path="res://scenes/towers/molino.tscn" id="3_aecy3"]
 [ext_resource type="PackedScene" uid="uid://8ds3mtkru1ti" path="res://scenes/towers/barril.tscn" id="4_aecy3"]
 [ext_resource type="PackedScene" uid="uid://dpvfu7eokceta" path="res://scenes/towers/microwave.tscn" id="5_gwili"]
+[ext_resource type="PackedScene" uid="uid://byn66tqsgb7ch" path="res://scenes/towers/plant.tscn" id="7_0pmk5"]
 [ext_resource type="Texture2D" uid="uid://bukliuuijok1x" path="res://scenes/UII/Sprout-Lands-UI-0.2.0/Sprout-Lands-UI-0.2.0/addons/sprout_lands_ui/content/assets/SkipButton.png" id="7_d0j78"]
 [ext_resource type="Texture2D" uid="uid://dqu5s7weeacx4" path="res://asserts/ui/UI/Ajustes.png" id="8_gwili"]
 
@@ -71,6 +72,10 @@ tower = ExtResource("4_aecy3")
 layout_mode = 2
 tower = ExtResource("5_gwili")
 
+[node name="plant" parent="Panel/FlowContainer" instance=ExtResource("1_0v6n7")]
+layout_mode = 2
+tower = ExtResource("7_0pmk5")
+
 [node name="buttons" type="HBoxContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
@@ -106,4 +111,5 @@ offset_right = 1837.0
 offset_bottom = 1078.0
 color = Color(0.58, 0, 0, 0)
 
+[connection signal="toggled" from="Panel/buttons/x2" to="Panel/FlowContainer/espanta" method="_on_x_2_toggled"]
 [connection signal="pressed" from="Panel/buttons/settings" to="Panel/FlowContainer/espanta" method="_on_settings_pressed"]
