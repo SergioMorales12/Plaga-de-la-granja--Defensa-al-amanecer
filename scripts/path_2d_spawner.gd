@@ -23,6 +23,9 @@ var wave_active: bool = false
 func _ready() -> void:
 
 	Dialogic.start("intro_tutorial")
+	
+	Dialogic.connect("signal_event", Callable(self, "_on_dialogic_signal"))
+
 	if Player:
 		Player._init_ui()
 		if Player.wave == null:
@@ -30,7 +33,10 @@ func _ready() -> void:
 		current_wave = Player.wave
 	
 	await get_tree().create_timer(1.0).timeout  
-	start_wave()
+	
+func _on_dialogic_signal(argument:String):
+	if argument == "start_wave":
+		start_wave()
 
 func start_wave() -> void:
 	if spawning:

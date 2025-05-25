@@ -1,16 +1,30 @@
+# start
 "Granjero Loco": ¿Lo hueles? ¡Es el dulce aroma del fin del mundo... y del estiércol fresco! ¡Ajá!
 - ¿Dónde estoy...?
-- ¿Qué es ese bicho con sombrero?
-
-# awareness
-"Granjero Loco": Estás en MI granja. ¡La fortaleza del último hombre cuerdo de Europa! ¡YO!
-- ¿Y qué hago aquí?
-
-# how_you_got_here
-"Granjero Loco": Viniste por ayuda... o por leche. Ahora eres parte del escuadrón anti-apocalipsis. No hay devoluciones.
-- Está bien...
-
-# scarecrow
-"Granjero Loco": ¡Ese es Carlitos! Mi espantapájaros lanzarrocas. Me dijeron que estaba loco... ¿quién ríe ahora?
-- ¿Lanza rocas de verdad?
-- ¿Por qué Carlitos...? -> jump name_reason
+	"Granjero Loco": Estás en MI granja. ¡La fortaleza del último hombre cuerdo de Europa! ¡YO!
+	- ¿Y qué hago aquí?
+		"Granjero Loco": Viniste por ayuda... o por leche. Ahora eres parte del escuadrón anti-apocalipsis. No hay devoluciones.
+		- Está bien...
+			"Granjero Loco": ¡Ese es Carlitos! Mi espantapájaros lanzarrocas. Me dijeron que estaba loco... ¿quién ríe ahora?
+			- ¿Lanza rocas de verdad?
+				"Granjero Loco": ¡Claro que lanza rocas! Y si lo miras feo, también. Arrástralo por la granja y aplasta bichos mutantes.
+				- ¿Por qué Carlitos...?
+				"Granjero Loco": Carlitos era mi suegro. No me dejaba tocar su tractor. Ahora él *es* el tractor. Literal.
+				"Granjero Loco": Ayúdame a colocarlo. Agárralo bien y no lo sueltes hasta que veas que está en su sitio.
+				"Granjero Loco": Bueno, yo me voy a echar una siesta, tu funcion es... defender esta granja.
+				"Granjero Loco": Matar bichos con las torretas que te dejo y me los traes después. ¡Las gallinas cada vez ponen huevos más grandes jojojo y yo te pago por cada bicho que traigas!
+				"Granjero Loco": Así que mientras más bichos aplastes, más dinero ganas para seguir comprando torretas y matando más bichos.
+				
+				- ¿¡PERO QUE ESTA PASANDO!?
+	- ¿Por qué Carlitos...?
+		"Granjero Loco": Carlitos era mi suegro. No me dejaba tocar su tractor. Ahora él *es* el tractor. Literal.
+		- Eh... vale, ¿lanza rocas, entonces?
+			"Granjero Loco": ¡Lanza rocas, insultos y hasta gallinas si hace falta! Ayúdame a colocarlo. Agárralo bien y no lo sueltes hasta que veas que está en su sitio.
+			"Granjero Loco": Bueno, yo me voy a echar una siesta, tu funcion es... defender esta granja.
+			"Granjero Loco": Matar bichos con las torretas que te dejo y me los traes después. ¡Las gallinas cada vez ponen huevos más grandes jojojo y yo te pago por cada bicho que traigas!
+			"Granjero Loco": Así que mientras más bichos aplastes, más dinero ganas para seguir comprando torretas y matando más bichos.
+			
+			- ¿¡PERO QUE ESTA PASANDO!?
+# start_wave
+"Granjero Loco": Vienen ratas, cuervos, escorpiones, políticos... ¡Agarra lo que puedas y prepárate, que si no nos ponemos duros nos quitan hasta a Carlitos!
+[signal arg="start_wave"]
