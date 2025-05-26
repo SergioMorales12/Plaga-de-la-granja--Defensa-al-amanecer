@@ -1,0 +1,22 @@
+# wave33_start
+[signal arg="stop_wave"]
+"Granjero Loco": ¡FERNANDO ALONSOOO LOLOLO LOLO LO!
+- ¿QUÉ ESTAS DICIENDO AHORA?
+	"Granjero Loco": ¡Tranquilooo! Ojo que Fernado puede conseguir su 33.
+	- ¿De qué hablas si no hay f1?
+		"Granjero Loco": !¡NOOOOOOOO!¡, ¡ERAAAN MEDIOOOOSSSS!
+		"Granjero Loco": Maldita tele vieja esto debe de ser por la tele....
+		- ¿Qué tele si eso es un microhondas?
+		"Granjero Loco": Eeeeee.....
+		"Granjero Loco": Lo tengo, nuevo microondas que lanza 3 rayos de 33voltios cada uno 
+
+			- ¿Eso es seguro?
+					"Granjero Loco": Para ti, sí. Para los monstruos... es abono instantáneo. ¡Colócalo y deja que fertilice el campo con caos!
+		[signal arg="unlock_barril"]
+		- ¿Gema qué?
+			"Granjero Loco": ¡Agritóxica! Es básicamente el tambor de mi basura, pero... con conciencia. Le tiré huesos de ratas, estiércol de gallina y uno que otro pepinillo radioactivo. ¡Ahora flota, brilla y tira mirdas verdes explosivas!
+			- ¿Explosivas cómo?
+				"Granjero Loco": Con lo que sea: aire, carne, orgullo herido... ¡PUM!
+				- ¿Eso es seguro?
+					"Granjero Loco": Para ti, sí. Para los monstruos... es abono instantáneo. ¡Colócalo y deja que fertilice el campo con caos!
+[signal arg="start_wave"]

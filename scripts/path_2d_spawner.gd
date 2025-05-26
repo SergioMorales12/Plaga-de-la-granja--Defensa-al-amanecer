@@ -22,7 +22,6 @@ var wave_active: bool = false
 
 func _ready() -> void:
 
-	Dialogic.start("intro_tutorial")
 	
 	Dialogic.connect("signal_event", Callable(self, "_on_dialogic_signal"))
 
@@ -31,15 +30,22 @@ func _ready() -> void:
 		if Player.wave == null:
 			Player.wave = 1
 		current_wave = Player.wave
+		print("Empezando dialogo")
+		$"..".play_wave_dialog(current_wave)
 	
 	await get_tree().create_timer(1.0).timeout  
 	
 func _on_dialogic_signal(argument:String):
+
 	if argument == "start_wave":
+		spawning = false
 		start_wave()
+	elif argument == "stop_wave":
+		spawning = true
 
 func start_wave() -> void:
 	if spawning:
+		
 		return
 	
 	spawning = true
@@ -58,9 +64,11 @@ func start_wave() -> void:
 		await spawn_boss_wave(wave)
 	# Oleada especial cada 5 niveles
 	elif wave % 5 == 0:
+		enemies_alive = enemies_to_spawn
 		await spawn_special_wave(wave, enemies_to_spawn)
 	# Oleada normal
 	else:
+		enemies_alive = enemies_to_spawn
 		await spawn_normal_wave(wave, enemies_to_spawn)
 	
 	# Esperar a que todos los enemigos sean instanciados
@@ -146,6 +154,7 @@ func end_wave() -> void:
 	current_wave += 1
 	Player.wave = current_wave
 	Player.update_ui()
+	$"..".play_wave_dialog(current_wave)
 	$Rondas.text = "Day " +str(current_wave) 
 	$UI.start()
 	print("✅ Oleada completada. Preparando oleada %d..." % current_wave)

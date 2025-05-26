@@ -28,8 +28,29 @@ directories/dch_directory={
 "Granjero Loco": "res://dialogos/Characters/Granjero Loco.dch"
 }
 directories/dtl_directory={
+"como_33": "res://dialogos/Randoms/como_33.dtl",
 "intro_tutorial": "res://dialogos/Intro/intro_tutorial.dtl",
-"primer_enjambre": "res://dialogos/Intro/primer_enjambre.dtl"
+"primer_boss": "res://dialogos/Intro/primer_boss.dtl",
+"primer_enjambre": "res://dialogos/Intro/primer_enjambre.dtl",
+"random_wave_1": "res://dialogos/Randoms/random_wave_1.dtl",
+"random_wave_10": "res://dialogos/Randoms/random_wave_10.dtl",
+"random_wave_11": "res://dialogos/Randoms/random_wave_11.dtl",
+"random_wave_12": "res://dialogos/Randoms/random_wave_12.dtl",
+"random_wave_13": "res://dialogos/Randoms/random_wave_13.dtl",
+"random_wave_14": "res://dialogos/Randoms/random_wave_14.dtl",
+"random_wave_15": "res://dialogos/Randoms/random_wave_15.dtl",
+"random_wave_16": "res://dialogos/Randoms/random_wave_16.dtl",
+"random_wave_17": "res://dialogos/Randoms/random_wave_17.dtl",
+"random_wave_18": "res://dialogos/Randoms/random_wave_18.dtl",
+"random_wave_19": "res://dialogos/Randoms/random_wave_19.dtl",
+"random_wave_2": "res://dialogos/Randoms/random_wave_2.dtl",
+"random_wave_3": "res://dialogos/Randoms/random_wave_3.dtl",
+"random_wave_4": "res://dialogos/Randoms/random_wave_4.dtl",
+"random_wave_5": "res://dialogos/Randoms/random_wave_5.dtl",
+"random_wave_6": "res://dialogos/Randoms/random_wave_6.dtl",
+"random_wave_7": "res://dialogos/Randoms/random_wave_7.dtl",
+"random_wave_8": "res://dialogos/Randoms/random_wave_8.dtl",
+"random_wave_9": "res://dialogos/Randoms/random_wave_9.dtl"
 }
 glossary/default_case_sensitive=true
 layout/style_list=["res://dialogos/Characters/New_File.tres"]
