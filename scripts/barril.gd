@@ -5,7 +5,7 @@ extends Node2D
 @export var bulletSpeed := 1500.0
 @export var bulletPierce := 1
 @export var attack_interval := 2  
-@export var price: float = 1000
+@export var price: float = 800
 @export var escala: float = 0.8
 
 var enemigos = []

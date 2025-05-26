@@ -3,10 +3,10 @@ extends PathFollow2D
 var dificulty = Player.dificulty
 signal enemy_died
 
-@export var runSpeed = 0.04
+@export var runSpeed = 0.03
 @export var damage = 10  
-@export var live = 90
-@export var reward = 50
+@export var live = 120
+@export var reward = 80
 
 var previous_position: Vector2
 var is_dead: bool = false

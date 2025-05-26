@@ -28,7 +28,8 @@ directories/dch_directory={
 "Granjero Loco": "res://dialogos/Characters/Granjero Loco.dch"
 }
 directories/dtl_directory={
-"intro_tutorial": "res://dialogos/Intro/intro_tutorial.dtl"
+"intro_tutorial": "res://dialogos/Intro/intro_tutorial.dtl",
+"primer_enjambre": "res://dialogos/Intro/primer_enjambre.dtl"
 }
 glossary/default_case_sensitive=true
 layout/style_list=["res://dialogos/Characters/New_File.tres"]

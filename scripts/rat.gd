@@ -4,7 +4,7 @@ var dificulty = Player.dificulty
 signal enemy_died
 
 @export var runSpeed = 0.06
-@export var damage = 10  
+@export var damage = 5  
 @export var live = 60
 @export var reward = 50
 

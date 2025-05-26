@@ -71,15 +71,12 @@ func spawn_boss_wave(wave: int) -> void:
 	print("👑 ¡Oleada de Jefe! (Nivel %d)" % wave)
 	await get_tree().create_timer(1.0).timeout
 	var boss = select_enemy_for_wave(wave).instantiate()
-	boss.runSpeed *= 1.5
-	boss.live *= 5.5
+	boss.runSpeed *= 0.8
+	boss.live *= 4.0
 	boss.damage *= 2
-	boss.reward *= 10
+	boss.reward *= 6
 	boss.scale *= 2.2
-	
-	boss.runSpeed -= 0.02 / wave
-	boss.live += 10 * wave
-	boss.reward += 5 * wave
+
 	
 	connect_enemy(boss)
 	add_child(boss)
@@ -118,9 +115,9 @@ func spawn_enemy_delayed(enemy_scene: PackedScene, wave: int, delay: float) -> v
 	
 	var enemy = enemy_scene.instantiate()
 	# Escalar estadísticas según la oleada
-	enemy.runSpeed += 0.005 * wave
-	enemy.live += 5 * wave
-	enemy.reward += 1 * wave
+	enemy.runSpeed += 0.002 * wave
+	enemy.live += 3 * wave
+	enemy.reward += 2 * wave
 	
 	connect_enemy(enemy)
 	add_child(enemy)

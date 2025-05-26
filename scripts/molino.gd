@@ -1,8 +1,8 @@
 extends Node2D
 
 @export var damage = 10
-@export var attack_interval := 0.5  # Intervalo de ataque en segundos
-@export var price: float = 1000
+@export var attack_interval := 0.5   
+@export var price: float = 700
 @export var escala: float = 0.5
 @export var speed_reduction := 0.01  
 @export var restore_speed := 0.01    
