@@ -215,8 +215,6 @@ scale = Vector2(1.5448, 1.46563)
 sprite_frames = SubResource("SpriteFrames_6fpwp")
 animation = &"money"
 autoplay = "idle"
-frame = 9
-frame_progress = 1.0
 
 [node name="colision" type="Area2D" parent="." groups=["towers"]]
 

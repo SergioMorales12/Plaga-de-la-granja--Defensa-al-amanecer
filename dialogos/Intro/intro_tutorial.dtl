@@ -1,30 +1,36 @@
 # start
 "Granjero Loco": ¿Lo hueles? ¡Es el dulce aroma del fin del mundo... y del estiércol fresco! ¡Ajá!
+
 - ¿Dónde estoy...?
-	"Granjero Loco": Estás en MI granja. ¡La fortaleza del último hombre cuerdo de Europa! ¡YO!
-	- ¿Y qué hago aquí?
-		"Granjero Loco": Viniste por ayuda... o por leche. Ahora eres parte del escuadrón anti-apocalipsis. No hay devoluciones.
-		- Está bien...
-			"Granjero Loco": ¡Ese es Carlitos! Mi espantapájaros lanzarrocas. Me dijeron que estaba loco... ¿quién ríe ahora?
-			- ¿Lanza rocas de verdad?
-				"Granjero Loco": ¡Claro que lanza rocas! Y si lo miras feo, también. Arrástralo por la granja y aplasta bichos mutantes.
-				- ¿Por qué Carlitos...?
-				"Granjero Loco": Carlitos era mi suegro. No me dejaba tocar su tractor. Ahora él *es* el tractor. Literal.
-				"Granjero Loco": Ayúdame a colocarlo. Agárralo bien y no lo sueltes hasta que veas que está en su sitio.
-				"Granjero Loco": Bueno, yo me voy a echar una siesta, tu funcion es... defender esta granja.
-				"Granjero Loco": Matar bichos con las torretas que te dejo y me los traes después. ¡Las gallinas cada vez ponen huevos más grandes jojojo y yo te pago por cada bicho que traigas!
-				"Granjero Loco": Así que mientras más bichos aplastes, más dinero ganas para seguir comprando torretas y matando más bichos.
-				
-				- ¿¡PERO QUE ESTA PASANDO!?
-	- ¿Por qué Carlitos...?
-		"Granjero Loco": Carlitos era mi suegro. No me dejaba tocar su tractor. Ahora él *es* el tractor. Literal.
-		- Eh... vale, ¿lanza rocas, entonces?
-			"Granjero Loco": ¡Lanza rocas, insultos y hasta gallinas si hace falta! Ayúdame a colocarlo. Agárralo bien y no lo sueltes hasta que veas que está en su sitio.
-			"Granjero Loco": Bueno, yo me voy a echar una siesta, tu funcion es... defender esta granja.
-			"Granjero Loco": Matar bichos con las torretas que te dejo y me los traes después. ¡Las gallinas cada vez ponen huevos más grandes jojojo y yo te pago por cada bicho que traigas!
-			"Granjero Loco": Así que mientras más bichos aplastes, más dinero ganas para seguir comprando torretas y matando más bichos.
-			
-			- ¿¡PERO QUE ESTA PASANDO!?
+
+"Granjero Loco": En mi granja. La última línea de defensa entre la humanidad... y la mierda mutante. Yo soy el Granjero Loco, el último hombre cuerdo de Europa. ¡Y tú llegaste justo a tiempo!
+
+- ¿Y qué hago aquí?
+
+"Granjero Loco": Viniste por ayuda... o por leche. Da igual. Ahora eres parte del Escuadrón Anti-Apocalipsis™. No hay reembolsos ni garantías.
+
+- Esto es una locura...
+
+"Granjero Loco": ¡Eso es Carlitos! Mi espantapájaros lanzarrocas. Me dijeron que estaba loco por construirlo... pero ahora él lanza piedras, insultos y a veces gallinas. ¿Quién ríe ahora?
+
+- ¿De verdad lanza todo eso?
+
+"Granjero Loco": Y si lo miras feo, también. Arrástralo por la granja, aplasta bichos y hazlo con estilo. Ah, y...
+
+- ¿Por qué se llama Carlitos?
+
+"Granjero Loco": Era mi suegro. Nunca me dejó tocar su tractor... así que lo inmortalicé como uno. Literal. ¡Ahora él *es* el arma!
+
+"Granjero Loco": Ayúdame a colocarlo. Agárralo bien y no lo sueltes hasta que lo veas escupiendo rocas con rabia.
+
+"Granjero Loco": Yo mientras me echo una siesta breve de... unas seis horas. Tu función: defender la granja.
+
+"Granjero Loco": Usa las torretas que te dejo, mata bichos mutantes y tráeme sus restos. Las gallinas ponen huevos del tamaño de sandías gracias a eso, ¡y yo te pago por cada monstruo aplastado!
+
+"Granjero Loco": Cuanto más bichos mates, más oro ganas, más torretas compras... y más bichos matas. ¿Ves? ¡Capitalismo agrícola extremo!
+
+- ¿¡PERO QUÉ ESTÁ PASANDO!?
+
 # start_wave
-"Granjero Loco": Vienen ratas, cuervos, escorpiones, políticos... ¡Agarra lo que puedas y prepárate, que si no nos ponemos duros nos quitan hasta a Carlitos!
+"Granjero Loco": Vienen ratas, cuervos, escorpiones, políticos... ¡Agarra lo que encuentres, apunta bien y prepárate! Si no los detenemos, lo próximo que se llevan es a Carlitos. ¡Y todavía me debe un asado!
 [signal arg="start_wave"]

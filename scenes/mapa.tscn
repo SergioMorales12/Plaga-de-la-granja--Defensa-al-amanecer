@@ -2363,7 +2363,7 @@ metadata/_edit_use_anchors_ = true
 [node name="towers" type="Node2D" parent="."]
 
 [node name="Microwave" parent="towers" instance=ExtResource("13_2bj6j")]
-position = Vector2(560, 407)
+position = Vector2(964, 504)
 
 [node name="panel_torretas" parent="." instance=ExtResource("11_k3j34")]
 offset_left = 1792.0
@@ -2378,6 +2378,36 @@ offset_bottom = 608.263
 
 [node name="Microwave2" parent="." instance=ExtResource("13_2bj6j")]
 position = Vector2(960, 456)
+
+[node name="Microwave3" parent="." instance=ExtResource("13_2bj6j")]
+position = Vector2(960, 555)
+
+[node name="Microwave4" parent="." instance=ExtResource("13_2bj6j")]
+position = Vector2(959, 607)
+
+[node name="Microwave5" parent="." instance=ExtResource("13_2bj6j")]
+position = Vector2(960, 654)
+
+[node name="Microwave6" parent="." instance=ExtResource("13_2bj6j")]
+position = Vector2(956, 710)
+
+[node name="Microwave7" parent="." instance=ExtResource("13_2bj6j")]
+position = Vector2(951, 773)
+
+[node name="Microwave8" parent="." instance=ExtResource("13_2bj6j")]
+position = Vector2(955, 826)
+
+[node name="Microwave9" parent="." instance=ExtResource("13_2bj6j")]
+position = Vector2(953, 878)
+
+[node name="Microwave10" parent="." instance=ExtResource("13_2bj6j")]
+position = Vector2(809, 486)
+
+[node name="Microwave11" parent="." instance=ExtResource("13_2bj6j")]
+position = Vector2(808, 543)
+
+[node name="Microwave12" parent="." instance=ExtResource("13_2bj6j")]
+position = Vector2(807, 618)
 
 [node name="Pause" parent="." instance=ExtResource("13_66cqs")]
 

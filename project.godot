@@ -30,6 +30,7 @@ directories/dch_directory={
 directories/dtl_directory={
 "como_33": "res://dialogos/Randoms/como_33.dtl",
 "intro_tutorial": "res://dialogos/Intro/intro_tutorial.dtl",
+"lore_planta": "res://dialogos/Intro/lore_planta.dtl",
 "primer_boss": "res://dialogos/Intro/primer_boss.dtl",
 "primer_enjambre": "res://dialogos/Intro/primer_enjambre.dtl",
 "random_wave_1": "res://dialogos/Randoms/random_wave_1.dtl",

@@ -1,15 +1,29 @@
 # wave1_start
 [signal arg="stop_wave"]
-"Granjero Loco": ¡Atención! ¡Primer enjambre a la vista! Ratas, bichos... y puede que ese vecino que nunca devolvió mi sopladora.
-- ¿Qué hago ahora?
-	"Granjero Loco": ¡Tranquilo! He construido algo... especial.
-	- ¿Qué demonios es eso?
-		"Granjero Loco": Te presento mi **Altar de Gema Agritóxica**.
-		[signal arg="unlock_barril"]
-		- ¿Gema qué?
-			"Granjero Loco": ¡Agritóxica! Es básicamente el tambor de mi basura, pero... con conciencia. Le tiré huesos de ratas, estiércol de gallina y uno que otro pepinillo radioactivo. ¡Ahora flota, brilla y tira mirdas verdes explosivas!
-			- ¿Explosivas cómo?
-				"Granjero Loco": Con lo que sea: aire, carne, orgullo herido... ¡PUM!
-				- ¿Eso es seguro?
-					"Granjero Loco": Para ti, sí. Para los monstruos... es abono instantáneo. ¡Colócalo y deja que fertilice el campo con caos!
+
+"Granjero Loco": ¡Atención! ¡Primer enjambre a la vista! Ratas, bichos… ¡y creo que también viene el vecino que nunca me devolvió la sopladora!
+
+- ¿Qué se supone que debo hacer?
+
+"Granjero Loco": ¡Tranquilo! He preparado algo… *especial*.
+
+- ¿Qué demonios es eso?
+
+"Granjero Loco": Te presento el **Altar de la Gema Agritóxica**. Tecnología punta… con un toque de estiércol.
+
+[signal arg="unlock_barril"]
+
+- ¿Gema qué?
+
+"Granjero Loco": ¡Agritóxica! Básicamente un tambor de basura que cobró vida. Le tiré huesos de rata, estiércol de gallina y uno que otro pepinillo radioactivo. ¡Ahora flota, brilla… y lanza mierdas verdes explosivas!
+
+- ¿Explosivas cómo?
+
+"Granjero Loco": ¡Con lo que sea! Aire, carne, mala actitud… ¡BOOM! Una nube tóxica y pegajosa. Ideal para ahuyentar monstruos y suegras.
+
+- ¿Eso es seguro?
+
+"Granjero Loco": Para ti, sí. Para los monstruos… es abono instantáneo.  
+¡Colócala y deja que fertilice el campo con pura destrucción!
+
 [signal arg="start_wave"]

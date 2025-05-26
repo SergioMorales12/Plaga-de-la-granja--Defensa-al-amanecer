@@ -5,7 +5,8 @@ var special_wave_dialogs := {
 	1: "intro_tutorial",
 	5: "primer_enjambre",
 	10: "primer_boss",
-	33:"como_33"
+	33:"como_33",
+	40:"lore_planta"
 }
 
 
