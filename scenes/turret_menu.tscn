@@ -1,54 +1,100 @@
-[gd_scene format=3 uid="uid://dcjjhcghuk7ss"]
+[gd_scene load_steps=5 format=3 uid="uid://dcjjhcghuk7ss"]
 
-[node name="TurretMenu" type="PanelContainer"]
-texture_filter = 1
-anchors_preset = -1
-anchor_right = 0.0666667
-anchor_bottom = 0.0962963
+[ext_resource type="Theme" uid="uid://bmf31mho1mjjt" path="res://scenes/UII/Sprout-Lands-UI-0.2.0/Sprout-Lands-UI-0.2.0/addons/sprout_lands_ui/content/sprout_lands_theme.tres" id="1_5iakj"]
+[ext_resource type="Script" uid="uid://l2x6a07hxrkg" path="res://scripts/turret_menu.gd" id="2_m32r0"]
+[ext_resource type="FontFile" uid="uid://cuo0ktsc7a7mt" path="res://scenes/Tagesschrift-Regular.ttf" id="3_0rt33"]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-texture_filter = 1
-layout_mode = 2
+[sub_resource type="LabelSettings" id="LabelSettings_u4q7d"]
+font = ExtResource("3_0rt33")
+font_size = 19
 
-[node name="Panel" type="Panel" parent="VBoxContainer"]
-texture_filter = 1
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-
-[node name="Button" type="Button" parent="VBoxContainer/Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.625
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 2
+[node name="TurretMenu" type="CanvasLayer"]
+script = ExtResource("2_m32r0")
 metadata/_edit_use_anchors_ = true
 
-[node name="Panel4" type="Panel" parent="VBoxContainer"]
-texture_filter = 1
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = -1
+anchor_left = 0.0333333
+anchor_top = 0.0592593
+anchor_right = 0.2
+anchor_bottom = 0.325926
+grow_horizontal = 2
+theme = ExtResource("1_5iakj")
+metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="Button" parent="VBoxContainer/Panel4"]
+[node name="Label" type="Label" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.625
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 2
+anchor_left = 0.384375
+anchor_right = 0.615625
+anchor_bottom = 0.0868056
+grow_horizontal = 2
+text = "Upgrade"
+label_settings = SubResource("LabelSettings_u4q7d")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="Panel5" type="Panel" parent="VBoxContainer"]
-texture_filter = 1
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-
-[node name="Button" type="Button" parent="VBoxContainer/Panel5"]
+[node name="Close" type="Button" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.625
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.6
+anchor_top = 0.833333
+anchor_right = 0.925
+anchor_bottom = 0.973333
+grow_horizontal = 0
+text = "Close"
+metadata/_edit_use_anchors_ = true
+
+[node name="Damage" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.163194
+anchor_right = 0.95
+anchor_bottom = 0.361111
 grow_horizontal = 0
 grow_vertical = 2
+text = "Damage"
+metadata/_edit_use_anchors_ = true
+
+[node name="Speed" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.388889
+anchor_right = 0.95
+anchor_bottom = 0.576389
+grow_horizontal = 0
+grow_vertical = 2
+text = "Speed"
+metadata/_edit_use_anchors_ = true
+
+[node name="Special" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.611111
+anchor_right = 0.946875
+anchor_bottom = 0.805556
+grow_horizontal = 0
+grow_vertical = 2
+text = "Special"
+metadata/_edit_use_anchors_ = true
+
+[node name="Sell" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.833333
+anchor_right = 0.55
+anchor_bottom = 0.973333
+grow_horizontal = 0
+grow_vertical = 2
+text = "Sell"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Panel/Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="Panel/Damage" to="." method="_on_damage_upgrade_pressed"]
+[connection signal="pressed" from="Panel/Speed" to="." method="_on_speed_upgrade_pressed"]
+[connection signal="pressed" from="Panel/Special" to="." method="_on_special_upgrade_pressed"]
+[connection signal="pressed" from="Panel/Sell" to="." method="_on_sell_pressed"]

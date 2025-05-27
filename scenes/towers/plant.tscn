@@ -1,9 +1,10 @@
-[gd_scene load_steps=33 format=3 uid="uid://byn66tqsgb7ch"]
+[gd_scene load_steps=34 format=3 uid="uid://byn66tqsgb7ch"]
 
 [ext_resource type="Script" uid="uid://inb63iajirgm" path="res://scripts/plant.gd" id="1_4632n"]
 [ext_resource type="Texture2D" uid="uid://b6xqth7w4ckox" path="res://asserts/towers/Seeder/Seeder_Heal.png" id="2_rr3as"]
 [ext_resource type="Texture2D" uid="uid://djvta5djs8lw2" path="res://asserts/towers/Seeder/Seeder_Idle.png" id="3_2nqgt"]
 [ext_resource type="Texture2D" uid="uid://dss3wcqdjuio0" path="res://asserts/towers/Seeder/Seeder_Attack.png" id="4_y7nxj"]
+[ext_resource type="PackedScene" uid="uid://dcjjhcghuk7ss" path="res://scenes/turret_menu.tscn" id="5_rr3as"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3tjnd"]
 atlas = ExtResource("2_rr3as")
@@ -240,5 +241,7 @@ offset_top = -38.0
 offset_right = 38.0
 offset_bottom = 38.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rr3as")
+
+[node name="TurretMenu" parent="." instance=ExtResource("5_rr3as")]
 
 [connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]

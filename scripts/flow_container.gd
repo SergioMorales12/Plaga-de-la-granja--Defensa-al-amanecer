@@ -53,3 +53,15 @@ func _on_dialogic_signal(argument: String):
 			unlock_tower("plant")
 		_:
 			print("Señal desconocida recibida: ", argument)
+
+func _on_settings_pressed() -> void:
+	Input.action_press("pause")
+	Input.action_release("pause")
+
+
+
+func _on_x_2_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		Engine.time_scale = 2.0
+	else:
+		Engine.time_scale = 1.0

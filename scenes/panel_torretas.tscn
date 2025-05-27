@@ -86,3 +86,7 @@ offset_left = -146.0
 offset_right = 1837.0
 offset_bottom = 1078.0
 color = Color(0.58, 0, 0, 0)
+
+[connection signal="pressed" from="Panel/buttons/x2" to="Panel/FlowContainer" method="_on_x_2_pressed"]
+[connection signal="toggled" from="Panel/buttons/x2" to="Panel/FlowContainer" method="_on_x_2_toggled"]
+[connection signal="pressed" from="Panel/buttons/settings" to="Panel/FlowContainer" method="_on_settings_pressed"]

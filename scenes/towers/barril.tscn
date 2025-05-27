@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b0kh4ssc5qxy2" path="res://scripts/barril.gd" id="1_gtdq3"]
 [ext_resource type="Texture2D" uid="uid://bg5gpaa0m3joy" path="res://asserts/towers/Barril.png" id="2_0jb46"]
+[ext_resource type="PackedScene" uid="uid://dcjjhcghuk7ss" path="res://scenes/turret_menu.tscn" id="3_0jb46"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mdt64"]
 atlas = ExtResource("2_0jb46")
@@ -51,9 +52,6 @@ corner_radius_top_right = 445
 corner_radius_bottom_right = 445
 corner_radius_bottom_left = 445
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gtdq3"]
-radius = 35.13
-
 [node name="Barril" type="Node2D"]
 script = ExtResource("1_gtdq3")
 
@@ -92,11 +90,10 @@ offset_right = 456.0
 offset_bottom = 456.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_8dg65")
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
-position = Vector2(-7, 12)
-shape = SubResource("CircleShape2D_gtdq3")
+[node name="TurretMenu" parent="." instance=ExtResource("3_0jb46")]
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="input_event" from="colision" to="." method="_on_input_event"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]
 [connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c7wqvxm5b1r6e" path="res://scripts/molino.gd" id="1_lhowf"]
 [ext_resource type="Texture2D" uid="uid://p2fesy0norwu" path="res://asserts/towers/molino.png" id="2_h0l80"]
+[ext_resource type="PackedScene" uid="uid://dcjjhcghuk7ss" path="res://scenes/turret_menu.tscn" id="3_h0l80"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rpga7"]
 atlas = ExtResource("2_h0l80")
@@ -95,10 +96,6 @@ corner_radius_top_right = 250
 corner_radius_bottom_right = 250
 corner_radius_bottom_left = 250
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h0l80"]
-radius = 35.13
-height = 117.95
-
 [node name="molino" type="Node2D"]
 script = ExtResource("1_lhowf")
 
@@ -136,9 +133,7 @@ offset_right = 112.0
 offset_bottom = 112.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_oseg5")
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
-position = Vector2(0, 40)
-shape = SubResource("CapsuleShape2D_h0l80")
+[node name="TurretMenu" parent="." instance=ExtResource("3_h0l80")]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]

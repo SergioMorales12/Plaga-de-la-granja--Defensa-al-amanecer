@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://dpvfu7eokceta"]
+[gd_scene load_steps=22 format=3 uid="uid://dpvfu7eokceta"]
 
 [ext_resource type="Script" uid="uid://5txls8pqoofe" path="res://scripts/microwave.gd" id="1_pe6jw"]
 [ext_resource type="Texture2D" uid="uid://bg5gpaa0m3joy" path="res://asserts/towers/Barril.png" id="2_utnue"]
 [ext_resource type="Texture2D" uid="uid://bbmi76jtni3rc" path="res://asserts/towers/Lightning_III_128x48.png" id="3_pe6jw"]
+[ext_resource type="PackedScene" uid="uid://dcjjhcghuk7ss" path="res://scenes/turret_menu.tscn" id="4_utnue"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e2aft"]
 atlas = ExtResource("2_utnue")
@@ -180,6 +181,8 @@ scale = Vector2(1.78125, 2.04167)
 sprite_frames = SubResource("SpriteFrames_utnue")
 animation = &"rayos"
 flip_h = true
+
+[node name="TurretMenu" parent="." instance=ExtResource("4_utnue")]
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
