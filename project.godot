@@ -25,11 +25,16 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
+"Carlitos": "res://dialogos/Characters/Carlitos.dch",
 "Granjero Loco": "res://dialogos/Characters/Granjero Loco.dch"
 }
 directories/dtl_directory={
 "como_33": "res://dialogos/Randoms/como_33.dtl",
 "intro_tutorial": "res://dialogos/Intro/intro_tutorial.dtl",
+"lore_1": "res://dialogos/Carlitos/lore_1.dtl",
+"lore_2": "res://dialogos/Carlitos/lore_2.dtl",
+"lore_3": "res://dialogos/Carlitos/lore_3.dtl",
+"lore_4": "res://dialogos/Carlitos/lore_4.dtl",
 "lore_planta": "res://dialogos/Intro/lore_planta.dtl",
 "primer_boss": "res://dialogos/Intro/primer_boss.dtl",
 "primer_enjambre": "res://dialogos/Intro/primer_enjambre.dtl",
@@ -113,6 +118,7 @@ enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
 
 enemi=""
 towers=""
+torreta=""
 
 [input]
 

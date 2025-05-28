@@ -9,6 +9,8 @@ var pierce: int = 10
 var time: float = 1.0
 var previousTarget
 
+signal hit(damage_done: float)
+
 func _process(delta):
 	if target:
 		if not direction:
@@ -26,7 +28,7 @@ func reached(target1):
 	if target1.is_in_group("enemi") and target1 != previousTarget:
 		previousTarget = target1
 		pierce -= 1
-		print(pierce)
+		emit_signal("hit")
 		target1.get_damage(damage)
 	if pierce < 1:
 		queue_free()

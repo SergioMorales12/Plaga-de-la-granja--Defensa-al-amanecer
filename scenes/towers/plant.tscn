@@ -206,7 +206,7 @@ corner_radius_top_right = 445
 corner_radius_bottom_right = 445
 corner_radius_bottom_left = 445
 
-[node name="Plant" type="Node2D"]
+[node name="Plant" type="Node2D" groups=["torreta"]]
 script = ExtResource("1_4632n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

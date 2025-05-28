@@ -59,7 +59,7 @@ corner_radius_top_right = 250
 corner_radius_bottom_right = 250
 corner_radius_bottom_left = 250
 
-[node name="espantaPajaros" type="Node2D"]
+[node name="espantaPajaros" type="Node2D" groups=["torreta"]]
 texture_filter = 1
 script = ExtResource("1_5lbkk")
 

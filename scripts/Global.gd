@@ -34,11 +34,11 @@ func change_map(map_path: String) -> void:
 	get_tree().current_scene.add_child(map_select_container)
 	print("Mapa cambiado a:", map_path)
 
-func save_game(data: Dictionary) -> void:
+func save_game():
+	var save_data = Player.info
+	var json_string = JSON.stringify(save_data)
 	var file = FileAccess.open(FILE_PATH, FileAccess.WRITE)
-	file.store_string(JSON.stringify(data))
-	file.close()
-	print("Juego guardado en:", FILE_PATH)
+	file.store_string(json_string)
 
 func load_game() -> Dictionary:
 	if FileAccess.file_exists(FILE_PATH):

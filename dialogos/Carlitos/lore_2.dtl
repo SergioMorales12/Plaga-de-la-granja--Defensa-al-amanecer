@@ -1,0 +1,9 @@
+"Carlitos": No era una granja... era un exper.....
+"Granjero Loco": ¡Otravez estas delirando! ¡Ya te  dije lo que pasaria si...!
+label decision_2
+- ¿Exper...? ¡EXPERIMENTO!
+	jump lore_3
+- ¿Qué dice este?
+"Granjero Loco": ¡Es el óxido, te lo dije! ¡Está empezando a filosofar!
+label lore_3
+"Carlitos": El Granjero... liberó algo. Algo terrible...

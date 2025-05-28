@@ -17,5 +17,5 @@ func play_wave_dialog(current_wave: int) -> void:
 		
 	else:
 		# Mostrar diálogo aleatorio (30% de probabilidad)
-		if randi_range(0, 100) < 30:
+		if randi_range(0, 100) < 0:
 			Dialogic.start("random_wave_%d" % randi_range(1, 19)) 

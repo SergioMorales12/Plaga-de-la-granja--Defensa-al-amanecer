@@ -1,0 +1,11 @@
+"Carlitos": ¡El fin no fue un accidente!
+label decision_3
+- ¿De qué hablas?
+	jump lore_4
+- ¿Otra vez con eso?
+"Granjero Loco": ¿Y ahora soy yo el villano? ¡Este muñeco necesita reinicio!
+label lore_4
+"Carlitos": Él lo hizo... por un asado. ¡UN MALDITO ASADO!
+"Granjero Loco": ¡Este muñeco necesita reinicio! ¡¡YAAAA!!
+"Granjero Loco": Bueno tu no te preocupes que ya me encargare de el...
+- ....

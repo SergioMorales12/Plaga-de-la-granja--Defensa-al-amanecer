@@ -96,7 +96,7 @@ corner_radius_top_right = 250
 corner_radius_bottom_right = 250
 corner_radius_bottom_left = 250
 
-[node name="molino" type="Node2D"]
+[node name="molino" type="Node2D" groups=["torreta"]]
 script = ExtResource("1_lhowf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -135,6 +135,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_oseg5")
 
 [node name="TurretMenu" parent="." instance=ExtResource("3_h0l80")]
 
+[connection signal="input_event" from="colision" to="." method="_on_input_event"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]
 [connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]

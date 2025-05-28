@@ -1,17 +1,16 @@
 extends Node2D
 
 @export var damage = 50
-
 @export var bulletSpeed := 1500.0
 @export var bulletPierce := 1
-@export var attack_interval := 2  
+@export var attack_interval := 2.0  
 @export var price: float = 800
 @export var escala: float = 0.8
 
 # Valores base para calcular mejoras
-var base_damage := 10
-var base_speed := 2000.0
-var base_attack_speed := 1.0
+var base_damage := 50
+var base_speed := 1500.0
+var base_attack_speed := 2.0
 
 # Costes de mejoras
 var damage_upgrade_cost := 50
@@ -41,6 +40,8 @@ signal tower_sold(position)
 
 func _ready() -> void:
 	$attack_timer.wait_time = attack_interval
+	if has_node("TurretMenu"):
+		$TurretMenu.tower = self
 
 func _process(_delta):
 	if current_target and is_instance_valid(current_target) and current_target in enemigos and !current_target.is_dead:
@@ -147,7 +148,11 @@ func upgrade_speed():
 		Player.player_gold -= cost
 		refund += cost * sell_refund_percent
 		upgrade_levels["speed"] += 1
-		attack_interval = max(MIN_ATTACK_INTERVAL, base_attack_speed - (0.1 * upgrade_levels["speed"]))
+		var new_interval = base_attack_speed - (0.2 * upgrade_levels["speed"])
+		attack_interval = max(MIN_ATTACK_INTERVAL, new_interval)
+		if attack_interval <= 0.0:
+			attack_interval = MIN_ATTACK_INTERVAL
+			
 		$attack_timer.wait_time = attack_interval
 		update_menu_info()
 
@@ -160,7 +165,7 @@ func upgrade_special():
 		Player.player_gold -= cost
 		refund += cost * sell_refund_percent
 		upgrade_levels["special"] += 1
-		bulletSpeed += 500
+		bulletSpeed += 250
 		update_menu_info()
 
 func sell_tower():
@@ -168,3 +173,14 @@ func sell_tower():
 	emit_signal("tower_sold", position)
 	queue_free()
 	Player.update_ui()
+
+
+func get_save_data() -> Dictionary:
+	return {
+		"scene_path": "res://scenes/towers/barril.tscn",
+		"position": position,
+		"damage": damage,
+		"bulletSpeed": bulletSpeed,
+		"upgrade_levels": upgrade_levels,
+		"attack_interval": attack_interval
+	}

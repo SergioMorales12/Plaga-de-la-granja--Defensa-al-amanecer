@@ -52,7 +52,7 @@ corner_radius_top_right = 445
 corner_radius_bottom_right = 445
 corner_radius_bottom_left = 445
 
-[node name="Barril" type="Node2D"]
+[node name="Barril" type="Node2D" groups=["torreta"]]
 script = ExtResource("1_gtdq3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -77,7 +77,6 @@ visible = false
 shape = SubResource("CircleShape2D_fi6c4")
 
 [node name="attack_timer" type="Timer" parent="."]
-wait_time = 0.7
 autostart = true
 
 [node name="Area" type="Panel" parent="."]

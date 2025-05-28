@@ -53,7 +53,7 @@ func start_wave() -> void:
 	current_wave_enemies = 0
 	enemies_alive = 0
 	
-	var wave = current_wave
+	var wave = Player.wave
 	var enemies_to_spawn = base_enemies_per_wave + int(wave * wave_scaling_factor)
 	
 	print("====================================")

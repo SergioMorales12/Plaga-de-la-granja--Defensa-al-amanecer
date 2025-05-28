@@ -3,15 +3,20 @@
 
 - ¿Dónde estoy...?
 
-"Granjero Loco": En mi granja. La última línea de defensa entre la humanidad... y la mierda mutante. Yo soy el Granjero Loco, el último hombre cuerdo de Europa. ¡Y tú llegaste justo a tiempo!
+"Granjero Loco": En mi granja. La última línea de defensa entre la humanidad... y la mierda mutante.
+
+"Granjero Loco": Yo soy el Granjero de esta hermosa granja, el último hombre cuerdo de Europa. ¡Y tú llegaste justo a tiempo!
 
 - ¿Y qué hago aquí?
 
-"Granjero Loco": Viniste por ayuda... o por leche. Da igual. Ahora eres parte del Escuadrón Anti-Apocalipsis™. No hay reembolsos ni garantías.
+"Granjero Loco": Viniste por ayuda... o por leche. Da igual. Ahora eres parte del Escuadrón Anti-Apocalipsis. No hay reembolsos ni garantías.
 
-- Esto es una locura...
+- Y... ¡QUÉ ES ESOO!
+	Carlitos: CRQKERRRR... TCHNK-CHNK... ¡¡WRAAAH!!
 
-"Granjero Loco": ¡Eso es Carlitos! Mi espantapájaros lanzarrocas. Me dijeron que estaba loco por construirlo... pero ahora él lanza piedras, insultos y a veces gallinas. ¿Quién ríe ahora?
+"Granjero Loco": ¡Eso es Carlitos! Mi espantapájaros lanzarrocas. Me dijeron que estaba loco por construirlo...
+
+"Granjero Loco": Pero ahora él lanza piedras, insultos y a veces gallinas. ¿Quién ríe ahora?
 
 - ¿De verdad lanza todo eso?
 
@@ -19,11 +24,19 @@
 
 - ¿Por qué se llama Carlitos?
 
+"Granjero Loco": ¡Ajá! ¡Veo que te brillaron los ojitos con Carlitos, eh!
+
 "Granjero Loco": Era mi suegro. Nunca me dejó tocar su tractor... así que lo inmortalicé como uno. Literal. ¡Ahora él *es* el arma!
 
-"Granjero Loco": Ayúdame a colocarlo. Agárralo bien y no lo sueltes hasta que lo veas escupiendo rocas con rabia.
+"Granjero Loco": Mira a la derecha. Ese panel lleno de cacharros y cosas brillantes no es decoración: son tus herramientas de destrucción rural.
 
-"Granjero Loco": Yo mientras me echo una siesta breve de... unas seis horas. Tu función: defender la granja.
+"Granjero Loco": Agarra la torre que te guste y arrástrala con cariño hasta el terreno. Pero ojo, sin obstáculos, ¿eh? ¡Nada de poner torres encima del gallinero!
+
+"Granjero Loco": Y si ves un espacio libre, ¡ahí es donde la magia sucede!
+
+"Granjero Loco": También te dejé un viejo molino... sí, ese que chirría más que mi espalda. No parece mucho, pero ralentiza a los bichos y les raspa un poco los huesos con cada vuelta. ¡Tecnología vintage, le dicen!
+
+"Granjero Loco": Yo mientras me echo una siesta breve de... unas seis horas. Tu función es defender la granja.
 
 "Granjero Loco": Usa las torretas que te dejo, mata bichos mutantes y tráeme sus restos. Las gallinas ponen huevos del tamaño de sandías gracias a eso, ¡y yo te pago por cada monstruo aplastado!
 
@@ -32,5 +45,6 @@
 - ¿¡PERO QUÉ ESTÁ PASANDO!?
 
 # start_wave
-"Granjero Loco": Vienen ratas, cuervos, escorpiones, políticos... ¡Agarra lo que encuentres, apunta bien y prepárate! Si no los detenemos, lo próximo que se llevan es a Carlitos. ¡Y todavía me debe un asado!
+"Granjero Loco": Vienen ratas, cuervos, escorpiones, políticos... ¡Agarra lo que encuentres, apunta bien y prepárate! 
+"Granjero Loco": Si no los detenemos, lo próximo que se llevan es a Carlitos. ¡Y todavía me debe un potáje!
 [signal arg="start_wave"]

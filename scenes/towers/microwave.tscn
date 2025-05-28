@@ -134,7 +134,7 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="Microwave" type="Node2D"]
+[node name="Microwave" type="Node2D" groups=["torreta"]]
 script = ExtResource("1_pe6jw")
 damage = 100
 attack_interval = 1.0
@@ -185,6 +185,7 @@ flip_h = true
 [node name="TurretMenu" parent="." instance=ExtResource("4_utnue")]
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="input_event" from="colision" to="." method="_on_input_event"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]
 [connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]

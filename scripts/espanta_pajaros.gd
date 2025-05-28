@@ -7,6 +7,9 @@ extends Node2D
 @export var price: float = 500
 @export var escala: float = 1
 
+# Contador para diferentes finales segun la torreta
+var contDamage = 0
+
 # Valores base para calcular mejoras
 var base_damage := 10
 var base_speed := 2000.0
@@ -57,6 +60,7 @@ func attack():
 		$AnimatedSprite2D.play("Atq")
 		var projectileScene = preload("res://scenes/towers/bullet_espanta.tscn")
 		var projectile = projectileScene.instantiate()
+		projectile.connect("hit", Callable(self, "_on_projectile_hit"))
 		projectile.damage = damage
 		projectile.speed = bulletSpeed
 		projectile.pierce = bulletPierce
@@ -64,6 +68,26 @@ func attack():
 		projectile.target = current_target.position
 		get_parent().add_child(projectile)
 		can_attack = false
+
+func _on_projectile_hit() :
+	contDamage += 1
+	check_carlitos_lore()
+
+func check_carlitos_lore():
+	match contDamage:
+		50:
+			Dialogic.start("lore_1")
+		150:
+			Dialogic.start("lore_2")
+		300:
+			Dialogic.start("lore_3")
+		500:
+			Dialogic.start("lore_4")
+		800:
+			print("Carlitos: No puedo callar más... ¡Él PROVOCÓ el apocalipsis!")
+		_:
+			pass  # Para cualquier otro valor, no hace nada
+
 
 func _on_attack_timer_timeout():
 	can_attack = true
@@ -159,3 +183,14 @@ func sell_tower():
 	emit_signal("tower_sold", position)
 	queue_free()
 	Player.update_ui()
+
+
+func get_save_data() -> Dictionary:
+	return {
+		"scene_path": "res://scenes/towers/espanta_pajaros.tscn",
+		"position": position,
+		"damage": damage,
+		"bulletSpeed": bulletSpeed,
+		"upgrade_levels": upgrade_levels,
+		"attack_interval": attack_interval
+	}

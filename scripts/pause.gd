@@ -19,12 +19,6 @@ func toggle_pause():
 	if game_paused and has_node("Buttons/Settings"):
 		$Buttons/Settings.grab_focus()
 
-# Cambia todas estas funciones para usar toggle_pause()
-func _on_login_pressed() -> void:
-	Global.restart_scene()
-
-func _on_exit_button_pressed() -> void:
-	get_tree().quit()
 
 func _on_replay_pressed() -> void:
 	toggle_pause()
@@ -33,8 +27,8 @@ func _on_settings_pressed() -> void:
 	toggle_pause()  
 
 func _on_save_pressed() -> void:
-	if Player and Player.has("info"):
-		Global.save_game(Player.info)
+	if Player :
+		Player.save_game()
 
 
 func _on_restart_pressed() -> void:

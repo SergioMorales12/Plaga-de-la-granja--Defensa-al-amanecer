@@ -10,16 +10,16 @@
 "style": "",
 "suffix": ""
 },
-&"default_portrait": "granjero loco",
+&"default_portrait": "Carlitos",
 &"description": "",
-&"display_name": "Granjero Loco",
+&"display_name": "Carlitos",
 &"mirror": false,
 &"nicknames": [""],
 &"offset": Vector2(0, 0),
 &"portraits": {
-"granjero loco": {
+"Carlitos": {
 "export_overrides": {
-"image": "\"res://dialogos/Characters/Granjero_Loco.png\""
+"image": "\"res://dialogos/Characters/Carlitos.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),

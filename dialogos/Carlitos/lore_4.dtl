@@ -1,0 +1,13 @@
+Carlitos: No puedo callar más... ¡Él PROVOCÓ el apocalipsis!
+label decision_final
+- ¿¡GRANJERO!?
+	jump reveal
+- Te apagas ahora mismo, Carlitos.
+	"Granjero Loco": ¡Carlitos, apágate! ¡Modo gallinero, ahora!
+	jump fin
+label reveal
+"Granjero Loco": Que diiiiiceeees
+Carlitos: No miento. Tú lo sabías. ¡TÚ LO SABÍAS!
+[signal arg="CarlitosFinal"]
+label fin
+# Aqui con la signal va a reventar todos los espantapajaros y te dara algo de oro
