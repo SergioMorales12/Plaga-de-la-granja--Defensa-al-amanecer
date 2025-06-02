@@ -1,0 +1,130 @@
+[gd_scene load_steps=26 format=3 uid="uid://caailrmb0thwc"]
+
+[ext_resource type="Script" uid="uid://c8ru3gj6rg56u" path="res://scripts/minotauro.gd" id="1_bxudy"]
+[ext_resource type="Texture2D" uid="uid://b50rs8j4jqeph" path="res://asserts/enemy/Boss/mino_v1.1_free/mino_v1.1_free/animations/walk/walk_1.png" id="2_5ness"]
+[ext_resource type="Texture2D" uid="uid://6vafrxffpeo4" path="res://asserts/Explosions/Red/frame0000.png" id="2_7kyu6"]
+[ext_resource type="Texture2D" uid="uid://dcnbyvg2x4q22" path="res://asserts/Explosions/Red/frame0001.png" id="3_7wr72"]
+[ext_resource type="Texture2D" uid="uid://c4eu3tglg7wdj" path="res://asserts/enemy/Boss/mino_v1.1_free/mino_v1.1_free/animations/walk/walk_2.png" id="3_wt31s"]
+[ext_resource type="Texture2D" uid="uid://di5eh7ui0w58e" path="res://asserts/Explosions/Red/frame0002.png" id="4_e0ay5"]
+[ext_resource type="Texture2D" uid="uid://dmcifpbqqybu" path="res://asserts/enemy/Boss/mino_v1.1_free/mino_v1.1_free/animations/walk/walk_3.png" id="4_nwds7"]
+[ext_resource type="Texture2D" uid="uid://c6vojhc1v0k6e" path="res://asserts/Explosions/Red/frame0003.png" id="5_570fk"]
+[ext_resource type="Texture2D" uid="uid://dk16wnv5ju5mx" path="res://asserts/enemy/Boss/mino_v1.1_free/mino_v1.1_free/animations/walk/walk_4.png" id="5_x5njr"]
+[ext_resource type="Texture2D" uid="uid://dh06y7ahsyfly" path="res://asserts/Explosions/Red/frame0004.png" id="6_2iece"]
+[ext_resource type="Texture2D" uid="uid://dhghborwtglj5" path="res://asserts/enemy/Boss/mino_v1.1_free/mino_v1.1_free/animations/walk/walk_5.png" id="6_3uixk"]
+[ext_resource type="Texture2D" uid="uid://d0ctvbbwmga62" path="res://asserts/enemy/Boss/mino_v1.1_free/mino_v1.1_free/animations/walk/walk_6.png" id="7_1vhyq"]
+[ext_resource type="Texture2D" uid="uid://x4f1b00f2jbb" path="res://asserts/Explosions/Red/frame0005.png" id="7_046o0"]
+[ext_resource type="Texture2D" uid="uid://bef2swqdo1mlc" path="res://asserts/enemy/Boss/mino_v1.1_free/mino_v1.1_free/animations/walk/walk_7.png" id="8_6piec"]
+[ext_resource type="Texture2D" uid="uid://b3tkgcqyylqp5" path="res://asserts/Explosions/Red/frame0006.png" id="8_g8dey"]
+[ext_resource type="Texture2D" uid="uid://d3koek7mp1nqo" path="res://asserts/Explosions/Red/frame0007.png" id="9_8hlj0"]
+[ext_resource type="Texture2D" uid="uid://b26o8o5jqh8ui" path="res://asserts/enemy/Boss/mino_v1.1_free/mino_v1.1_free/animations/walk/walk_8.png" id="9_piy3b"]
+[ext_resource type="Texture2D" uid="uid://bb3g5bxyb8gfb" path="res://asserts/enemy/Boss/mino_v1.1_free/mino_v1.1_free/animations/walk/walk_9.png" id="10_g0eu8"]
+[ext_resource type="Texture2D" uid="uid://cvbeejjgeo5ub" path="res://asserts/Explosions/Red/frame0008.png" id="10_gnnjp"]
+[ext_resource type="Texture2D" uid="uid://ds5mubj6voeyp" path="res://asserts/enemy/Boss/mino_v1.1_free/mino_v1.1_free/animations/walk/walk_10.png" id="11_7kyu6"]
+[ext_resource type="Texture2D" uid="uid://b23uddvcby73h" path="res://asserts/Explosions/Red/frame0009.png" id="11_eawqq"]
+[ext_resource type="Texture2D" uid="uid://bj1tn74ryhw6x" path="res://asserts/enemy/Boss/mino_v1.1_free/mino_v1.1_free/animations/walk/walk_11.png" id="12_7wr72"]
+[ext_resource type="Texture2D" uid="uid://c35docfcg7bqw" path="res://asserts/enemy/Boss/mino_v1.1_free/mino_v1.1_free/animations/walk/walk_12.png" id="13_e0ay5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_570fk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7kyu6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7wr72")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_e0ay5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_570fk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2iece")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_046o0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_g8dey")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8hlj0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_gnnjp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_eawqq")
+}],
+"loop": true,
+"name": &"die",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5ness")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wt31s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nwds7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_x5njr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3uixk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_1vhyq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6piec")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_piy3b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_g0eu8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7kyu6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_7wr72")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_e0ay5")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 7.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2iece"]
+radius = 113.0
+height = 246.0
+
+[node name="Minotauro" type="PathFollow2D" groups=["enemi"]]
+rotates = false
+script = ExtResource("1_bxudy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(6, -19)
+sprite_frames = SubResource("SpriteFrames_570fk")
+animation = &"walk"
+autoplay = "walk"
+frame_progress = 0.0658501
+
+[node name="Area2D" type="Area2D" parent="." groups=["enemi"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_2iece")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true

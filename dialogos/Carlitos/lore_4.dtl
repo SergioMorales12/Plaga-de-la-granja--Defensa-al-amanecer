@@ -1,5 +1,4 @@
 [signal arg="stop_wave"]
-[signal arg="pause"]
 set {Espanta.Lore4} = true
 Carlitos: No puedo callar más... ¡Él PROVOCÓ el apocalipsis!
 label decision_final
@@ -12,9 +11,8 @@ label reveal
 "Granjero Loco": Que dices Carlitos, no me obligues a....
 Carlitos: No miento. Tú lo sabías. ¡TÚ LO SABÍAS!
 [signal arg="CarlitosFinal"]
-[signal arg="start_wave"]
+[signal arg="pause"]
 [end_timeline]
 label fin
 "Granjero Loco": Eso de meterle ia lo a vuelto ¡LOCOO!
-[signal arg="start_wave"]
-# Aqui con la signal va a reventar todos los espantapajaros y te dara algo de oro
+[signal arg="pause"]

@@ -13,7 +13,8 @@ var enemy_scenes = {
 	"cuervo": preload("res://scenes/enemi/cuervo.tscn"),
 	"spider": preload("res://scenes/enemi/spider.tscn")
 }
-
+var minotauro = preload("res://scenes/enemi/minotauro.tscn")
+var margarita = false
 var enemies_alive: int = 0
 var current_wave_enemies: int = 0
 var spawning: bool = false
@@ -25,7 +26,7 @@ func _ready() -> void:
 	
 	Dialogic.connect("signal_event", Callable(self, "_on_dialogic_signal"))
 	Dialogic.process_mode = Node.PROCESS_MODE_ALWAYS
-	
+	start_wave()
 	if Player:
 		Player._init_ui()
 		if Player.wave == null:
@@ -47,7 +48,7 @@ func _on_dialogic_signal(argument:String):
 		get_node("/root/Mapa").process_mode = Node.PROCESS_MODE_DISABLED
 
 	elif argument == "pause":
-		get_node("/root/Mapa").process_mode = Node.PROCESS_MODE_DISABLED
+		get_node("/root/Mapa").process_mode = Node.PROCESS_MODE_INHERIT
 
 func start_wave() -> void:
 	if spawning:
@@ -66,6 +67,8 @@ func start_wave() -> void:
 	print("🌊 Comenzando oleada %d con %d enemigos" % [wave, enemies_to_spawn])
 	
 	# Oleada de jefe cada 10 niveles
+	if wave  == 100:
+		margarita = true
 	if wave % 10 == 0:
 		await spawn_boss_wave(wave)
 	# Oleada especial cada 5 niveles
@@ -85,6 +88,8 @@ func spawn_boss_wave(wave: int) -> void:
 	print("👑 ¡Oleada de Jefe! (Nivel %d)" % wave)
 	await get_tree().create_timer(1.0).timeout
 	var boss = select_enemy_for_wave(wave).instantiate()
+	if margarita:
+		boss = minotauro.instantiate()
 	boss.runSpeed *= 0.8
 	boss.live *= 4.0
 	boss.damage *= 2

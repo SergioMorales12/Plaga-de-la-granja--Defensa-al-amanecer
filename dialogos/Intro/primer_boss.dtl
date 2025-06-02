@@ -1,2 +1,26 @@
-# wave10_start
-# Primer BOSS
+# day10_warning
+[signal arg="stop_wave"]
+
+"Granjero Loco": ¡Eh, eh, eh! ¿Sientes ese temblor en el suelo?
+
+- ¿Qué pasa ahora?
+
+"Granjero Loco": Es el décimo día... y eso significa una sola cosa: ¡SE VIENE EL JEFE!
+
+"Granjero Loco": Cada 10 días aparece una bestia mutante más grande, más fea y con más mala leche que un toro estreñido.
+
+- ¿Y por qué justo cada 10 días?
+
+"Granjero Loco": ¿Quién sabe? Tal vez les gusta la numerología. O tal vez marqué el calendario con salsa picante. El caso es que vienen. Siempre vienen.
+
+- ¿Y qué hago yo?
+
+"Granjero Loco": Lo mismo que siempre: construir, aplastar y rezar que Carlitos no se desarme a mitad del combate.
+
+- ¿Y si pierdo?
+
+"Granjero Loco": Entonces nos come a todos. Empezando por ti. Y luego mi gallina Gertrudis. Y yo no pienso perder otra Gertrudis...
+
+"Granjero Loco": Así que aprieta los dientes, pon las torretas y prepárate: ¡SE VIENE LA FIESTA MONSTRUOSA!
+
+[signal arg="start_wave"]

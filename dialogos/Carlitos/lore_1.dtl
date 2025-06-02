@@ -1,5 +1,4 @@
 [signal arg="stop_wave"]
-[signal arg="pause"]
 set {Espanta.Lore1} = true
 Carlitos: Crrk... Yo... laboratorio...
 label decision_1
@@ -10,5 +9,3 @@ label decision_1
 label lore_2
 Carlitos: Tú... eras mi jefe... allá abajo.
 [signal arg="pause"]
-
-[signal arg="start_wave"]

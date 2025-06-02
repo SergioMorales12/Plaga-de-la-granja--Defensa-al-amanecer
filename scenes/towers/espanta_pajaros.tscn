@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://7m3yc8kjlxrr"]
+[gd_scene load_steps=26 format=3 uid="uid://7m3yc8kjlxrr"]
 
 [ext_resource type="Script" uid="uid://cppao04d7npjb" path="res://scripts/espanta_pajaros.gd" id="1_5lbkk"]
 [ext_resource type="Texture2D" uid="uid://e7xocg6dxhxe" path="res://asserts/towers/espantapajaros.png" id="2_y8ytr"]
@@ -51,6 +51,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_y8ytr")
+}],
+"loop": true,
+"name": &"sleep",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_saof1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("3_saof1")
 }, {
 "duration": 1.0,
@@ -89,14 +100,6 @@ animations = [{
 "loop": false,
 "name": &"final",
 "speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y8ytr")
-}],
-"loop": true,
-"name": &"sleep",
-"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y8ytr"]
@@ -115,12 +118,18 @@ corner_radius_bottom_left = 250
 [node name="espantaPajaros" type="Node2D" groups=["torreta"]]
 texture_filter = 1
 script = ExtResource("1_5lbkk")
+damage = 1000
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.844, 1.734)
 sprite_frames = SubResource("SpriteFrames_jd46h")
-animation = &"final"
+animation = &"Atq"
 autoplay = "sleep"
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_saof1")
+animation = &"final"
 frame = 11
 frame_progress = 1.0
 
@@ -151,7 +160,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_y8ytr")
 
 [node name="TurretMenu" parent="." instance=ExtResource("4_ee8iy")]
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]
+[connection signal="animation_finished" from="Sprite2D" to="." method="_on_animation_finished"]
 [connection signal="input_event" from="colision" to="." method="_on_input_event"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]

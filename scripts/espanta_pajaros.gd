@@ -38,7 +38,7 @@ var upgrade_levels = {
 	"speed": 0,
 	"special": 0
 }
-
+var is_preview = false
 signal tower_sold(position)
 
 func _ready():
@@ -86,7 +86,7 @@ func check_carlitos_lore():
 		300:
 			if !Dialogic.VAR.get_variable("Espanta.Lore3"):
 				Dialogic.start("lore_3")
-		1:
+		500:
 			if !Dialogic.VAR.get_variable("Espanta.Lore4"):
 				Dialogic.start("lore_4")
 		_:
@@ -200,14 +200,15 @@ func get_save_data() -> Dictionary:
 	}
 
 func _on_dialogic_signal(argument: String) -> void:
-	if argument == "CarlitosFinal":
+	if argument == "CarlitosFinal" and !is_preview:
 		print("FINAAAAAAAL")
-		$AnimatedSprite2D.stop()
-		$AnimatedSprite2D.play("final")
+		$AnimatedSprite2D.visible = false
+		$Sprite2D.visible = true
+		$Sprite2D.play("final")
 	
 
 
 func _on_animation_finished() -> void:
-	if $AnimatedSprite2D.animation == "final":
+	if $Sprite2D.animation == "final":
 		print("qewqew")
 		sell_tower()

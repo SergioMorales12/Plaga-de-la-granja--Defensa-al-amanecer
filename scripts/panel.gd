@@ -21,7 +21,8 @@ func _ready() -> void:
 		# Desactiva lógica para que sea solo una vista previa visual
 		if preview.get("can_attack") != null:
 			preview.set("can_attack", false)
-
+		if preview.get("is_preview") != null:
+			preview.set("is_preview", true)
 
 
 		if preview.has_node("Area2D"):
@@ -105,7 +106,6 @@ func _on_gui_input(event: InputEvent) -> void:
 				tempTower.queue_free() # Elimina la torreta si no se puede colocar
 			tempTower = null # Resetea la variable de la torreta temporal
 
-# El resto de tus funciones permanecen igual...
 func isTower(towers: Node):
 	var overlapping_areas = towers.get_node("colision").get_overlapping_areas()
 	for area in overlapping_areas:
@@ -114,7 +114,8 @@ func isTower(towers: Node):
 	return true
 
 func _on_settings_pressed() -> void:
-	Input.action_press("pause")
+	Pause.toggle_pause()
+	#Input.action_press("pause")
 	
 
 

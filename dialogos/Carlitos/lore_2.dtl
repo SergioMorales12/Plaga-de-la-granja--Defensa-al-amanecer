@@ -1,5 +1,4 @@
 [signal arg="stop_wave"]
-[signal arg="pause"]
 set {Espanta.Lore2} = true
 "Carlitos": No era una granja... era un exper.....
 "Granjero Loco": ¡Otravez estas delirando! ¡Ya te  dije lo que pasaria si...!
@@ -10,4 +9,4 @@ label decision_2
 "Granjero Loco": ¡Es el óxido, te lo dije! ¡Está empezando a filosofar!
 label lore_3
 "Carlitos": El Granjero... liberó algo. Algo terrible...
-[signal arg="start_wave"]
+[signal arg="pause"]
