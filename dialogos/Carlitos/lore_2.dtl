@@ -1,4 +1,6 @@
 [signal arg="stop_wave"]
+[signal arg="pause"]
+set {Espanta.Lore2} = true
 "Carlitos": No era una granja... era un exper.....
 "Granjero Loco": ¡Otravez estas delirando! ¡Ya te  dije lo que pasaria si...!
 label decision_2

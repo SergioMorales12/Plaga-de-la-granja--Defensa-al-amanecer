@@ -76,7 +76,7 @@ func _on_projectile_hit() :
 func check_carlitos_lore():
 	match contDamage:
 		1:
-			if !Dialogic.VAR.get_variable("Lore1"):
+			if !Dialogic.VAR.get_variable("Espanta.Lore1"):
 				Dialogic.start("lore_1")
 		10:
 			if !Dialogic.VAR.get_variable("Lore2"):
