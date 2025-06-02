@@ -116,7 +116,6 @@ radius = 22.7654
 [node name="cuervo" type="PathFollow2D" groups=["enemi"]]
 rotates = false
 script = ExtResource("1_bs70i")
-runSpeed = 0.03
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

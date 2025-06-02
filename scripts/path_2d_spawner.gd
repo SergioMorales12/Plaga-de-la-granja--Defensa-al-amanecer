@@ -24,7 +24,8 @@ func _ready() -> void:
 
 	
 	Dialogic.connect("signal_event", Callable(self, "_on_dialogic_signal"))
-
+	Dialogic.process_mode = Node.PROCESS_MODE_ALWAYS
+	
 	if Player:
 		Player._init_ui()
 		if Player.wave == null:
@@ -38,10 +39,15 @@ func _ready() -> void:
 func _on_dialogic_signal(argument:String):
 
 	if argument == "start_wave":
+		get_node("/root/Mapa").process_mode = Node.PROCESS_MODE_INHERIT
 		spawning = false
 		start_wave()
 	elif argument == "stop_wave":
 		spawning = true
+		get_node("/root/Mapa").process_mode = Node.PROCESS_MODE_DISABLED
+
+	elif argument == "pause":
+		get_node("/root/Mapa").process_mode = Node.PROCESS_MODE_DISABLED
 
 func start_wave() -> void:
 	if spawning:
@@ -123,8 +129,8 @@ func spawn_enemy_delayed(enemy_scene: PackedScene, wave: int, delay: float) -> v
 	
 	var enemy = enemy_scene.instantiate()
 	# Escalar estadísticas según la oleada
-	enemy.runSpeed += 0.002 * wave
-	enemy.live += 3 * wave
+	enemy.runSpeed += 0.0015 * wave
+	enemy.live += 2 * wave
 	enemy.reward += 2 * wave
 	
 	connect_enemy(enemy)

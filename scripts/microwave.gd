@@ -1,14 +1,13 @@
 extends Node2D
 
-@export var damage = 10
-@export var attack_interval := 0.5  
+@export var damage = 15
+@export var attack_interval := 0.6  
 @export var price: float = 900
 @export var escala: float = 1
 
 # Valores base para calcular mejoras
-var base_damage := 10
-var base_speed := 1500.0
-var base_attack_speed := 0.5
+var base_damage := 15
+var base_attack_speed := 0.6
 
 # Costes de mejoras
 var damage_upgrade_cost := 50

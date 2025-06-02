@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://cwtdmynui6cw8"]
+[gd_scene load_steps=38 format=4 uid="uid://cwtdmynui6cw8"]
 
 [ext_resource type="Texture2D" uid="uid://b7ng1525qaofi" path="res://asserts/map/Granja4.png" id="1_0skjy"]
 [ext_resource type="Texture2D" uid="uid://cgskpnle1ekd6" path="res://asserts/map/valla.png" id="1_hyyyu"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://dbdklhgw7wydd" path="res://asserts/towers/german-shephard-full-sprite-sheet-x300.png" id="3_csio4"]
 [ext_resource type="PackedScene" uid="uid://iopwhmejcr8b" path="res://addons/RadialMenu/RadialMenu.tscn" id="6_k7lwh"]
 [ext_resource type="Script" uid="uid://bbu42uj8krie2" path="res://scripts/path_2d_spawner.gd" id="7_vsp40"]
-[ext_resource type="PackedScene" uid="uid://8ds3mtkru1ti" path="res://scenes/towers/barril.tscn" id="10_66cqs"]
 [ext_resource type="PackedScene" uid="uid://dd7648vr35fwd" path="res://scenes/panel_torretas.tscn" id="11_k3j34"]
 [ext_resource type="FontFile" uid="uid://cuo0ktsc7a7mt" path="res://scenes/Tagesschrift-Regular.ttf" id="12_pu8w0"]
 [ext_resource type="PackedScene" uid="uid://dpvfu7eokceta" path="res://scenes/towers/microwave.tscn" id="13_2bj6j"]
@@ -2346,7 +2345,6 @@ tile_set = SubResource("TileSet_ar1rc")
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_y0em0")
 script = ExtResource("7_vsp40")
-spawner_time = 10.0
 
 [node name="UI" type="Timer" parent="Path2D"]
 one_shot = true
@@ -2365,9 +2363,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Microwave" parent="towers" instance=ExtResource("13_2bj6j")]
 position = Vector2(964, 504)
-
-[node name="Barril" parent="towers" instance=ExtResource("10_66cqs")]
-position = Vector2(433, 532)
 
 [node name="panel_torretas" parent="." instance=ExtResource("11_k3j34")]
 offset_left = 1792.0

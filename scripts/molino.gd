@@ -1,7 +1,7 @@
 extends Node2D
 
-@export var damage = 10
-@export var attack_interval := 1.0 
+@export var damage = 12
+@export var attack_interval := 1.2 
 @export var price: float = 700
 @export var escala: float = 0.5
 @export var speed_reduction := 0.01  
@@ -9,9 +9,9 @@ extends Node2D
 
 
 # Valores base para calcular mejoras
-var base_damage := 10
+var base_damage := 12
 var base_speed := 1500.0
-var base_attack_speed := 1.0
+var base_attack_speed := 1.2
 
 # Costes de mejoras
 var damage_upgrade_cost := 50
@@ -26,7 +26,7 @@ var refund = price * sell_refund_percent
 const MAX_DAMAGE_LEVEL := 10
 const MAX_SPEED_LEVEL := 8
 const MAX_SPECIAL_LEVEL := 7
-const MIN_ATTACK_INTERVAL := 0.15  # Límite mínimo para el intervalo de ataque
+const MIN_ATTACK_INTERVAL := 0.2  # Límite mínimo para el intervalo de ataque
 
 var enemigos = []
 var current_target = null
@@ -120,7 +120,7 @@ func upgrade_damage():
 		Player.player_gold -= cost
 		refund += cost * sell_refund_percent
 		upgrade_levels["damage"] += 1
-		damage = base_damage + (5 * upgrade_levels["damage"])
+		damage = base_damage + (4 * upgrade_levels["damage"])
 		update_menu_info()
 
 func upgrade_speed():
@@ -132,7 +132,7 @@ func upgrade_speed():
 		Player.player_gold -= cost
 		refund += cost * sell_refund_percent
 		upgrade_levels["speed"] += 1
-		var new_interval = base_attack_speed - (0.1 * upgrade_levels["speed"])
+		var new_interval = base_attack_speed - (0.08 * upgrade_levels["speed"])
 		attack_interval = max(MIN_ATTACK_INTERVAL, new_interval)
 		if attack_interval <= 0.0:
 			attack_interval = MIN_ATTACK_INTERVAL

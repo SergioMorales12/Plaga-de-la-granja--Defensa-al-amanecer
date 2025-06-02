@@ -61,7 +61,14 @@ directories/dtl_directory={
 glossary/default_case_sensitive=true
 layout/style_list=["res://dialogos/Characters/New_File.tres"]
 layout/default_style="res://dialogos/Characters/New_File.tres"
-variables={}
+variables={
+"Espanta": {
+"Lore1": false,
+"Lore2": false,
+"Lore3": false,
+"Lore4": false
+}
+}
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=true

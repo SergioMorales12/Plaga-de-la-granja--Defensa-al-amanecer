@@ -3,12 +3,12 @@ extends Node2D
 @export var damage = 50
 @export var bulletSpeed := 1500.0
 @export var bulletPierce := 1
-@export var attack_interval := 2.0  
+@export var attack_interval := 1.8  
 @export var price: float = 800
 @export var escala: float = 0.8
 
 # Valores base para calcular mejoras
-var base_damage := 50
+var base_damage := 60
 var base_speed := 1500.0
 var base_attack_speed := 2.0
 
@@ -25,7 +25,7 @@ var refund = price * sell_refund_percent
 const MAX_DAMAGE_LEVEL := 10
 const MAX_SPEED_LEVEL := 8
 const MAX_SPECIAL_LEVEL := 7
-const MIN_ATTACK_INTERVAL := 0.15  # Límite mínimo para el intervalo de ataque
+const MIN_ATTACK_INTERVAL := 0.2  # Límite mínimo para el intervalo de ataque
 
 var enemigos = []
 var current_target = null
@@ -136,7 +136,7 @@ func upgrade_damage():
 		Player.player_gold -= cost
 		refund += cost * sell_refund_percent
 		upgrade_levels["damage"] += 1
-		damage = base_damage + (5 * upgrade_levels["damage"])
+		damage = base_damage + (6 * upgrade_levels["damage"])
 		update_menu_info()
 
 func upgrade_speed():
@@ -148,7 +148,7 @@ func upgrade_speed():
 		Player.player_gold -= cost
 		refund += cost * sell_refund_percent
 		upgrade_levels["speed"] += 1
-		var new_interval = base_attack_speed - (0.2 * upgrade_levels["speed"])
+		var new_interval = base_attack_speed - (0.15 * upgrade_levels["speed"])
 		attack_interval = max(MIN_ATTACK_INTERVAL, new_interval)
 		if attack_interval <= 0.0:
 			attack_interval = MIN_ATTACK_INTERVAL
@@ -165,7 +165,7 @@ func upgrade_special():
 		Player.player_gold -= cost
 		refund += cost * sell_refund_percent
 		upgrade_levels["special"] += 1
-		bulletSpeed += 250
+		bulletSpeed += 200
 		update_menu_info()
 
 func sell_tower():

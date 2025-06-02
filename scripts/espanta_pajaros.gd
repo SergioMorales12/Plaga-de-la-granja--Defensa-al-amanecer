@@ -1,9 +1,9 @@
 extends Node2D
 
-@export var damage = 10
+@export var damage = 12
 @export var bulletSpeed := 2000.0
 @export var bulletPierce := 1
-@export var attack_interval := 1.0
+@export var attack_interval := 1.2
 @export var price: float = 500
 @export var escala: float = 1
 
@@ -13,7 +13,7 @@ var contDamage = 0
 # Valores base para calcular mejoras
 var base_damage := 10
 var base_speed := 2000.0
-var base_attack_speed := 1.0
+var base_attack_speed := 1.2
 
 # Costes de mejoras
 var damage_upgrade_cost := 50
@@ -28,7 +28,7 @@ var refund = price * sell_refund_percent
 const MAX_DAMAGE_LEVEL := 10
 const MAX_SPEED_LEVEL := 8
 const MAX_SPECIAL_LEVEL := 7
-const MIN_ATTACK_INTERVAL := 0.15  # Límite mínimo para el intervalo de ataque
+const MIN_ATTACK_INTERVAL := 0.2  # Límite mínimo para el intervalo de ataque
 
 var enemigos = []
 var current_target = null
@@ -75,14 +75,18 @@ func _on_projectile_hit() :
 
 func check_carlitos_lore():
 	match contDamage:
-		50:
-			Dialogic.start("lore_1")
-		150:
-			Dialogic.start("lore_2")
+		1:
+			if !Dialogic.VAR.get_variable("Lore1"):
+				Dialogic.start("lore_1")
+		10:
+			if !Dialogic.VAR.get_variable("Lore2"):
+				Dialogic.start("lore_2")
 		300:
-			Dialogic.start("lore_3")
+			if !Dialogic.VAR.get_variable("Lore3"):
+				Dialogic.start("lore_3")
 		500:
-			Dialogic.start("lore_4")
+			if !Dialogic.VAR.get_variable("Lore4"):
+				Dialogic.start("lore_4")
 		800:
 			print("Carlitos: No puedo callar más... ¡Él PROVOCÓ el apocalipsis!")
 		_:
@@ -149,7 +153,7 @@ func upgrade_damage():
 		Player.player_gold -= cost
 		refund += cost * sell_refund_percent
 		upgrade_levels["damage"] += 1
-		damage = base_damage + (5 * upgrade_levels["damage"])
+		damage = base_damage + (4 * upgrade_levels["damage"])
 		update_menu_info()
 
 func upgrade_speed():
@@ -161,7 +165,7 @@ func upgrade_speed():
 		Player.player_gold -= cost
 		refund += cost * sell_refund_percent
 		upgrade_levels["speed"] += 1
-		attack_interval = max(MIN_ATTACK_INTERVAL, base_attack_speed - (0.1 * upgrade_levels["speed"]))
+		attack_interval = max(MIN_ATTACK_INTERVAL, base_attack_speed - (0.08 * upgrade_levels["speed"]))
 		$attack_timer.wait_time = attack_interval
 		update_menu_info()
 
@@ -175,7 +179,7 @@ func upgrade_special():
 		refund += cost * sell_refund_percent
 		upgrade_levels["special"] += 1
 		bulletPierce +=1
-		bulletSpeed += 350
+		bulletSpeed += 300
 		update_menu_info()
 
 func sell_tower():

@@ -1,8 +1,14 @@
-"Carlitos": Crrk... Yo... laboratorio...
+[signal arg="stop_wave"]
+[signal arg="pause"]
+set {Espanta.Lore1} = true
+Carlitos: Crrk... Yo... laboratorio...
 label decision_1
 - ¿Laboratorio?
 	jump lore_2
 - Tú estás mal de la cabeza.
 "Granjero Loco": Es un espantapájaros, no un científico. ¡Debe tener heno húmedo!
 label lore_2
-:Carlitos: Tú... eras mi jefe... allá abajo.
+Carlitos: Tú... eras mi jefe... allá abajo.
+[signal arg="pause"]
+
+[signal arg="start_wave"]

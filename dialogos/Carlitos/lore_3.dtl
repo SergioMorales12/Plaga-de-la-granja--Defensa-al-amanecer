@@ -1,3 +1,4 @@
+[signal arg="stop_wave"]
 "Carlitos": ¡El fin no fue un accidente!
 label decision_3
 - ¿De qué hablas?
@@ -9,3 +10,4 @@ label lore_4
 "Granjero Loco": ¡Este muñeco necesita reinicio! ¡¡YAAAA!!
 "Granjero Loco": Bueno tu no te preocupes que ya me encargare de el...
 - ....
+[signal arg="start_wave"]
