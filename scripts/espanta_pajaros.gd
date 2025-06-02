@@ -42,6 +42,8 @@ var upgrade_levels = {
 signal tower_sold(position)
 
 func _ready():
+	Dialogic.connect("signal_event", Callable(self, "_on_dialogic_signal"))
+
 	# Inicializar valores
 	$attack_timer.wait_time = attack_interval
 	# Conectar señales del menú si existe
@@ -75,22 +77,20 @@ func _on_projectile_hit() :
 
 func check_carlitos_lore():
 	match contDamage:
-		1:
+		50:
 			if !Dialogic.VAR.get_variable("Espanta.Lore1"):
 				Dialogic.start("lore_1")
-		10:
-			if !Dialogic.VAR.get_variable("Lore2"):
+		150:
+			if !Dialogic.VAR.get_variable("Espanta.Lore2"):
 				Dialogic.start("lore_2")
 		300:
-			if !Dialogic.VAR.get_variable("Lore3"):
+			if !Dialogic.VAR.get_variable("Espanta.Lore3"):
 				Dialogic.start("lore_3")
-		500:
-			if !Dialogic.VAR.get_variable("Lore4"):
+		1:
+			if !Dialogic.VAR.get_variable("Espanta.Lore4"):
 				Dialogic.start("lore_4")
-		800:
-			print("Carlitos: No puedo callar más... ¡Él PROVOCÓ el apocalipsis!")
 		_:
-			pass  # Para cualquier otro valor, no hace nada
+			pass  
 
 
 func _on_attack_timer_timeout():
@@ -198,3 +198,16 @@ func get_save_data() -> Dictionary:
 		"upgrade_levels": upgrade_levels,
 		"attack_interval": attack_interval
 	}
+
+func _on_dialogic_signal(argument: String) -> void:
+	if argument == "CarlitosFinal":
+		print("FINAAAAAAAL")
+		$AnimatedSprite2D.stop()
+		$AnimatedSprite2D.play("final")
+	
+
+
+func _on_animation_finished() -> void:
+	if $AnimatedSprite2D.animation == "final":
+		print("qewqew")
+		sell_tower()

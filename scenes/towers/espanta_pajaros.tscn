@@ -1,9 +1,21 @@
-[gd_scene load_steps=13 format=3 uid="uid://7m3yc8kjlxrr"]
+[gd_scene load_steps=25 format=3 uid="uid://7m3yc8kjlxrr"]
 
 [ext_resource type="Script" uid="uid://cppao04d7npjb" path="res://scripts/espanta_pajaros.gd" id="1_5lbkk"]
 [ext_resource type="Texture2D" uid="uid://e7xocg6dxhxe" path="res://asserts/towers/espantapajaros.png" id="2_y8ytr"]
+[ext_resource type="Texture2D" uid="uid://cb3rrfpe74a8o" path="res://asserts/Explosions/Green/frame0000.png" id="3_saof1"]
 [ext_resource type="Texture2D" uid="uid://d7xekmuhb61m" path="res://asserts/towers/espantapajaroATQ.png" id="3_y8ytr"]
+[ext_resource type="Texture2D" uid="uid://b3fi5crduaprr" path="res://asserts/Explosions/Green/frame0001.png" id="4_17akr"]
 [ext_resource type="PackedScene" uid="uid://dcjjhcghuk7ss" path="res://scenes/turret_menu.tscn" id="4_ee8iy"]
+[ext_resource type="Texture2D" uid="uid://xbeplngytcml" path="res://asserts/Explosions/Green/frame0002.png" id="5_xgnbh"]
+[ext_resource type="Texture2D" uid="uid://bfkb3gdn7e2k0" path="res://asserts/Explosions/Green/frame0003.png" id="6_n36cr"]
+[ext_resource type="Texture2D" uid="uid://o65vulixfq1k" path="res://asserts/Explosions/Green/frame0004.png" id="7_k11os"]
+[ext_resource type="Texture2D" uid="uid://dauv4nd60v86n" path="res://asserts/Explosions/Green/frame0005.png" id="8_hqjls"]
+[ext_resource type="Texture2D" uid="uid://bk8a0wfao6s2l" path="res://asserts/Explosions/Green/frame0006.png" id="9_tmiy8"]
+[ext_resource type="Texture2D" uid="uid://cxmtda5mcu1eb" path="res://asserts/Explosions/Green/frame0007.png" id="10_nx45j"]
+[ext_resource type="Texture2D" uid="uid://cdbwsywvbep2s" path="res://asserts/Explosions/Green/frame0008.png" id="11_r76bc"]
+[ext_resource type="Texture2D" uid="uid://bou4vmyhu3qmy" path="res://asserts/Explosions/Green/frame0009.png" id="12_h7qed"]
+[ext_resource type="Texture2D" uid="uid://by0lvgjbgibhx" path="res://asserts/Explosions/Green/frame0010.png" id="13_0wrcf"]
+[ext_resource type="Texture2D" uid="uid://5m4dugjuj8p1" path="res://asserts/Explosions/Green/frame0011.png" id="14_flvx5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ee8iy"]
 atlas = ExtResource("3_y8ytr")
@@ -39,6 +51,47 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("3_saof1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_17akr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xgnbh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_n36cr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_k11os")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_hqjls")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tmiy8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_nx45j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_r76bc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_h7qed")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_0wrcf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_flvx5")
+}],
+"loop": false,
+"name": &"final",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_y8ytr")
 }],
 "loop": true,
@@ -66,9 +119,10 @@ script = ExtResource("1_5lbkk")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.844, 1.734)
 sprite_frames = SubResource("SpriteFrames_jd46h")
-animation = &"sleep"
+animation = &"final"
 autoplay = "sleep"
-frame_progress = 0.583199
+frame = 11
+frame_progress = 1.0
 
 [node name="colision" type="Area2D" parent="." groups=["towers"]]
 
@@ -97,6 +151,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_y8ytr")
 
 [node name="TurretMenu" parent="." instance=ExtResource("4_ee8iy")]
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]
 [connection signal="input_event" from="colision" to="." method="_on_input_event"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]

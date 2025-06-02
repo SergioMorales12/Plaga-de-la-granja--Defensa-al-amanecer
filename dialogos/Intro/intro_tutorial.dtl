@@ -2,6 +2,10 @@
 "Granjero Loco": ¿Lo hueles? ¡Es el dulce aroma del fin del mundo... y del estiércol fresco! ¡Ajá!
 
 - ¿Dónde estoy...?
+- SKIP
+	[signal arg="start_wave"]
+	[end_timeline]
+
 
 "Granjero Loco": En mi granja. La última línea de defensa entre la humanidad... y la mierda mutante.
 
@@ -28,13 +32,13 @@
 
 "Granjero Loco": Era mi suegro. Nunca me dejó tocar su tractor... así que lo inmortalicé como uno. Literal. ¡Ahora él *es* el arma!
 
-"Granjero Loco": Mira a la derecha. Ese panel lleno de cacharros y cosas brillantes no es decoración: son tus herramientas de destrucción rural.
+"Granjero Loco": Mira a la derecha. Ese panel lleno de cacharros y cosas brillantes no es decoración\: son tus herramientas de destrucción rural.
 
 "Granjero Loco": Agarra la torre que te guste y arrástrala con cariño hasta el terreno. Pero ojo, sin obstáculos, ¿eh? ¡Nada de poner torres encima del gallinero!
 
 "Granjero Loco": Y si ves un espacio libre, ¡ahí es donde la magia sucede!
 
-"Granjero Loco": También te dejé un viejo molino... sí, ese que chirría más que mi espalda. 
+"Granjero Loco": También te dejé un viejo molino... sí, ese que chirría más que mi espalda.
 "Granjero Loco": No parece mucho, pero ralentiza a los bichos y les raspa un poco los huesos con cada vuelta. ¡Tecnología vintage, le dicen!
 "Granjero Loco": Yo mientras me echo una siesta breve de... unas seis horas. Tu función es defender la granja.
 
@@ -45,6 +49,6 @@
 - ¿¡PERO QUÉ ESTÁ PASANDO!?
 
 # start_wave
-"Granjero Loco": Vienen ratas, cuervos, escorpiones, políticos... ¡Agarra lo que encuentres, apunta bien y prepárate! 
+"Granjero Loco": Vienen ratas, cuervos, escorpiones, políticos... ¡Agarra lo que encuentres, apunta bien y prepárate!
 "Granjero Loco": Si no los detenemos, lo próximo que se llevan es a Carlitos. ¡Y todavía me debe un potáje!
 [signal arg="start_wave"]
