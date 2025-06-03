@@ -3,7 +3,7 @@ extends PathFollow2D
 var dificulty = Player.dificulty
 signal enemy_died
 
-@export var runSpeed = 0.003
+@export var runSpeed = 0.01
 @export var damage = 100000000000  
 @export var live = 11000
 @export var reward = 10000
@@ -60,7 +60,12 @@ func get_damage(amount: float):
 		animated_sprite.stop()
 		Player.add_player_gold(reward)
 		emit_signal("enemy_died")
-		$Timer.start()
+		$AnimatedSprite2D.play("die")
 
 func _on_timeout() -> void:
+	queue_free()
+
+
+
+func _on_animation_finished() -> void:
 	queue_free()

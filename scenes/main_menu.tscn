@@ -77,5 +77,3 @@ switch_on_hover = true
 
 [connection signal="pressed" from="Buttons/VBoxContainer/startButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Buttons/VBoxContainer/exitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="about_to_popup" from="Buttons/VBoxContainer/MenuButton" to="." method="_on_menu_button_id_pressed"]
-[connection signal="pressed" from="Buttons/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]

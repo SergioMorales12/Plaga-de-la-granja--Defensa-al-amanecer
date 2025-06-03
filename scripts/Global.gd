@@ -4,6 +4,56 @@ var FILE_PATH := "res://Games/save_games.json"
 var map_select_container: Node2D
 var current_scene_path: String = ""
 var current_save_name: String
+var game_data = {
+	"partida1": {
+		"current_day": 1.0,
+		"player_gold": 100000.0,
+		"player_life": 100.0,
+		"dificulty":1,
+		"timestamp": "2025-06-03T11:41:45",
+		"towers": [
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(964.0, 504.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			}
+		],
+		"unlocked_towers": [
+			"espantapajaros",
+			"molino"
+		]
+	},
+	"partida_2869": {
+		"current_day": 100.0,
+		"player_gold": 100000.0,
+		"player_life": 100.0,
+		"dificulty":1,
+		"timestamp": "2025-06-03T11:59:33",
+		"towers": [
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(964.0, 504.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			}
+		],
+		"unlocked_towers": [
+			"espantapajaros",
+			"molino"
+		]
+	}
+}
 
 func change_scene(new_scene_path: String) -> void:
 	current_scene_path = new_scene_path
@@ -42,6 +92,7 @@ func save_game_named(name: String):
 		"player_gold": Player.player_gold,
 		"player_life": Player.player_life,
 		"unlocked_towers": Player.unlocked_towers,
+		"dificulty":Player.dificulty,
 		"current_day": Player.wave,
 		"timestamp": Time.get_datetime_string_from_system()
 	}
