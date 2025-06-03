@@ -1,5 +1,9 @@
 extends Control
 
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS  
+
+
 func _on_start_pressed() -> void:
 	if login_correct():
 		Global.change_scene("res://scenes/main_menu.tscn")

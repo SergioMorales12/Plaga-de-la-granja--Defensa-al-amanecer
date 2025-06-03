@@ -1,1 +1,71 @@
-{}
+{
+	"": {
+		"current_day": 100.0,
+		"player_gold": 100000.0,
+		"player_life": 100.0,
+		"timestamp": "2025-06-03T12:00:45",
+		"towers": [
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(964.0, 504.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			}
+		],
+		"unlocked_towers": [
+			"espantapajaros",
+			"molino"
+		]
+	},
+	"partida1": {
+		"current_day": 100.0,
+		"player_gold": 100000.0,
+		"player_life": 100.0,
+		"timestamp": "2025-06-03T11:41:45",
+		"towers": [
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(964.0, 504.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			}
+		],
+		"unlocked_towers": [
+			"espantapajaros",
+			"molino"
+		]
+	},
+	"partida_2869": {
+		"current_day": 100.0,
+		"player_gold": 100000.0,
+		"player_life": 100.0,
+		"timestamp": "2025-06-03T11:59:33",
+		"towers": [
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(964.0, 504.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			}
+		],
+		"unlocked_towers": [
+			"espantapajaros",
+			"molino"
+		]
+	}
+}

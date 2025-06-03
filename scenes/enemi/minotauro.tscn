@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://caailrmb0thwc"]
+[gd_scene load_steps=27 format=3 uid="uid://caailrmb0thwc"]
 
 [ext_resource type="Script" uid="uid://c8ru3gj6rg56u" path="res://scripts/minotauro.gd" id="1_bxudy"]
 [ext_resource type="Texture2D" uid="uid://b50rs8j4jqeph" path="res://asserts/enemy/Boss/mino_v1.1_free/mino_v1.1_free/animations/walk/walk_1.png" id="2_5ness"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://b23uddvcby73h" path="res://asserts/Explosions/Red/frame0009.png" id="11_eawqq"]
 [ext_resource type="Texture2D" uid="uid://bj1tn74ryhw6x" path="res://asserts/enemy/Boss/mino_v1.1_free/mino_v1.1_free/animations/walk/walk_11.png" id="12_7wr72"]
 [ext_resource type="Texture2D" uid="uid://c35docfcg7bqw" path="res://asserts/enemy/Boss/mino_v1.1_free/mino_v1.1_free/animations/walk/walk_12.png" id="13_e0ay5"]
+[ext_resource type="Theme" uid="uid://bmf31mho1mjjt" path="res://scenes/UII/Sprout-Lands-UI-0.2.0/Sprout-Lands-UI-0.2.0/addons/sprout_lands_ui/content/sprout_lands_theme.tres" id="24_7wr72"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_570fk"]
 animations = [{
@@ -104,27 +105,37 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2iece"]
-radius = 113.0
-height = 246.0
+radius = 48.0
+height = 96.0
 
 [node name="Minotauro" type="PathFollow2D" groups=["enemi"]]
+z_index = 1
+texture_filter = 1
 rotates = false
 script = ExtResource("1_bxudy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(6, -19)
+position = Vector2(0, -63)
 sprite_frames = SubResource("SpriteFrames_570fk")
 animation = &"walk"
 autoplay = "walk"
-frame_progress = 0.0658501
+frame_progress = 0.751716
 
 [node name="Area2D" type="Area2D" parent="." groups=["enemi"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 1)
+position = Vector2(-4, -38)
 shape = SubResource("CapsuleShape2D_2iece")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.7
 one_shot = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -41.0
+offset_top = -94.0
+offset_right = 39.0
+offset_bottom = -89.0
+theme = ExtResource("24_7wr72")
+show_percentage = false

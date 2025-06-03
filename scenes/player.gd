@@ -2,9 +2,10 @@ extends Node
 
 # Variables del jugador
 var player_life = 100
-var player_gold = 10000
-var wave = 1
+var player_gold = 100000
+var wave = 100
 var dificulty = 1
+var unlocked_towers: Array[String] 
 var info : Dictionary
 
 # Referencias UI

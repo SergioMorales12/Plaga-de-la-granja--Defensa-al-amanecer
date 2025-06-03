@@ -14,6 +14,8 @@ var direction: String = "right"
 
 func _ready():
 	previous_position = global_position
+	$ProgressBar.max_value = live
+	$ProgressBar.value = live
 
 func _process(delta: float) -> void:
 	if is_dead:
@@ -50,7 +52,7 @@ func get_direction() -> String:
 
 func get_damage(amount: float):
 	live -= amount
-	print(live)
+	$ProgressBar.value -= amount
 	var animated_sprite = $AnimatedSprite2D
 	
 	if live <= 0:

@@ -23,17 +23,17 @@ func toggle_pause():
 func _on_replay_pressed() -> void:
 	toggle_pause()
 	
-func _on_settings_pressed() -> void:
-	toggle_pause()  
 
 func _on_save_pressed() -> void:
-	if Player :
-		Player.save_game()
+	if Global :
+		Global.save_game_named("")
 
 
 func _on_restart_pressed() -> void:
+	toggle_pause()
 	Global.restart_map()
 
 
 func _on_main_menu_pressed() -> void:
+	toggle_pause()
 	Global.change_scene("res://scenes/main_menu.tscn")

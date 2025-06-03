@@ -112,15 +112,3 @@ func isTower(towers: Node):
 		if area.is_in_group("towers"):
 			return false
 	return true
-
-func _on_settings_pressed() -> void:
-	Pause.toggle_pause()
-	#Input.action_press("pause")
-	
-
-
-func _on_x_2_toggled(button_pressed: bool) -> void:
-	if button_pressed:
-		Engine.time_scale = 2.0
-	else:
-		Engine.time_scale = 1.0

@@ -43,7 +43,6 @@ signal tower_sold(position)
 
 func _ready():
 	Dialogic.connect("signal_event", Callable(self, "_on_dialogic_signal"))
-
 	# Inicializar valores
 	$attack_timer.wait_time = attack_interval
 	# Conectar señales del menú si existe
@@ -201,7 +200,6 @@ func get_save_data() -> Dictionary:
 
 func _on_dialogic_signal(argument: String) -> void:
 	if argument == "CarlitosFinal" and !is_preview:
-		print("FINAAAAAAAL")
 		$AnimatedSprite2D.visible = false
 		$Sprite2D.visible = true
 		$Sprite2D.play("final")
@@ -210,5 +208,4 @@ func _on_dialogic_signal(argument: String) -> void:
 
 func _on_animation_finished() -> void:
 	if $Sprite2D.animation == "final":
-		print("qewqew")
 		sell_tower()

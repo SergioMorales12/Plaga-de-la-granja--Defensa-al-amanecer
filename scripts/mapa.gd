@@ -8,6 +8,9 @@ var special_wave_dialogs := {
 	33:"como_33",
 	40:"lore_planta"
 }
+func _ready():
+	if Global.current_save_name != "":
+		Global.save_game_named(Global.current_save_name)
 
 
 func play_wave_dialog(current_wave: int) -> void:

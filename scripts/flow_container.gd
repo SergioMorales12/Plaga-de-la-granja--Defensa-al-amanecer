@@ -11,10 +11,11 @@ extends FlowContainer
 @export var initially_unlocked: Array[String] = ["espantapajaros", "molino"]
 
 var panel_scene = preload("res://scenes/panel.tscn")
-var tower_panels: Dictionary = {}  # Almacena referencia a los paneles creados
+var tower_panels: Dictionary = {}  
 
 func _ready() -> void:
 	Dialogic.connect("signal_event", Callable(self, "_on_dialogic_signal"))
+	Player.unlocked_towers = initially_unlocked
 	create_initial_panels()
 
 func create_initial_panels():
@@ -37,9 +38,10 @@ func create_tower_panel(tower_name: String, tower_scene: PackedScene):
 	add_child(new_panel)
 
 func unlock_tower(tower_name: String):
+	Player.unlocked_towers.append(tower_name)
 	if towers_to_add.has(tower_name) and not tower_panels.has(tower_name):
 		create_tower_panel(tower_name, towers_to_add[tower_name])
-		# Opcional: animación o efecto al desbloquear
+		
 		if tower_panels[tower_name].has_method("play_unlock_effect"):
 			tower_panels[tower_name].play_unlock_effect()
 
