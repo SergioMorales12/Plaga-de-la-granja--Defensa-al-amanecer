@@ -38,6 +38,14 @@ var upgrade_levels = {
 	"speed": 0,
 	"special": 0
 }
+
+var lore_progress = {
+	"lore1_unlocked": Dialogic.VAR.get_variable("Espanta.Lore1"),
+	"lore2_unlocked": Dialogic.VAR.get_variable("Espanta.Lore2"),
+	"lore3_unlocked": Dialogic.VAR.get_variable("Espanta.Lore3"),
+	"lore4_unlocked": Dialogic.VAR.get_variable("Espanta.Lore4")
+}
+
 var is_preview = false
 signal tower_sold(position)
 
@@ -76,7 +84,7 @@ func _on_projectile_hit() :
 
 func check_carlitos_lore():
 	match contDamage:
-		50:
+		1:
 			if !Dialogic.VAR.get_variable("Espanta.Lore1"):
 				Dialogic.start("lore_1")
 		150:
@@ -194,9 +202,45 @@ func get_save_data() -> Dictionary:
 		"position": position,
 		"damage": damage,
 		"bulletSpeed": bulletSpeed,
+		"contDamage": contDamage,
 		"upgrade_levels": upgrade_levels,
-		"attack_interval": attack_interval
+		"attack_interval": attack_interval,
+		"lore_progress": lore_progress
 	}
+func load_save_data(data: Dictionary) -> void:
+	if data.has("position"):
+		var pos = data["position"]
+		if typeof(pos) == TYPE_STRING:
+			var cleaned = pos.replace("(", "").replace(")", "")
+			var parts = cleaned.split(",")
+			if parts.size() == 2:
+				position = Vector2(parts[0].to_float(), parts[1].to_float())
+		elif typeof(pos) == TYPE_VECTOR2:
+			position = pos
+	
+	if data.has("damage"):
+		damage = data["damage"]
+	
+	if data.has("bulletSpeed"):
+		bulletSpeed = data["bulletSpeed"]
+	
+	if data.has("attack_interval"):
+		attack_interval = data["attack_interval"]
+	
+	if data.has("upgrade_levels"):
+		upgrade_levels = data["upgrade_levels"].duplicate()
+	
+	if data.has("contDamage"):
+		contDamage = data["contDamage"]
+	
+	if data.has("lore_progress"):
+		lore_progress = data["lore_progress"]
+		# Sincroniza las variables de Dialogic
+		Dialogic.VAR.set_variable("Espanta.Lore1", lore_progress["lore1_unlocked"])
+		Dialogic.VAR.set_variable("Espanta.Lore2", lore_progress["lore2_unlocked"])
+		Dialogic.VAR.set_variable("Espanta.Lore3", lore_progress["lore3_unlocked"])
+		Dialogic.VAR.set_variable("Espanta.Lore4", lore_progress["lore4_unlocked"])
+
 
 func _on_dialogic_signal(argument: String) -> void:
 	if argument == "CarlitosFinal" and !is_preview:

@@ -169,3 +169,22 @@ func get_save_data() -> Dictionary:
 		"upgrade_levels": upgrade_levels,
 		"attack_interval": attack_interval
 	}
+
+func load_save_data(data: Dictionary) -> void:
+	if data.has("position"):
+		var pos = data["position"]
+		if typeof(pos) == TYPE_STRING:
+			var cleaned = pos.replace("(", "").replace(")", "")
+			var parts = cleaned.split(",")
+			if parts.size() == 2:
+				position = Vector2(parts[0].to_float(), parts[1].to_float())
+		elif typeof(pos) == TYPE_VECTOR2:
+			position = pos
+	if data.has("damage"):
+		damage = data["damage"]
+	
+	if data.has("attack_interval"):
+		attack_interval = data["attack_interval"]
+	
+	if data.has("upgrade_levels"):
+		upgrade_levels = data["upgrade_levels"].duplicate()

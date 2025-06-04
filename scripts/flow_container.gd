@@ -8,14 +8,16 @@ extends FlowContainer
 	"plant": preload("res://scenes/towers/plant.tscn")
 }
 
-@export var initially_unlocked: Array[String] = ["espantapajaros", "molino"]
+@export var initially_unlocked: Array = ["espantapajaros", "molino"]
 
 var panel_scene = preload("res://scenes/panel.tscn")
 var tower_panels: Dictionary = {}  
 
 func _ready() -> void:
 	Dialogic.connect("signal_event", Callable(self, "_on_dialogic_signal"))
-	Player.unlocked_towers = initially_unlocked
+	# Espera a que Player esté inicializado
+	await get_tree().process_frame
+	initially_unlocked = Player.unlocked_towers.duplicate() as Array[String]	
 	create_initial_panels()
 
 func create_initial_panels():

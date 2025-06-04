@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 var game_paused: bool = false
+var game_name = Global.current_save_name
 
 func _ready():
 	visible = false
@@ -26,7 +27,7 @@ func _on_replay_pressed() -> void:
 
 func _on_save_pressed() -> void:
 	if Global :
-		Global.save_game_named("")
+		Global.save_game_named(game_name)
 
 
 func _on_restart_pressed() -> void:

@@ -1,9 +1,10 @@
 {
 	"": {
-		"current_day": 100.0,
-		"player_gold": 100000.0,
-		"player_life": 100.0,
-		"timestamp": "2025-06-03T12:00:45",
+		"current_day": 19,
+		"dificulty": 1.0,
+		"player_gold": 10384,
+		"player_life": 100,
+		"timestamp": "2025-06-04T14:14:45",
 		"towers": [
 			{
 				"attack_interval": 1.0,
@@ -15,18 +16,74 @@
 					"special": 0.0,
 					"speed": 0.0
 				}
+			},
+			{
+				"attack_interval": 0.56,
+				"bulletSpeed": 4100.0,
+				"damage": 1000.0,
+				"lore_progress": {
+					"lore1_unlocked": false,
+					"lore2_unlocked": false,
+					"lore3_unlocked": false,
+					"lore4_unlocked": false
+				},
+				"position": "(274.0, 497.0)",
+				"scene_path": "res://scenes/towers/espanta_pajaros.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 7.0,
+					"speed": 8.0
+				}
+			},
+			{
+				"attack_interval": 1.2,
+				"damage": 12.0,
+				"position": "(212.0, 663.0)",
+				"scene_path": "res://scenes/towers/molino.tscn",
+				"speed_reduction": 0.01,
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.2,
+				"damage": 12,
+				"position": "(396.0, 449.0)",
+				"scene_path": "res://scenes/towers/molino.tscn",
+				"speed_reduction": 0.045,
+				"upgrade_levels": {
+					"damage": 0,
+					"special": 7,
+					"speed": 0
+				}
+			},
+			{
+				"attack_interval": 1.2,
+				"damage": 12,
+				"position": "(521.0, 425.0)",
+				"scene_path": "res://scenes/towers/molino.tscn",
+				"speed_reduction": 0.045,
+				"upgrade_levels": {
+					"damage": 0,
+					"special": 7,
+					"speed": 0
+				}
 			}
 		],
 		"unlocked_towers": [
 			"espantapajaros",
-			"molino"
+			"molino",
+			"barril"
 		]
 	},
 	"partida1": {
 		"current_day": 100.0,
+		"dificulty": 1.0,
 		"player_gold": 100000.0,
 		"player_life": 100.0,
-		"timestamp": "2025-06-03T11:41:45",
+		"timestamp": "2025-06-04T11:33:34",
 		"towers": [
 			{
 				"attack_interval": 1.0,
@@ -45,17 +102,78 @@
 			"molino"
 		]
 	},
-	"partida_2869": {
-		"current_day": 100.0,
-		"player_gold": 100000.0,
+	"partida_7944": {
+		"current_day": 1.0,
+		"dificulty": 1.0,
+		"player_gold": 2000.0,
 		"player_life": 100.0,
-		"timestamp": "2025-06-03T11:59:33",
+		"timestamp": "2025-06-04T11:05:45",
 		"towers": [
 			{
 				"attack_interval": 1.0,
 				"damage": 100.0,
 				"position": "(964.0, 504.0)",
 				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			}
+		],
+		"unlocked_towers": [
+			"espantapajaros",
+			"molino"
+		]
+	},
+	"partida_8957": {
+		"current_day": 1.0,
+		"dificulty": 1.0,
+		"player_gold": 1416.0,
+		"player_life": 100.0,
+		"timestamp": "2025-06-04T14:09:33",
+		"towers": [
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(964.0, 504.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.2,
+				"bulletSpeed": 2000.0,
+				"damage": 1000.0,
+				"lore_progress": {
+					"lore1_unlocked": false,
+					"lore2_unlocked": false,
+					"lore3_unlocked": false,
+					"lore4_unlocked": false
+				},
+				"position": "(274.0, 497.0)",
+				"scene_path": "res://scenes/towers/espanta_pajaros.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.2,
+				"bulletSpeed": 2000.0,
+				"damage": 1000.0,
+				"lore_progress": {
+					"lore1_unlocked": true,
+					"lore2_unlocked": false,
+					"lore3_unlocked": false,
+					"lore4_unlocked": false
+				},
+				"position": "(605.0, 435.0)",
+				"scene_path": "res://scenes/towers/espanta_pajaros.tscn",
 				"upgrade_levels": {
 					"damage": 0.0,
 					"special": 0.0,
