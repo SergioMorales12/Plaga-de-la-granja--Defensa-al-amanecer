@@ -21,6 +21,7 @@ Global="*res://scripts/Global.gd"
 Player="*res://scenes/player.gd"
 Pause="*res://scripts/pause.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
 
 [dialogic]
 
@@ -102,6 +103,13 @@ audio/channel_defaults={
 "volume": 0.0
 }
 }
+history/simple_history_enabled=false
+translation/enabled=false
+translation/original_locale="es"
+translation/file_mode=1
+translation/translation_folder=""
+translation/save_mode=0
+translation/add_separator=false
 
 [display]
 
@@ -119,7 +127,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/godot-firebase/plugin.cfg")
 
 [global_group]
 
@@ -143,3 +151,7 @@ dialogic_default_action={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
 ]
 }
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true

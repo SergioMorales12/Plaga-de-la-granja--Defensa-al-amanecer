@@ -9,9 +9,9 @@ var current_save_name: String
 
 func change_scene(new_scene_path: String) -> void:
 	current_scene_path = new_scene_path
-	get_tree().change_scene_to_file(new_scene_path)
-	await get_tree().process_frame  
+	get_tree().call_deferred("change_scene_to_file", new_scene_path)
 	print(current_scene_path)
+
 
 
 func restart_map() -> void:

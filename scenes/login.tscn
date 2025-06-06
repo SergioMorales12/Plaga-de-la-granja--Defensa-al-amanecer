@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjhcgxlnpqflw"]
+[gd_scene load_steps=7 format=3 uid="uid://bjhcgxlnpqflw"]
 
 [ext_resource type="Script" uid="uid://bw1bt64fnfi2k" path="res://scripts/login.gd" id="1_nw41r"]
 [ext_resource type="Texture2D" uid="uid://d18p0tafiraip" path="res://asserts/ui/fondo.png" id="2_cs5o2"]
 [ext_resource type="FontFile" uid="uid://bsj04qcskhcmu" path="res://asserts/ui/Tagesschrift-Regular.ttf" id="3_47b6t"]
 [ext_resource type="Theme" uid="uid://bmf31mho1mjjt" path="res://scenes/UII/Sprout-Lands-UI-0.2.0/Sprout-Lands-UI-0.2.0/addons/sprout_lands_ui/content/sprout_lands_theme.tres" id="4_r3fp8"]
+[ext_resource type="AudioStream" uid="uid://dpb6wkpjybg0r" path="res://asserts/audios/loon-boon-dreamjer-cover-118779.mp3" id="5_47b6t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nw41r"]
 line_spacing = 10.0
@@ -38,16 +39,19 @@ label_settings = SubResource("LabelSettings_nw41r")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="."]
+[node name="StateLabel" type="Label" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
-offset_left = 2.0
-offset_top = 310.0
-offset_right = 1917.0
-offset_bottom = 658.0
+anchor_left = 0.00104167
+anchor_top = 0.287037
+anchor_right = 0.998438
+anchor_bottom = 0.609259
 text = "Login"
 label_settings = SubResource("LabelSettings_nw41r")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 texture_filter = 1
@@ -62,17 +66,20 @@ offset_right = 1080.0
 offset_bottom = 496.64
 theme = ExtResource("4_r3fp8")
 
-[node name="username" type="TextEdit" parent="VBoxContainer"]
+[node name="email" type="LineEdit" parent="VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 3
-placeholder_text = "User name"
+placeholder_text = "Email"
 
-[node name="pass" type="TextEdit" parent="VBoxContainer"]
+[node name="pass" type="LineEdit" parent="VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 3
 placeholder_text = "Password"
+secret = true
 
 [node name="start" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -82,6 +89,10 @@ text = "Login"
 layout_mode = 2
 text = "Sing up"
 
+[node name="google" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Sign up with Google"
+
 [node name="guest" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Continue as a guest"
@@ -90,9 +101,12 @@ text = "Continue as a guest"
 layout_mode = 2
 text = "Exit"
 
-[connection signal="text_set" from="VBoxContainer/username" to="." method="_on_username_text_set"]
-[connection signal="text_set" from="VBoxContainer/pass" to="." method="_on_pass_text_set"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_47b6t")
+autoplay = true
+
 [connection signal="pressed" from="VBoxContainer/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/register" to="." method="_on_register_pressed"]
+[connection signal="pressed" from="VBoxContainer/google" to="." method="_on_google_pressed"]
 [connection signal="pressed" from="VBoxContainer/guest" to="." method="_on_guest_pressed"]
 [connection signal="pressed" from="VBoxContainer/exitButton" to="." method="_on_exit_button_pressed"]

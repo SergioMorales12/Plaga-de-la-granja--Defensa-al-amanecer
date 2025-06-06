@@ -15,10 +15,10 @@ func toggle_pause():
 	game_paused = !game_paused
 	get_tree().paused = game_paused
 	visible = game_paused  # Esto controla la visibilidad del menú completo
-	
-	# Opcional: Enfocar el primer botón cuando se muestra
-	if game_paused and has_node("Buttons/Settings"):
-		$Buttons/Settings.grab_focus()
+	if has_node("Musica"):
+		$Musica.playing = !game_paused
+	for child in get_children():
+		print("   - ", child.name, " (", child.get_class(), ")")
 
 
 func _on_replay_pressed() -> void:

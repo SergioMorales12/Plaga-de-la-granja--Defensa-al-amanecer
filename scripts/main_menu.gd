@@ -117,3 +117,8 @@ func _delete_confirmed():
 			load_save_games()
 			selected_save = "new_game"
 			update_button_states()
+
+
+func _on_logout_button_pressed() -> void:
+	Firebase.Auth.logout()
+	Global.change_scene("res://scenes/login.tscn")

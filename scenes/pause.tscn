@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cgibybapb8ujb"]
+[gd_scene load_steps=20 format=3 uid="uid://cgibybapb8ujb"]
 
 [ext_resource type="Script" uid="uid://bjr6kmam8a5dh" path="res://scripts/pause.gd" id="1_f1d2v"]
 [ext_resource type="Texture2D" uid="uid://cu1n6ns7tdyom" path="res://asserts/ui/UI/Menu.png" id="2_jn4bt"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://cuo0ktsc7a7mt" path="res://scenes/Tagesschrift-Regular.ttf" id="5_cml1b"]
 [ext_resource type="Theme" uid="uid://bmf31mho1mjjt" path="res://scenes/UII/Sprout-Lands-UI-0.2.0/Sprout-Lands-UI-0.2.0/addons/sprout_lands_ui/content/sprout_lands_theme.tres" id="6_r1fnm"]
 [ext_resource type="Texture2D" uid="uid://bukliuuijok1x" path="res://scenes/UII/Sprout-Lands-UI-0.2.0/Sprout-Lands-UI-0.2.0/addons/sprout_lands_ui/content/assets/SkipButton.png" id="7_wen6a"]
+[ext_resource type="AudioStream" uid="uid://dpb6wkpjybg0r" path="res://asserts/audios/loon-boon-dreamjer-cover-118779.mp3" id="8_cml1b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1xtef"]
 font = ExtResource("3_r1fnm")
@@ -58,6 +59,9 @@ font_size = 34
 process_mode = 3
 visible = false
 script = ExtResource("1_f1d2v")
+
+[node name="Musica" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_cml1b")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
