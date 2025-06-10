@@ -3,122 +3,200 @@ extends Control
 @onready var menu_button: OptionButton = $Buttons/VBoxContainer/MenuButton
 @onready var start_button: Button = $Buttons/VBoxContainer/startButton
 @onready var delete_button: Button = $Buttons/VBoxContainer/deleteButton
+@onready var logout_button: Button = $Buttons/VBoxContainer/logoutButton
+@onready var sync_button: Button = $Buttons/VBoxContainer/syncButton
+@onready var status_label: Label = $StatusLabel
+@onready var player_name_label: Label = $PlayerNameLabel
 
+var player_id := ""
 var selected_save: String = "new_game"
+var is_syncing := false
 
-func _ready():
-	load_save_games()
-	process_mode = Node.PROCESS_MODE_ALWAYS
+func _ready() -> void:
+	update_status("Cargando...")
+	setup_authentication()
+	await load_save_games()
 	update_button_states()
+	update_status("Listo")
 
-func load_save_games():
-	if not is_instance_valid(menu_button):
-		push_error("MenuButton no es una instancia válida")
-		return
-	menu_button.clear()
+func setup_authentication() -> void:
+	Global.get_userid()
+	player_id = Global.player_id
+	sync_button.visible = player_id != "guest_user"
 	
-	# Opción de nueva partida siempre disponible
+
+func update_status(message: String) -> void:
+	status_label.text = message
+	print(message)
+
+func load_save_games() -> void:
+	update_status("Cargando partidas...")
+	menu_button.clear()
 	menu_button.add_item("Nueva partida")
 	menu_button.set_item_metadata(0, "new_game")
-	
-	# Cargar partidas existentes
-	if not FileAccess.file_exists(Global.FILE_PATH):
-		return
-	
-	var file = FileAccess.open(Global.FILE_PATH, FileAccess.READ)
-	if not file:
-		push_error("Error al abrir archivo de guardado")
-		return
-	
-	var json_text = file.get_as_text()
-	file.close()
-	
-	var parse_result = JSON.parse_string(json_text)
-	if parse_result is Dictionary:
-		# Convertir el diccionario a un array de entries para ordenar
-		var saves = []
-		for key in parse_result:
-			saves.append({"key": key, "value": parse_result[key]})
+	selected_save = "new_game"
+
+	var saves = await get_available_saves()
+	populate_menu_with_saves(saves)
+	update_status("Partidas cargadas: " + str(menu_button.item_count - 1))
+
+
+func get_available_saves() -> Dictionary:
+	if player_id == "guest_user":
+		return Global.load_local_saves()
 		
-		# Ordenar partidas por fecha (más recientes primero)
-		saves.sort_custom(func(a, b): 
-			var time_a = a.value.get("timestamp", "")
-			var time_b = b.value.get("timestamp", "")
-			return time_a > time_b
-		)
+	var api_saves = await Global.load_all_cloud_saves()
+	if api_saves.is_empty():
+		return Global.load_local_saves()
+	return api_saves
+
+func populate_menu_with_saves(saves: Dictionary) -> void:
+	print("Loaded saves: ", saves.keys())
+	if saves.is_empty():
+		update_status("No hay partidas guardadas")
+		return
+
+	var sorted_saves = []
+	for save_name in saves:
+		sorted_saves.append({
+			"name": save_name,
+			"data": saves[save_name]
+		})
+	
+	# Sort saves by timestamp (newest first)
+	sorted_saves.sort_custom(func(a, b):
+		return b.data.get(Global.TIMESTAMP_KEY, 0) > a.data.get(Global.TIMESTAMP_KEY, 0)
+	)
+
+	for save in sorted_saves:
+		var save_name = save["name"]
+		var save_data = save["data"]
 		
-		for save in saves:
-			var name = save.key
-			var day = save.value.get("current_day", 1)
-			var timestamp = save.value.get("timestamp", "").substr(0, 10) # Solo la fecha
-			menu_button.add_item("Partida %s (Día %d - %s)" % [name, day, timestamp])
-			menu_button.set_item_metadata(menu_button.get_item_count() - 1, name)
-			
-func update_button_states():
-	# Actualizar texto del botón según selección
-	if selected_save == "new_game":
-		start_button.text = "NUEVA PARTIDA"
-		delete_button.disabled = true
-	else:
-		start_button.text = "CONTINUAR PARTIDA"
-		delete_button.disabled = false
+		# Handle missing timestamps gracefully
+		var timestamp = save_data.get(Global.TIMESTAMP_KEY, 0)
+		var time_dict = Time.get_date_dict_from_unix_time(timestamp)
+		
+		# Format date string
+		var date_str = "%02d/%02d/%d" % [time_dict.day, time_dict.month, time_dict.year]
+		
+		# Create menu item text
+		var item_text = "%s (Día %d - %s)" % [
+			save_name,
+			save_data.get("days", 1),
+			date_str
+		]
 
-func _on_exit_button_pressed():
-	get_tree().quit()
-
-func _on_start_button_pressed():
-	print(selected_save)
-	if selected_save == "new_game":
-		# Crear nueva partida con nombre único
-		var save_name = "partida_%d" % (int(Time.get_unix_time_from_system()) % 10000)
-		Global.current_save_name = save_name
-		Player.reset_to_defaults()
-		Global.change_scene("res://scenes/mapa.tscn")
-	else:
-		# Cargar partida existente
-		var success = await Global.load_game_named(selected_save)
-		if success:
-			Global.current_save_name = selected_save
-		else:
-			selected_save = "new_game"
-			update_button_states()
+		# Add to menu
+		var idx = menu_button.get_item_count()
+		menu_button.add_item(item_text)
+		menu_button.set_item_metadata(idx, save_name)
 
 
-func _on_menu_button_item_selected(index: int):
-	selected_save = menu_button.get_item_metadata(index)
+func sort_saves_by_timestamp(saves: Dictionary) -> Array:
+	var saves_array = []
+	for save_name in saves:
+		saves_array.append({
+			"name": save_name,
+			"data": saves[save_name]
+		})
+	
+	saves_array.sort_custom(func(a, b):
+		return b.data.get(Global.TIMESTAMP_KEY, 0) - a.data.get(Global.TIMESTAMP_KEY, 0)
+	)
+	return saves_array
+
+func add_save_to_menu(save_name: String, save_data: Dictionary) -> void:
+	var time_dict = Time.get_date_dict_from_unix_time(save_data.get(Global.TIMESTAMP_KEY, 0))
+	var date_str = "%02d/%02d/%d " % [
+		time_dict.day, time_dict.month, time_dict.year
+	]
+	
+	var item_text = "%s (Día %d - %s)" % [
+		save_name, save_data.get("days", 1), date_str
+	]
+	
+	var idx = menu_button.get_item_count()
+	menu_button.add_item(item_text)
+	menu_button.set_item_metadata(idx, save_name)
+
+func update_button_states() -> void:
+	start_button.text = "NUEVA PARTIDA" if selected_save == "new_game" else "CONTINUAR"
+	delete_button.disabled = selected_save == "new_game"
+
+func _on_menu_button_item_selected(idx: int) -> void:
+	selected_save = menu_button.get_item_metadata(idx)
 	update_button_states()
 
-func _on_delete_button_pressed():
+func _on_start_button_pressed() -> void:
+	if selected_save == "new_game":
+		await start_new_game()
+	else:
+		await continue_existing_game()
+
+func start_new_game() -> void:
+	update_status("Creando nueva partida...")
+	var save_name = generate_save_name()
+	Global.current_save_name = save_name
+	Player.reset_to_defaults()
+	Global.change_scene("res://scenes/mapa.tscn")
+	await Global.save_game_named(save_name)
+	update_status("Partida creada: " + save_name)
+
+func generate_save_name() -> String:
+	var timestamp = int(Time.get_unix_time_from_system())
+	var suffix = timestamp % 10000
+	return Global.DEFAULT_SAVE_NAME_PREFIX + "%04d" % suffix
+
+func continue_existing_game() -> void:
+	update_status("Cargando partida...")
+	var success = await Global.load_game_named(selected_save)
+	if success:
+		update_status("Partida cargada: " + selected_save)
+	else:
+		update_status("Error cargando partida")
+		selected_save = "new_game"
+		update_button_states()
+
+func _on_delete_button_pressed() -> void:
 	if selected_save == "new_game":
 		return
-	
-	# Confirmación antes de borrar
-	var confirm_dialog = ConfirmationDialog.new()
-	confirm_dialog.dialog_text = "¿Eliminar la partida '%s' permanentemente?" % selected_save
-	confirm_dialog.confirmed.connect(_delete_confirmed)
-	add_child(confirm_dialog)
-	confirm_dialog.popup_centered()
-
-func _delete_confirmed():
-	if FileAccess.file_exists(Global.FILE_PATH):
-		var file = FileAccess.open(Global.FILE_PATH, FileAccess.READ)
-		var json_text = file.get_as_text()
-		file.close()
 		
-		var all_saves = JSON.parse_string(json_text)
-		if all_saves is Dictionary and all_saves.has(selected_save):
-			all_saves.erase(selected_save)
-			
-			var save_file = FileAccess.open(Global.FILE_PATH, FileAccess.WRITE)
-			save_file.store_string(JSON.stringify(all_saves, "\t"))
-			save_file.close()
-			
-			# Actualizar lista
-			load_save_games()
-			selected_save = "new_game"
-			update_button_states()
+	var dialog = ConfirmationDialog.new()
+	dialog.title = "Confirmar eliminación"
+	dialog.dialog_text = "¿Eliminar partida '%s'?" % selected_save
+	dialog.confirmed.connect(_on_delete_confirmed)
+	add_child(dialog)
+	dialog.popup_centered()
 
+func _on_delete_confirmed() -> void:
+	update_status("Eliminando partida...")
+	var success = await Global.delete_game_named(selected_save)
+	if success:
+		await load_save_games()
+		selected_save = "new_game"
+		update_button_states()
+		update_status("Partida eliminada")
+	else:
+		update_status("Error eliminando partida")
+
+func _on_sync_button_pressed() -> void:
+	if is_syncing:
+		return
+		
+	is_syncing = true
+	update_status("Sincronizando con la nube...")
+	var success = await Global.sync_saved_games()
+	if success:
+		await load_save_games()
+		update_status("Sincronización completada")
+	else:
+		update_status("Error en sincronización")
+	is_syncing = false
 
 func _on_logout_button_pressed() -> void:
-	Firebase.Auth.logout()
+	if Firebase and Firebase.Auth.auth:
+		Firebase.Auth.logout()
 	Global.change_scene("res://scenes/login.tscn")
+
+func _on_exit_button_pressed() -> void:
+	get_tree().quit()

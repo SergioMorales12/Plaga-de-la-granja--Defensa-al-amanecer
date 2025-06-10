@@ -16,17 +16,13 @@ func _on_start_pressed() -> void:
 	var password = %pass.text
 	Firebase.Auth.login_with_email_and_password(email,password)
 	%StateLabel.text = "Logging in"
-	#if login_correct():
-		#Global.change_scene("res://scenes/main_menu.tscn")
-	#else:
-		#print("ERROR EN EL LOGIN")
+
 
 func _on_register_pressed() -> void:
 	var email = %email.text
 	var password = %pass.text
 	Firebase.Auth.signup_with_email_and_password(email,password)
 	%StateLabel.text = "Singing up"
-	#Global.change_scene("res://scenes/register.tscn")
 
 
 func _on_guest_pressed() -> void:

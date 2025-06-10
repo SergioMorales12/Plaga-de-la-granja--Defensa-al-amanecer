@@ -1,10 +1,9 @@
 {
-	"": {
-		"current_day": 19.0,
+	"Global": {
+		"days": 5.0,
 		"dificulty": 1.0,
-		"player_gold": 10384.0,
-		"player_life": 100.0,
-		"timestamp": "2025-06-04T14:14:45",
+		"gold": 2060.0,
+		"life": 100.0,
 		"towers": [
 			{
 				"attack_interval": 1.0,
@@ -18,27 +17,9 @@
 				}
 			},
 			{
-				"attack_interval": 0.56,
-				"bulletSpeed": 4100.0,
-				"damage": 1000.0,
-				"lore_progress": {
-					"lore1_unlocked": false,
-					"lore2_unlocked": false,
-					"lore3_unlocked": false,
-					"lore4_unlocked": false
-				},
-				"position": "(274.0, 497.0)",
-				"scene_path": "res://scenes/towers/espanta_pajaros.tscn",
-				"upgrade_levels": {
-					"damage": 0.0,
-					"special": 7.0,
-					"speed": 8.0
-				}
-			},
-			{
 				"attack_interval": 1.2,
 				"damage": 12.0,
-				"position": "(212.0, 663.0)",
+				"position": "(798.0, 671.0)",
 				"scene_path": "res://scenes/towers/molino.tscn",
 				"speed_reduction": 0.01,
 				"upgrade_levels": {
@@ -49,25 +30,476 @@
 			},
 			{
 				"attack_interval": 1.2,
-				"damage": 12.0,
-				"position": "(396.0, 449.0)",
-				"scene_path": "res://scenes/towers/molino.tscn",
-				"speed_reduction": 0.045,
+				"bulletSpeed": 2000.0,
+				"contDamage": 0.0,
+				"damage": 1000.0,
+				"lore_progress": {
+					"lore1_unlocked": false,
+					"lore2_unlocked": false,
+					"lore3_unlocked": false,
+					"lore4_unlocked": false
+				},
+				"position": "(48.0, 52.0)",
+				"scene_path": "res://scenes/towers/espanta_pajaros.tscn",
 				"upgrade_levels": {
 					"damage": 0.0,
-					"special": 7.0,
+					"special": 0.0,
 					"speed": 0.0
 				}
 			},
 			{
 				"attack_interval": 1.2,
 				"damage": 12.0,
-				"position": "(521.0, 425.0)",
+				"position": "(48.0, 52.0)",
 				"scene_path": "res://scenes/towers/molino.tscn",
-				"speed_reduction": 0.045,
+				"speed_reduction": 0.01,
 				"upgrade_levels": {
 					"damage": 0.0,
-					"special": 7.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(960.0, 456.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(960.0, 555.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(959.0, 607.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(960.0, 654.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(956.0, 710.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(951.0, 773.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(955.0, 826.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(953.0, 878.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(809.0, 486.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(808.0, 543.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(807.0, 618.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.2,
+				"bulletSpeed": 2000.0,
+				"contDamage": 8.0,
+				"damage": 1000.0,
+				"lore_progress": {
+					"lore1_unlocked": false,
+					"lore2_unlocked": false,
+					"lore3_unlocked": false,
+					"lore4_unlocked": false
+				},
+				"position": "(408.0, 489.0)",
+				"scene_path": "res://scenes/towers/espanta_pajaros.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.2,
+				"bulletSpeed": 2000.0,
+				"contDamage": 0.0,
+				"damage": 1000.0,
+				"lore_progress": {
+					"lore1_unlocked": false,
+					"lore2_unlocked": false,
+					"lore3_unlocked": false,
+					"lore4_unlocked": false
+				},
+				"position": "(48.0, 52.0)",
+				"scene_path": "res://scenes/towers/espanta_pajaros.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.2,
+				"damage": 12.0,
+				"position": "(48.0, 52.0)",
+				"scene_path": "res://scenes/towers/molino.tscn",
+				"speed_reduction": 0.01,
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(960.0, 456.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(960.0, 555.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(959.0, 607.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(960.0, 654.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(956.0, 710.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(951.0, 773.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(955.0, 826.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(953.0, 878.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(809.0, 486.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(808.0, 543.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(807.0, 618.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.2,
+				"bulletSpeed": 2000.0,
+				"contDamage": 0.0,
+				"damage": 1000.0,
+				"lore_progress": {
+					"lore1_unlocked": false,
+					"lore2_unlocked": false,
+					"lore3_unlocked": false,
+					"lore4_unlocked": false
+				},
+				"position": "(48.0, 52.0)",
+				"scene_path": "res://scenes/towers/espanta_pajaros.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.2,
+				"damage": 12.0,
+				"position": "(48.0, 52.0)",
+				"scene_path": "res://scenes/towers/molino.tscn",
+				"speed_reduction": 0.01,
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(960.0, 456.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(960.0, 555.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(959.0, 607.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(960.0, 654.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(956.0, 710.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(951.0, 773.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(955.0, 826.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(953.0, 878.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(809.0, 486.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(808.0, 543.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
+					"speed": 0.0
+				}
+			},
+			{
+				"attack_interval": 1.0,
+				"damage": 100.0,
+				"position": "(807.0, 618.0)",
+				"scene_path": "res://scenes/towers/microwave.tscn",
+				"upgrade_levels": {
+					"damage": 0.0,
+					"special": 0.0,
 					"speed": 0.0
 				}
 			}
@@ -76,6 +508,85 @@
 			"espantapajaros",
 			"molino",
 			"barril"
+		]
+	},
+	"partida_1009": {
+		"days": 1.0,
+		"difficulty": "Normal",
+		"gold": 2000.0,
+		"life": 100.0,
+		"towers": [],
+		"unlocked_towers": [
+			"espantapajaros",
+			"molino"
+		]
+	},
+	"partida_1325": {
+		"days": 1.0,
+		"difficulty": "Normal",
+		"gold": 2000.0,
+		"life": 100.0,
+		"towers": [],
+		"unlocked_towers": [
+			"espantapajaros",
+			"molino"
+		]
+	},
+	"partida_3773": {
+		"days": 1.0,
+		"difficulty": "Normal",
+		"gold": 2000.0,
+		"life": 100.0,
+		"towers": [],
+		"unlocked_towers": [
+			"espantapajaros",
+			"molino"
+		]
+	},
+	"partida_569": {
+		"days": 1.0,
+		"difficulty": "Normal",
+		"gold": 2000.0,
+		"life": 100.0,
+		"towers": [],
+		"unlocked_towers": [
+			"espantapajaros",
+			"molino"
+		]
+	},
+	"partida_634": {
+		"days": 1.0,
+		"difficulty": "Normal",
+		"gold": 2000.0,
+		"life": 100.0,
+		"towers": [],
+		"unlocked_towers": [
+			"espantapajaros",
+			"molino"
+		]
+	},
+	"partida_7172": {
+		"days": 1.0,
+		"difficulty": "Normal",
+		"gold": 2000.0,
+		"life": 100.0,
+		"scene_path": "res://scenes/mapa.tscn",
+		"towers": [],
+		"unlocked_towers": [
+			"espantapajaros",
+			"molino"
+		]
+	},
+	"partida_7724": {
+		"days": 1,
+		"difficulty": "Normal",
+		"gold": 2000,
+		"life": 100,
+		"scene_path": "res://scenes/mapa.tscn",
+		"towers": [],
+		"unlocked_towers": [
+			"espantapajaros",
+			"molino"
 		]
 	}
 }

@@ -118,10 +118,11 @@ script = ExtResource("1_bxudy")
 texture_filter = 1
 position = Vector2(0, -63)
 sprite_frames = SubResource("SpriteFrames_570fk")
-animation = &"die"
+animation = &"walk"
 autoplay = "walk"
 
 [node name="Area2D" type="Area2D" parent="." groups=["enemi"]]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-4, -38)

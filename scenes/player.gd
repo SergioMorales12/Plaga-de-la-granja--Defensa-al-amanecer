@@ -1,7 +1,7 @@
 extends Node
 
-const DEFAULT_LIFE := 100
-const DEFAULT_GOLD := 2000
+const DEFAULT_LIFE := 100.0
+const DEFAULT_GOLD := 2000.0
 const DEFAULT_WAVE := 1
 const DEFAULT_DIFFICULTY := 1.0
 const DEFAULT_TOWERS := ["espantapajaros", "molino"]
@@ -11,7 +11,14 @@ var player_gold := DEFAULT_GOLD
 var wave := DEFAULT_WAVE
 var dificulty := DEFAULT_DIFFICULTY
 var unlocked_towers:= DEFAULT_TOWERS.duplicate()
-
+var data: Dictionary ={
+	"life" = player_life,
+	"gold" = player_gold,
+	"days" = wave,
+	"unlocked_towers"= unlocked_towers,
+	"dificulty" = dificulty,
+	"towers" = []
+} 
 # Referencias UI
 var hp_label
 var gold_label
@@ -53,6 +60,20 @@ func add_player_gold(amount):
 	amount *= dificulty
 	player_gold += amount
 	update_ui()
+
+func update_data():
+	var towers_data = []
+	print(get_tree().get_nodes_in_group("torreta"))
+	for tower in get_tree().get_nodes_in_group("torreta"):
+		if tower.has_method("get_save_data"):
+			towers_data.append(tower.get_save_data())
+	data["gold"] = float(player_gold)
+	data["life"] = float(player_life)
+	data["days"] = int(wave)
+	data["dificulty"] = float(dificulty)
+	data["unlocked_towers"] = unlocked_towers
+	data["towers"] = towers_data
+	print(data)
 
 func update_ui():
 	if not hp_label or not gold_label or not wave_label:

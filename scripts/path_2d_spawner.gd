@@ -28,6 +28,7 @@ func _ready() -> void:
 	Dialogic.process_mode = Node.PROCESS_MODE_ALWAYS
 	start_wave()
 	if Player:
+		Player.update_data()
 		Player._init_ui()
 		if Player.wave == null:
 			Player.wave = 1
@@ -164,6 +165,7 @@ func end_wave() -> void:
 	wave_active = false
 	current_wave += 1
 	Player.wave = current_wave
+	Player.update_data()
 	Player.update_ui()
 	$"..".play_wave_dialog(current_wave)
 	$Rondas.text = "Day " +str(current_wave) 

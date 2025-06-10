@@ -40,6 +40,21 @@ label_settings = SubResource("LabelSettings_7tinr")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="StatusLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.128
+anchor_bottom = 0.188
+offset_left = 888.0
+offset_top = 513.0
+offset_right = 786.24
+offset_bottom = 383.96
+
+[node name="PlayerNameLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
 [node name="Buttons" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -64,6 +79,10 @@ text = "Start Game"
 layout_mode = 2
 text = "Delete Game"
 
+[node name="syncButton" type="Button" parent="Buttons/VBoxContainer"]
+layout_mode = 2
+text = "Login"
+
 [node name="logoutButton" type="Button" parent="Buttons/VBoxContainer"]
 layout_mode = 2
 text = "Logout"
@@ -87,6 +106,7 @@ autoplay = true
 
 [connection signal="pressed" from="Buttons/VBoxContainer/startButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Buttons/VBoxContainer/deleteButton" to="." method="_on_delete_button_pressed"]
+[connection signal="pressed" from="Buttons/VBoxContainer/syncButton" to="." method="_on_sync_button_pressed"]
 [connection signal="pressed" from="Buttons/VBoxContainer/logoutButton" to="." method="_on_logout_button_pressed"]
 [connection signal="pressed" from="Buttons/VBoxContainer/exitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="item_selected" from="Buttons/VBoxContainer/MenuButton" to="." method="_on_menu_button_item_selected"]
