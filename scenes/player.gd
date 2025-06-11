@@ -19,6 +19,7 @@ var data: Dictionary ={
 	"dificulty" = dificulty,
 	"towers" = []
 } 
+var auto_save = true
 # Referencias UI
 var hp_label
 var gold_label
@@ -63,9 +64,8 @@ func add_player_gold(amount):
 
 func update_data():
 	var towers_data = []
-	print(get_tree().get_nodes_in_group("torreta"))
 	for tower in get_tree().get_nodes_in_group("torreta"):
-		if tower.has_method("get_save_data"):
+		if tower.has_method("get_save_data") && !tower.is_preview:
 			towers_data.append(tower.get_save_data())
 	data["gold"] = float(player_gold)
 	data["life"] = float(player_life)
@@ -73,13 +73,10 @@ func update_data():
 	data["dificulty"] = float(dificulty)
 	data["unlocked_towers"] = unlocked_towers
 	data["towers"] = towers_data
-	print(data)
 
 func update_ui():
 	if not hp_label or not gold_label or not wave_label:
-		print("UI no inicializada aún, se omite actualización")
 		return
-
 	hp_label.text = "HP: " + str(player_life)
 	gold_label.text = "Gold: " + str(player_gold)
 	wave_label.text = "Day: " + str(wave)

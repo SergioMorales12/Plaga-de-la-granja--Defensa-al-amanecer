@@ -19,6 +19,7 @@ func _ready() -> void:
 	update_button_states()
 	update_status("Listo")
 
+
 func setup_authentication() -> void:
 	Global.get_userid()
 	player_id = Global.player_id
@@ -47,6 +48,7 @@ func get_available_saves() -> Dictionary:
 		
 	var api_saves = await Global.load_all_cloud_saves()
 	if api_saves.is_empty():
+		print("API VACIA")
 		return Global.load_local_saves()
 	return api_saves
 
@@ -58,35 +60,53 @@ func populate_menu_with_saves(saves: Dictionary) -> void:
 
 	var sorted_saves = []
 	for save_name in saves:
+		var save_data = saves[save_name]
+		
+		# Verificar si los datos están anidados (caso de Firestore)
+		if typeof(save_data) == TYPE_DICTIONARY and save_data.has("fields"):
+			save_data = Global.convert_from_firestore_format(save_data["fields"])
+		
+		# Asegurarse que save_data es un diccionario
+		if typeof(save_data) != TYPE_DICTIONARY:
+			push_error("Datos de guardado inválidos para: " + save_name)
+			continue
+			
 		sorted_saves.append({
 			"name": save_name,
-			"data": saves[save_name]
+			"data": save_data
 		})
 	
-	# Sort saves by timestamp (newest first)
+	# Ordenar partidas por timestamp (más reciente primero)
 	sorted_saves.sort_custom(func(a, b):
-		return b.data.get(Global.TIMESTAMP_KEY, 0) > a.data.get(Global.TIMESTAMP_KEY, 0)
+		var a_time = a.data.get(Global.TIMESTAMP_KEY, 0) if typeof(a.data) == TYPE_DICTIONARY else 0
+		var b_time = b.data.get(Global.TIMESTAMP_KEY, 0) if typeof(b.data) == TYPE_DICTIONARY else 0
+		return b_time > a_time
 	)
 
 	for save in sorted_saves:
 		var save_name = save["name"]
 		var save_data = save["data"]
 		
-		# Handle missing timestamps gracefully
-		var timestamp = save_data.get(Global.TIMESTAMP_KEY, 0)
+		# Verificación adicional de tipo
+		if typeof(save_data) != TYPE_DICTIONARY:
+			push_error("Datos inválidos para partida: " + save_name)
+			continue
+			
+		# Manejar timestamps faltantes
+		var timestamp = save_data.get(Global.TIMESTAMP_KEY, 0) if typeof(save_data) == TYPE_DICTIONARY else 0
 		var time_dict = Time.get_date_dict_from_unix_time(timestamp)
 		
-		# Format date string
+		# Formatear fecha
 		var date_str = "%02d/%02d/%d" % [time_dict.day, time_dict.month, time_dict.year]
 		
-		# Create menu item text
+		# Crear texto para el menú
 		var item_text = "%s (Día %d - %s)" % [
 			save_name,
-			save_data.get("days", 1),
+			save_data.get("days", 1) if typeof(save_data) == TYPE_DICTIONARY else 1,
 			date_str
 		]
 
-		# Add to menu
+		# Añadir al menú
 		var idx = menu_button.get_item_count()
 		menu_button.add_item(item_text)
 		menu_button.set_item_metadata(idx, save_name)
@@ -138,6 +158,7 @@ func start_new_game() -> void:
 	var save_name = generate_save_name()
 	Global.current_save_name = save_name
 	Player.reset_to_defaults()
+	Player.update_data()
 	Global.change_scene("res://scenes/mapa.tscn")
 	await Global.save_game_named(save_name)
 	update_status("Partida creada: " + save_name)
@@ -152,6 +173,7 @@ func continue_existing_game() -> void:
 	var success = await Global.load_game_named(selected_save)
 	if success:
 		update_status("Partida cargada: " + selected_save)
+		Global.change_scene("res://scenes/mapa.tscn")
 	else:
 		update_status("Error cargando partida")
 		selected_save = "new_game"

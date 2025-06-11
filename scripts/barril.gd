@@ -37,7 +37,7 @@ var upgrade_levels = {
 }
 
 signal tower_sold(position)
-
+var is_preview = false
 func _ready() -> void:
 	$attack_timer.wait_time = attack_interval
 	if has_node("TurretMenu"):

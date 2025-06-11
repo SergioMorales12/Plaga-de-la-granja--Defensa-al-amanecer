@@ -12,6 +12,7 @@ func _process(_delta: float) -> void:
 func _ready() -> void:
 	if tower:
 		var preview = tower.instantiate()
+		preview.remove_from_group("torreta")
 		price = preview.price
 		$Price.text = "$" + str(price)
 		

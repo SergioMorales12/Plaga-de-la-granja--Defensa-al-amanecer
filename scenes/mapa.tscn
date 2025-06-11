@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://cwtdmynui6cw8"]
+[gd_scene load_steps=38 format=4 uid="uid://cwtdmynui6cw8"]
 
 [ext_resource type="Texture2D" uid="uid://b7ng1525qaofi" path="res://asserts/map/Granja4.png" id="1_0skjy"]
 [ext_resource type="Texture2D" uid="uid://cgskpnle1ekd6" path="res://asserts/map/valla.png" id="1_hyyyu"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://bvcagnu1n03o8" path="res://scripts/mapa.gd" id="1_pu8w0"]
 [ext_resource type="Texture2D" uid="uid://bp2neply6ysf7" path="res://asserts/map/32x32_DEMO.png" id="2_uqaia"]
 [ext_resource type="Texture2D" uid="uid://dbdklhgw7wydd" path="res://asserts/towers/german-shephard-full-sprite-sheet-x300.png" id="3_csio4"]
-[ext_resource type="PackedScene" uid="uid://iopwhmejcr8b" path="res://addons/RadialMenu/RadialMenu.tscn" id="6_k7lwh"]
 [ext_resource type="Script" uid="uid://bbu42uj8krie2" path="res://scripts/path_2d_spawner.gd" id="7_vsp40"]
 [ext_resource type="PackedScene" uid="uid://dd7648vr35fwd" path="res://scenes/panel_torretas.tscn" id="11_k3j34"]
 [ext_resource type="FontFile" uid="uid://cuo0ktsc7a7mt" path="res://scenes/Tagesschrift-Regular.ttf" id="12_pu8w0"]
@@ -2368,46 +2367,6 @@ position = Vector2(964, 504)
 [node name="panel_torretas" parent="." instance=ExtResource("11_k3j34")]
 offset_left = 1792.0
 offset_right = 1792.0
-
-[node name="RadialMenu" parent="." instance=ExtResource("6_k7lwh")]
-custom_minimum_size = Vector2(300, 222.263)
-offset_left = 983.0
-offset_top = 386.0
-offset_right = 1283.0
-offset_bottom = 608.263
-
-[node name="Microwave2" parent="." instance=ExtResource("13_2bj6j")]
-position = Vector2(960, 456)
-
-[node name="Microwave3" parent="." instance=ExtResource("13_2bj6j")]
-position = Vector2(960, 555)
-
-[node name="Microwave4" parent="." instance=ExtResource("13_2bj6j")]
-position = Vector2(959, 607)
-
-[node name="Microwave5" parent="." instance=ExtResource("13_2bj6j")]
-position = Vector2(960, 654)
-
-[node name="Microwave6" parent="." instance=ExtResource("13_2bj6j")]
-position = Vector2(956, 710)
-
-[node name="Microwave7" parent="." instance=ExtResource("13_2bj6j")]
-position = Vector2(951, 773)
-
-[node name="Microwave8" parent="." instance=ExtResource("13_2bj6j")]
-position = Vector2(955, 826)
-
-[node name="Microwave9" parent="." instance=ExtResource("13_2bj6j")]
-position = Vector2(953, 878)
-
-[node name="Microwave10" parent="." instance=ExtResource("13_2bj6j")]
-position = Vector2(809, 486)
-
-[node name="Microwave11" parent="." instance=ExtResource("13_2bj6j")]
-position = Vector2(808, 543)
-
-[node name="Microwave12" parent="." instance=ExtResource("13_2bj6j")]
-position = Vector2(807, 618)
 
 [node name="Pause" parent="." instance=ExtResource("13_66cqs")]
 

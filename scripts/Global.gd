@@ -13,6 +13,13 @@ var API_URL = "https://firestore.googleapis.com/v1/projects/juegotwf/databases/(
 var player_id := ""
 var header = ["Content-Type: application/json"]
 
+var volume_db: float = 0.0
+
+
+func _ready() -> void:
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), volume_db)
+
+
 # Sistema de autenticación mejorado
 func get_userid() -> void:
 	if Firebase and Firebase.Auth:
@@ -97,9 +104,9 @@ func prepare_save_data(save_name: String) -> Dictionary:
 			"life": int(Player.data.life),
 			"gold": int(Player.data.gold),
 			"days": int(Player.data.days),
-			"unlocked_towers": Player.data.get("unlocked_towers", []),
-			"difficulty": str(Player.data.get("difficulty", "Normal")),
-			"towers": Player.data.get("towers", []),
+			"unlocked_towers": Player.data.unlocked_towers,
+			"difficulty": Player.data.dificulty,
+			"towers": Player.data.towers,
 			TIMESTAMP_KEY: Time.get_unix_time_from_system()}
 		
 	}
@@ -151,7 +158,6 @@ func save_to_cloud(save_name: String, data: Dictionary) -> bool:
 	var body = JSON.stringify({
 		"fields": convert_to_firestore_format(data)
 	})
-	
 	# Add query parameter to update all fields
 	request_url += "?updateMask.fieldPaths="
 	var fields = data.keys()
@@ -159,8 +165,9 @@ func save_to_cloud(save_name: String, data: Dictionary) -> bool:
 		request_url += fields[i]
 		if i < fields.size() - 1:
 			request_url += "&updateMask.fieldPaths="
-	
+
 	var error = http.request(request_url, header, HTTPClient.METHOD_PATCH, body)
+
 	if error != OK:
 		push_error("Error en petición HTTP: " + str(error))
 		return false
@@ -235,8 +242,9 @@ func load_local_saves() -> Dictionary:
 
 func load_cloud_save(save_name: String) -> Dictionary:
 	var http = create_http_request()
-	var request_url = API_URL + "/" + player_id + "/" + save_name
-	var error = http.request(request_url, HTTP_HEADERS, HTTPClient.METHOD_GET)
+	var request_url = API_URL + "/" + player_id
+	
+	var error = http.request(request_url, header, HTTPClient.METHOD_GET)
 	
 	if error != OK:
 		push_error("Error en petición HTTP: " + str(error))
@@ -252,15 +260,34 @@ func load_cloud_save(save_name: String) -> Dictionary:
 	if not document or not document.has("fields"):
 		push_error("Formato de respuesta inválido")
 		return {}
-		
-	return convert_from_firestore_format(document["fields"])
+	#print("Datos crudos de Firestore: ", document)
+	# Convertimos todos los campos de Firestore a un diccionario normal
+	var all_data = convert_from_firestore_format(document["fields"])
+	#print("Datos convertidos: ", all_data)
+	# Buscamos la partida específica por su nombre
+	if all_data.has(save_name):
+		return all_data[save_name]
+	
+	push_error("No se encontró la partida en la nube: " + save_name)
+	return {}
 
 func convert_from_firestore_format(fields: Dictionary) -> Dictionary:
 	var data = {}
 	for key in fields:
 		var field = fields[key]
-		if field.has("stringValue"):
-			data[key] = field["stringValue"]
+		if field.has("mapValue"):
+			data[key] = convert_from_firestore_format(field["mapValue"]["fields"])
+		elif field.has("stringValue"):
+			# Intenta parsear JSON si parece ser un objeto
+			var str_value = field["stringValue"]
+			if str_value.begins_with("{") and str_value.ends_with("}"):
+				var parsed = JSON.parse_string(str_value)
+				if parsed != null:
+					data[key] = parsed
+				else:
+					data[key] = str_value
+			else:
+				data[key] = str_value
 		elif field.has("integerValue"):
 			data[key] = field["integerValue"].to_int()
 		elif field.has("doubleValue"):
@@ -268,20 +295,20 @@ func convert_from_firestore_format(fields: Dictionary) -> Dictionary:
 		elif field.has("booleanValue"):
 			data[key] = field["booleanValue"]
 		elif field.has("arrayValue"):
-			# Handle empty arrays
 			if field["arrayValue"].has("values"):
-				# Convert array values to basic types
 				data[key] = convert_array_values(field["arrayValue"]["values"])
 			else:
 				data[key] = []
 	return data
 
-# Helper function to process array values
 func convert_array_values(firestore_array: Array) -> Array:
 	var result = []
 	for item in firestore_array:
-		if item.has("stringValue"):
-			result.append(item["stringValue"])
+		if item.has("mapValue"):
+			result.append(convert_from_firestore_format(item["mapValue"]["fields"]))
+		elif item.has("stringValue"):
+			var str_value = item["stringValue"]
+			result.append(str_value)
 		elif item.has("integerValue"):
 			result.append(item["integerValue"].to_int())
 		elif item.has("doubleValue"):
@@ -289,31 +316,32 @@ func convert_array_values(firestore_array: Array) -> Array:
 		elif item.has("booleanValue"):
 			result.append(item["booleanValue"])
 		else:
-			# Fallback for other types
 			result.append(item)
 	return result
+
 
 func apply_save_data(save_data: Dictionary) -> bool:
 	if save_data.is_empty():
 		return false
 		
+	# Verificar si los datos están anidados
+	var actual_data = save_data
+	if save_data.has(current_save_name):
+		actual_data = save_data[current_save_name]
+	
 	# Aplicar datos básicos
-	Player.data.life = save_data.get("life", 100)
-	Player.data.gold = save_data.get("gold", 500)
-	Player.data.days = save_data.get("days", 1)
+	Player.player_life = actual_data.get("life", Player.player_life)
+	Player.player_gold = actual_data.get("gold", Player.player_gold)
+	Player.wave = actual_data.get("days", Player.wave)
 	
 	# Aplicar datos opcionales
-	if save_data.has("unlocked_towers"):
-		Player.data.unlocked_towers = save_data.unlocked_towers
-	if save_data.has("difficulty"):
-		Player.data.difficulty = save_data.difficulty
-	if save_data.has("towers"):
-		Player.data.towers = save_data.towers
-	
-	# Cambiar escena si es necesario
-	var scene_path = save_data.get("scene_path", "")
-	if scene_path and scene_path != current_scene_path:
-		call_deferred("change_scene", scene_path)
+	if actual_data.has("unlocked_towers"):
+		Player.unlocked_towers = actual_data.unlocked_towers
+	if actual_data.has("difficulty"):
+		pass
+	if actual_data.has("towers"):
+		Player.data.towers = actual_data.towers
+		# No instanciamos aquí, lo haremos cuando el mapa esté listo
 	
 	print("✅ Partida cargada:", current_save_name)
 	return true
@@ -337,33 +365,69 @@ func sync_saved_games() -> bool:
 	return save_merged_saves(merged_saves)
 
 func load_all_cloud_saves() -> Dictionary:
+	print("🔍 Iniciando carga de partidas desde la nube...")
+	
 	var http = create_http_request()
-	var request_url = API_URL
-	var error = http.request(request_url, HTTP_HEADERS, HTTPClient.METHOD_GET)
+	var request_url = API_URL + "/" + player_id
+	print("URL de solicitud: ", request_url)
+	
+	var error = http.request(request_url, header, HTTPClient.METHOD_GET)
+	print("Resultado de la solicitud HTTP (0=OK): ", error)
 	
 	if error != OK:
-		push_error("Error en petición HTTP: " + str(error))
+		push_error("❌ Error en petición HTTP: " + str(error))
 		return {}
-		
+
+	print("⌛ Esperando respuesta de la nube...")
 	var result = await http.request_completed
-	var response = process_http_response(result, "sincronizar")
+	print("✅ Respuesta recibida")
 	
-	if not response.success:
+	# Desempaquetar el resultado
+	var response_code = result[1]
+	var body = result[3].get_string_from_utf8() if result[3] else ""
+	
+	if response_code != 200:
+		push_error("❌ Error en la respuesta HTTP: Código " + str(response_code))
 		return {}
-		
-	var body = JSON.parse_string(response.body)
-	if not body or not body.has("documents"):
+
+	print("🔍 Parseando JSON de la respuesta...")
+	var json = JSON.new()
+	var parse_error = json.parse(body)
+	
+	if parse_error != OK:
+		push_error("❌ Error parseando JSON: ", parse_error)
+		push_error("JSON problemático: ", json.get_error_message())
 		return {}
+
+	var response_data = json.get_data()
+	print("Tipo de datos parseados: ", typeof(response_data))
+	
+	if typeof(response_data) != TYPE_DICTIONARY:
+		push_error("❌ La respuesta no es un diccionario")
+		return {}
+
+	# Debug avanzado de la estructura de datos
+	print("🔍 Analizando estructura de datos recibida...")
+	if response_data.has("error"):
+		push_error("❌ Error en la respuesta de Firestore: ", response_data.error)
+		return {}
+	
+	if not response_data.has("fields"):
 		
-	var documents = body["documents"]
-	var saves = {}
+		# Alternativa para documentos individuales
+		if response_data.has("name"):
+			print("📄 Se recibió un documento individual")
+			var converted_data1 = convert_from_firestore_format(response_data.get("fields", {}))
+			return converted_data1
+		else:
+			push_error("❌ Formato de respuesta inesperado")
+			return {}
+
+	print("✅ Estructura de datos válida encontrada")
+	var converted_data = convert_from_firestore_format(response_data["fields"])
 	
-	for doc in documents:
-		if doc.has("name") and doc.has("fields"):
-			var save_name = doc["name"].split("/")[-1]
-			saves[save_name] = convert_from_firestore_format(doc["fields"])
-	
-	return saves
+	return converted_data
+
 
 func merge_saves(local: Dictionary, cloud: Dictionary) -> Dictionary:
 	var merged = local.duplicate()
@@ -423,22 +487,30 @@ func delete_local_save(save_name: String) -> bool:
 
 func delete_cloud_save(save_name: String) -> bool:
 	var http = create_http_request()
-	var request_url = API_URL + "/" + save_name
-	var error = http.request(request_url, [], HTTPClient.METHOD_DELETE)
-	
+
+	var request_url = API_URL + "/" + player_id + "?updateMask.fieldPaths=" + save_name
+
+	var body_dict = {
+		"fields": { save_name: { "nullValue": null } }
+	}
+	var body = JSON.stringify(body_dict)
+
+	var error = http.request(request_url, header, HTTPClient.METHOD_PATCH, body)
+
 	if error != OK:
 		push_error("Error en petición HTTP: " + str(error))
 		return false
-		
+
 	var result = await http.request_completed
 	var response = process_http_response(result, "eliminar")
-	
+
 	if response.success:
 		print("🗑️ Partida eliminada en la nube:", save_name)
 	else:
 		push_error("Error eliminando partida en la nube")
-		
+
 	return response.success
+
 
 # Utilidades
 func create_http_request() -> HTTPRequest:

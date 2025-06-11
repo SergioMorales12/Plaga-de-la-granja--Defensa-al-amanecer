@@ -118,7 +118,6 @@ corner_radius_bottom_left = 250
 [node name="espantaPajaros" type="Node2D" groups=["torreta"]]
 texture_filter = 1
 script = ExtResource("1_5lbkk")
-damage = 1000
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.844, 1.734)

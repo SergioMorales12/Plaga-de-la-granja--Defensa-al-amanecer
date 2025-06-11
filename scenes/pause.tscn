@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cgibybapb8ujb"]
+[gd_scene load_steps=19 format=3 uid="uid://cgibybapb8ujb"]
 
 [ext_resource type="Script" uid="uid://bjr6kmam8a5dh" path="res://scripts/pause.gd" id="1_f1d2v"]
 [ext_resource type="Texture2D" uid="uid://cu1n6ns7tdyom" path="res://asserts/ui/UI/Menu.png" id="2_jn4bt"]
@@ -51,16 +51,12 @@ font_color = Color(0.713726, 0.537255, 0.384314, 1)
 font = ExtResource("3_r1fnm")
 font_size = 91
 
-[sub_resource type="LabelSettings" id="LabelSettings_wen6a"]
-font = ExtResource("3_r1fnm")
-font_size = 34
-
 [node name="Pause" type="CanvasLayer"]
 process_mode = 3
-visible = false
 script = ExtResource("1_f1d2v")
 
 [node name="Musica" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("8_cml1b")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -126,15 +122,16 @@ label_settings = SubResource("LabelSettings_xmhi0")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Restart" type="Button" parent="TextureRect/buttons"]
+[node name="AutoSave" type="Button" parent="TextureRect/buttons"]
 texture_filter = 1
 custom_minimum_size = Vector2(66.565, 100)
 layout_mode = 2
 theme_override_styles/hover = SubResource("StyleBoxTexture_jn4bt")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_1xtef")
 theme_override_styles/normal = SubResource("StyleBoxTexture_xmhi0")
+toggle_mode = true
 
-[node name="Label" type="Label" parent="TextureRect/buttons/Restart"]
+[node name="Label" type="Label" parent="TextureRect/buttons/AutoSave"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
@@ -142,7 +139,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Restart"
+text = "Auto Save"
 label_settings = SubResource("LabelSettings_xw83q")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -189,7 +186,7 @@ label_settings = SubResource("LabelSettings_xw83q")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Volumen" type="Label" parent="TextureRect"]
+[node name="Volumen1" type="Label" parent="TextureRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.065
@@ -205,7 +202,7 @@ label_settings = SubResource("LabelSettings_cml1b")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="TextureRect"]
+[node name="Volumen" type="HSlider" parent="TextureRect"]
 layout_mode = 0
 offset_left = 601.001
 offset_top = 467.5
@@ -213,29 +210,11 @@ offset_right = 996.001
 offset_bottom = 524.5
 theme = ExtResource("6_r1fnm")
 
-[node name="CheckButton" type="CheckButton" parent="TextureRect"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.535199
-anchor_top = 0.600304
-anchor_right = 0.893501
-anchor_bottom = 0.699595
-offset_right = -6.10352e-05
-theme = ExtResource("6_r1fnm")
-metadata/_edit_use_anchors_ = true
-
-[node name="Label" type="Label" parent="TextureRect/CheckButton"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.302267
-anchor_top = 0.270408
-anchor_right = 0.697733
-anchor_bottom = 0.729592
-grow_horizontal = 2
-grow_vertical = 2
-text = "Auto Save "
-label_settings = SubResource("LabelSettings_wen6a")
-metadata/_edit_use_anchors_ = true
+[node name="VolumenLabel" type="Label" parent="TextureRect"]
+offset_left = 707.0
+offset_top = 526.0
+offset_right = 816.0
+offset_bottom = 626.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TextureRect"]
 visible = false
@@ -257,6 +236,7 @@ icon_alignment = 1
 expand_icon = true
 
 [connection signal="pressed" from="TextureRect/buttons/Resume" to="." method="_on_replay_pressed"]
-[connection signal="pressed" from="TextureRect/buttons/Restart" to="." method="_on_restart_pressed"]
+[connection signal="toggled" from="TextureRect/buttons/AutoSave" to="." method="_on_auto_savev_toggled"]
 [connection signal="pressed" from="TextureRect/buttons/Save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="TextureRect/buttons/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="value_changed" from="TextureRect/Volumen" to="." method="_on_volumen_value_changed"]

@@ -1,7 +1,18 @@
-[gd_scene load_steps=17 format=3 uid="uid://cl6tplu7eq42w"]
+[gd_scene load_steps=28 format=3 uid="uid://cl6tplu7eq42w"]
 
 [ext_resource type="Script" uid="uid://c6ev00y820xtc" path="res://scenes/enemi/cuervo1.gd" id="1_bs70i"]
+[ext_resource type="Texture2D" uid="uid://6vafrxffpeo4" path="res://asserts/Explosions/Red/frame0000.png" id="2_6nowa"]
 [ext_resource type="Texture2D" uid="uid://b7hvb6m1yq20x" path="res://asserts/enemy/monster3.png" id="2_bs70i"]
+[ext_resource type="Texture2D" uid="uid://dcnbyvg2x4q22" path="res://asserts/Explosions/Red/frame0001.png" id="3_xovc1"]
+[ext_resource type="Texture2D" uid="uid://di5eh7ui0w58e" path="res://asserts/Explosions/Red/frame0002.png" id="4_bergf"]
+[ext_resource type="Texture2D" uid="uid://c6vojhc1v0k6e" path="res://asserts/Explosions/Red/frame0003.png" id="5_y0ar1"]
+[ext_resource type="Texture2D" uid="uid://dh06y7ahsyfly" path="res://asserts/Explosions/Red/frame0004.png" id="6_yqo67"]
+[ext_resource type="Texture2D" uid="uid://x4f1b00f2jbb" path="res://asserts/Explosions/Red/frame0005.png" id="7_wjq3g"]
+[ext_resource type="Texture2D" uid="uid://b3tkgcqyylqp5" path="res://asserts/Explosions/Red/frame0006.png" id="8_5o4mc"]
+[ext_resource type="Texture2D" uid="uid://d3koek7mp1nqo" path="res://asserts/Explosions/Red/frame0007.png" id="9_xbdca"]
+[ext_resource type="Texture2D" uid="uid://cvbeejjgeo5ub" path="res://asserts/Explosions/Red/frame0008.png" id="10_bcx5i"]
+[ext_resource type="Texture2D" uid="uid://b23uddvcby73h" path="res://asserts/Explosions/Red/frame0009.png" id="11_t763l"]
+[ext_resource type="Texture2D" uid="uid://cldhefqeeowvg" path="res://asserts/Explosions/Red/frame0010.png" id="12_oj60k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cpn02"]
 atlas = ExtResource("2_bs70i")
@@ -53,6 +64,44 @@ region = Rect2(792, 448, 72, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xl8t6"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6nowa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xovc1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bergf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_y0ar1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_yqo67")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wjq3g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5o4mc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_xbdca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_bcx5i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_t763l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_oj60k")
+}],
+"loop": false,
+"name": &"die",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cpn02")
@@ -122,7 +171,7 @@ texture_filter = 1
 position = Vector2(1, 2.38419e-07)
 scale = Vector2(1.21875, 1.1875)
 sprite_frames = SubResource("SpriteFrames_xl8t6")
-animation = &"right"
+animation = &"die"
 autoplay = "down"
 
 [node name="area2D" type="Area2D" parent="." groups=["enemi"]]
@@ -135,3 +184,5 @@ shape = SubResource("CircleShape2D_v540k")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.7
 one_shot = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]

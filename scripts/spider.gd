@@ -5,7 +5,7 @@ signal enemy_died
 
 @export var runSpeed = 0.05
 @export var damage = 10  
-@export var live = 70
+@export var live = 50
 @export var reward = 60
 
 var previous_position: Vector2
@@ -59,9 +59,12 @@ func get_damage(amount: float):
 		animated_sprite.stop()
 		Player.add_player_gold(reward)
 		emit_signal("enemy_died")
-		queue_free()
+		animated_sprite.play("die")
+
 		#animated_sprite.play("die"+direction)
 		#$Timer.start()
 
 func _on_timeout() -> void:
+	queue_free()
+func _on_animation_finished() -> void:
 	queue_free()

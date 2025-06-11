@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var damage = 12
+@export var damage = 22
 @export var bulletSpeed := 2000.0
 @export var bulletPierce := 1
 @export var attack_interval := 1.2
@@ -84,7 +84,7 @@ func _on_projectile_hit() :
 
 func check_carlitos_lore():
 	match contDamage:
-		1:
+		50:
 			if !Dialogic.VAR.get_variable("Espanta.Lore1"):
 				Dialogic.start("lore_1")
 		150:

@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var damage = 12
+@export var damage = 18
 @export var attack_interval := 1.2 
 @export var price: float = 700
 @export var escala: float = 0.5
@@ -41,7 +41,7 @@ signal tower_sold(position)
 
 var original_speeds = {}  
 var can_place = true
-
+var is_preview = false
 func _ready():
 	$attack_timer.wait_time = attack_interval
 	set_process(true)
