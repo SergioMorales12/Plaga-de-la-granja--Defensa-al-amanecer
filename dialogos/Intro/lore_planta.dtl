@@ -21,3 +21,4 @@
 "Granjero Loco": Porque está concentrando toda su energía en el capitalismo y la compasión... ¡es una flor compleja!
 
 [signal arg="unlock_plant"]
+[signal arg="start_wave"]

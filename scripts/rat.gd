@@ -15,6 +15,7 @@ var direction = null
 
 func _ready():
 	previous_position = global_position
+	print("Damage: "+str(damage)+"\nRunSpeed: "+str(runSpeed)+"\nLive: "+str(live)+"\nReward: "+str(reward))
 
 func _process(delta: float) -> void:
 	if is_dead:

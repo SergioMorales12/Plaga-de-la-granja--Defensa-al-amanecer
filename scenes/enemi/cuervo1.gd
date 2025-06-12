@@ -5,7 +5,7 @@ signal enemy_died
 
 @export var runSpeed = 0.045
 @export var damage = 10  
-@export var live = 60
+@export var live = 75
 @export var reward = 60
 
 var previous_position: Vector2

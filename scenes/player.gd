@@ -41,7 +41,6 @@ func reset_to_defaults() -> void:
 	if is_instance_valid(hp_label) and is_instance_valid(gold_label) and is_instance_valid(wave_label):
 		update_ui()
 func _init_ui():
-	print_tree()
 	hp_label = get_node_or_null("/root/Mapa/panel_torretas/Panel/Stats/Hp")
 	gold_label = get_node_or_null("/root/Mapa/panel_torretas/Panel/Stats/Gold")
 	wave_label = get_node_or_null("/root/Mapa/panel_torretas/Panel/Stats/Wave")

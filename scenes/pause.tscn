@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cgibybapb8ujb"]
+[gd_scene load_steps=21 format=3 uid="uid://cgibybapb8ujb"]
 
 [ext_resource type="Script" uid="uid://bjr6kmam8a5dh" path="res://scripts/pause.gd" id="1_f1d2v"]
 [ext_resource type="Texture2D" uid="uid://cu1n6ns7tdyom" path="res://asserts/ui/UI/Menu.png" id="2_jn4bt"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://cuo0ktsc7a7mt" path="res://scenes/Tagesschrift-Regular.ttf" id="5_cml1b"]
 [ext_resource type="Theme" uid="uid://bmf31mho1mjjt" path="res://scenes/UII/Sprout-Lands-UI-0.2.0/Sprout-Lands-UI-0.2.0/addons/sprout_lands_ui/content/sprout_lands_theme.tres" id="6_r1fnm"]
 [ext_resource type="Texture2D" uid="uid://bukliuuijok1x" path="res://scenes/UII/Sprout-Lands-UI-0.2.0/Sprout-Lands-UI-0.2.0/addons/sprout_lands_ui/content/assets/SkipButton.png" id="7_wen6a"]
+[ext_resource type="FontFile" uid="uid://df6abl7cibvvx" path="res://Tagesschrift-Regular.ttf" id="8_1xtef"]
 [ext_resource type="AudioStream" uid="uid://dpb6wkpjybg0r" path="res://asserts/audios/loon-boon-dreamjer-cover-118779.mp3" id="8_cml1b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1xtef"]
@@ -50,6 +51,9 @@ font_color = Color(0.713726, 0.537255, 0.384314, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_cml1b"]
 font = ExtResource("3_r1fnm")
 font_size = 91
+
+[sub_resource type="LabelSettings" id="LabelSettings_0akjr"]
+font = ExtResource("8_1xtef")
 
 [node name="Pause" type="CanvasLayer"]
 process_mode = 3
@@ -211,10 +215,13 @@ offset_bottom = 524.5
 theme = ExtResource("6_r1fnm")
 
 [node name="VolumenLabel" type="Label" parent="TextureRect"]
-offset_left = 707.0
-offset_top = 526.0
-offset_right = 816.0
-offset_bottom = 626.0
+layout_mode = 0
+offset_left = 600.0
+offset_top = 506.0
+offset_right = 998.0
+offset_bottom = 551.0
+label_settings = SubResource("LabelSettings_0akjr")
+horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TextureRect"]
 visible = false

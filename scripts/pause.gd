@@ -86,15 +86,15 @@ func _on_auto_savev_toggled(toggled_on: bool) -> void:
 
 func _on_volumen_value_changed(value: float) -> void:
 	var min_db = -30.0  # Volumen mínimo audible
-	var linear_value = max(value / 100.0, 0.001)  # Evitar log(0)
-	var volume_db = lerp(min_db, 0.0, log(linear_value * 9 + 1) / log(10))  # Logarítmico
+	var linear_value = max(value / 100.0, 0.001)  
+	var volume_db = lerp(min_db, 0.0, log(linear_value * 9 + 1) / log(10))  
 
 	var master_bus_index = AudioServer.get_bus_index("Master")
 	if master_bus_index != -1:
 		AudioServer.set_bus_volume_db(master_bus_index, volume_db)
 		if Global:
 			Global.volume_db = volume_db
-		# Opcional: Actualiza un label
+		
 		$TextureRect/VolumenLabel.text = str(round(value)) + "%"
 	else:
 		push_error("Audio bus 'Master' not found. Volume adjustment failed.")

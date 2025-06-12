@@ -84,10 +84,14 @@ func _instantiate_tower(tower_data: Dictionary) -> void:
 	if tower_data.has("upgrades"):
 		tower_instance.upgrades = tower_data["upgrades"]
 	if tower_data.has("lore_progress"):
-		tower_data["lore1_unlocked"] = Dialogic.VAR.get_variable("Espanta.Lore1")
-		tower_data["lore2_unlocked"] =  Dialogic.VAR.get_variable("Espanta.Lore2")
-		tower_data["lore3_unlocked"] = Dialogic.VAR.get_variable("Espanta.Lore3")
-		tower_data["lore4_unlocked"] = Dialogic.VAR.get_variable("Espanta.Lore4")
+		if !Dialogic.VAR.get_variable("Espanta.Lore1"):
+			tower_data["lore1_unlocked"] = Dialogic.VAR.get_variable("Espanta.Lore1")
+		if !Dialogic.VAR.get_variable("Espanta.Lore2"):
+			tower_data["lore2_unlocked"] =  Dialogic.VAR.get_variable("Espanta.Lore2")
+		if !Dialogic.VAR.get_variable("Espanta.Lore3"):
+			tower_data["lore3_unlocked"] = Dialogic.VAR.get_variable("Espanta.Lore3")
+		if !Dialogic.VAR.get_variable("Espanta.Lore4"):
+			tower_data["lore4_unlocked"] = Dialogic.VAR.get_variable("Espanta.Lore4")
 		
 	print("Torre instanciada en ", position)
 
