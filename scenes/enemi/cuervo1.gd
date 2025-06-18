@@ -58,6 +58,7 @@ func get_damage(amount: float):
 		is_dead = true
 		animated_sprite.stop()
 		Player.add_player_gold(reward)
+		$AudioStreamPlayer.play()
 		emit_signal("enemy_died")
 		animated_sprite.play("die")
 

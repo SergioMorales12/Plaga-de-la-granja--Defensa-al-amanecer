@@ -1,19 +1,45 @@
-[gd_scene load_steps=29 format=3 uid="uid://cux3yxojphfsa"]
+[gd_scene load_steps=28 format=3 uid="uid://cux3yxojphfsa"]
 
 [ext_resource type="Texture2D" uid="uid://123rbxdsjp4t" path="res://asserts/enemy/monster2.png" id="1_ixfbw"]
 [ext_resource type="Script" uid="uid://cl2l6pnxcb6tv" path="res://scripts/spider.gd" id="1_udfyj"]
-[ext_resource type="Texture2D" uid="uid://cb3rrfpe74a8o" path="res://asserts/Explosions/Green/frame0000.png" id="2_56kgp"]
-[ext_resource type="Texture2D" uid="uid://b3fi5crduaprr" path="res://asserts/Explosions/Green/frame0001.png" id="3_nblnr"]
-[ext_resource type="Texture2D" uid="uid://xbeplngytcml" path="res://asserts/Explosions/Green/frame0002.png" id="4_jgcma"]
-[ext_resource type="Texture2D" uid="uid://bfkb3gdn7e2k0" path="res://asserts/Explosions/Green/frame0003.png" id="5_cib0j"]
-[ext_resource type="Texture2D" uid="uid://o65vulixfq1k" path="res://asserts/Explosions/Green/frame0004.png" id="6_o4l0d"]
-[ext_resource type="Texture2D" uid="uid://dauv4nd60v86n" path="res://asserts/Explosions/Green/frame0005.png" id="7_ejjsd"]
-[ext_resource type="Texture2D" uid="uid://bk8a0wfao6s2l" path="res://asserts/Explosions/Green/frame0006.png" id="8_1co68"]
-[ext_resource type="Texture2D" uid="uid://cxmtda5mcu1eb" path="res://asserts/Explosions/Green/frame0007.png" id="9_rix3b"]
-[ext_resource type="Texture2D" uid="uid://cdbwsywvbep2s" path="res://asserts/Explosions/Green/frame0008.png" id="10_wed0e"]
-[ext_resource type="Texture2D" uid="uid://bou4vmyhu3qmy" path="res://asserts/Explosions/Green/frame0009.png" id="11_ffww3"]
-[ext_resource type="Texture2D" uid="uid://by0lvgjbgibhx" path="res://asserts/Explosions/Green/frame0010.png" id="12_1e1uc"]
-[ext_resource type="Texture2D" uid="uid://5m4dugjuj8p1" path="res://asserts/Explosions/Green/frame0011.png" id="13_4ojq8"]
+[ext_resource type="Texture2D" uid="uid://crn6pljsbw2yv" path="res://asserts/Explosions/spritesheet.png" id="2_04tgj"]
+[ext_resource type="AudioStream" uid="uid://q1yfbkc8nn3x" path="res://asserts/audios/hit-flesh-02-266309.mp3" id="15_nblnr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56kgp"]
+atlas = ExtResource("2_04tgj")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nblnr"]
+atlas = ExtResource("2_04tgj")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgcma"]
+atlas = ExtResource("2_04tgj")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cib0j"]
+atlas = ExtResource("2_04tgj")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4l0d"]
+atlas = ExtResource("2_04tgj")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejjsd"]
+atlas = ExtResource("2_04tgj")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1co68"]
+atlas = ExtResource("2_04tgj")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rix3b"]
+atlas = ExtResource("2_04tgj")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wed0e"]
+atlas = ExtResource("2_04tgj")
+region = Rect2(512, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_udfyj"]
 atlas = ExtResource("1_ixfbw")
@@ -67,40 +93,31 @@ region = Rect2(792, 448, 72, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_56kgp")
+"texture": SubResource("AtlasTexture_56kgp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_nblnr")
+"texture": SubResource("AtlasTexture_nblnr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_jgcma")
+"texture": SubResource("AtlasTexture_jgcma")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_cib0j")
+"texture": SubResource("AtlasTexture_cib0j")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_o4l0d")
+"texture": SubResource("AtlasTexture_o4l0d")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_ejjsd")
+"texture": SubResource("AtlasTexture_ejjsd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_1co68")
+"texture": SubResource("AtlasTexture_1co68")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_rix3b")
+"texture": SubResource("AtlasTexture_rix3b")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_wed0e")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_ffww3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_1e1uc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_4ojq8")
+"texture": SubResource("AtlasTexture_wed0e")
 }],
 "loop": false,
 "name": &"die",
@@ -177,7 +194,7 @@ scale = Vector2(1.21875, 1.1875)
 sprite_frames = SubResource("SpriteFrames_56kgp")
 animation = &"die"
 autoplay = "down"
-frame = 11
+frame = 8
 frame_progress = 1.0
 
 [node name="area2D" type="Area2D" parent="." groups=["enemi"]]
@@ -187,8 +204,7 @@ position = Vector2(0, 15)
 scale = Vector2(1.01135, 0.966154)
 shape = SubResource("CircleShape2D_nblnr")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.7
-one_shot = true
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_nblnr")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]

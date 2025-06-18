@@ -79,7 +79,6 @@ func _on_exit_button_pressed() -> void:
 
 func _on_auto_savev_toggled(toggled_on: bool) -> void:
 	if toggled_on:
-		$TextureRect/buttons/AutoSave/Label.text = "Auto Save On"
 		Player.auto_save = true
 	else:
 		Player.auto_save = false

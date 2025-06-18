@@ -1,4 +1,4 @@
-[signal arg="stop_wave"]
+[signal arg="pause"]
 set {Espanta.Lore3} = true
 "Carlitos": ¡El fin no fue un accidente!
 label decision_3

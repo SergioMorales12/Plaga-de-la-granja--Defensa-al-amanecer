@@ -3,10 +3,6 @@
 "Granjero Loco": ¿Lo hueles? ¡Es el dulce aroma del fin del mundo... y del estiércol fresco! ¡Ajá!
 
 - ¿Dónde estoy...?
-- SKIP
-	[signal arg="start_wave"]
-	[end_timeline]
-
 
 "Granjero Loco": En mi granja. La última línea de defensa entre la humanidad... y la mierda mutante.
 

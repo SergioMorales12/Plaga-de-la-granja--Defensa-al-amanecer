@@ -40,7 +40,7 @@ func change_scene(new_scene_path: String) -> void:
 	get_tree().call_deferred("change_scene_to_file", new_scene_path)
 	print("Cambiando a escena:", new_scene_path)
 
-func restart_map() -> void:
+func restart() -> void:
 	if map_select_container != null:
 		get_tree().reload_current_scene()
 		print("Reiniciando mapa:", map_select_container.get_path())
@@ -260,11 +260,9 @@ func load_cloud_save(save_name: String) -> Dictionary:
 	if not document or not document.has("fields"):
 		push_error("Formato de respuesta inválido")
 		return {}
-	#print("Datos crudos de Firestore: ", document)
-	# Convertimos todos los campos de Firestore a un diccionario normal
+
 	var all_data = convert_from_firestore_format(document["fields"])
-	#print("Datos convertidos: ", all_data)
-	# Buscamos la partida específica por su nombre
+
 	if all_data.has(save_name):
 		return all_data[save_name]
 	

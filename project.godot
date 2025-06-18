@@ -27,9 +27,12 @@ Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
 
 directories/dch_directory={
 "Carlitos": "res://dialogos/Characters/Carlitos.dch",
-"Granjero Loco": "res://dialogos/Characters/Granjero Loco.dch"
+"Granjero Loco": "res://dialogos/Characters/Granjero Loco.dch",
+"Margarita": "res://dialogos/Characters/Margarita.dch"
 }
 directories/dtl_directory={
+"aviso": "res://dialogos/Fin/aviso.dtl",
+"bad_end": "res://dialogos/Fin/bad_end.dtl",
 "como_33": "res://dialogos/Randoms/como_33.dtl",
 "intro_tutorial": "res://dialogos/Intro/intro_tutorial.dtl",
 "lore_1": "res://dialogos/Carlitos/lore_1.dtl",
@@ -37,6 +40,7 @@ directories/dtl_directory={
 "lore_3": "res://dialogos/Carlitos/lore_3.dtl",
 "lore_4": "res://dialogos/Carlitos/lore_4.dtl",
 "lore_planta": "res://dialogos/Intro/lore_planta.dtl",
+"margarita": "res://dialogos/Fin/margarita.dtl",
 "primer_boss": "res://dialogos/Intro/primer_boss.dtl",
 "primer_enjambre": "res://dialogos/Intro/primer_enjambre.dtl",
 "random_wave_1": "res://dialogos/Randoms/random_wave_1.dtl",
@@ -57,7 +61,8 @@ directories/dtl_directory={
 "random_wave_6": "res://dialogos/Randoms/random_wave_6.dtl",
 "random_wave_7": "res://dialogos/Randoms/random_wave_7.dtl",
 "random_wave_8": "res://dialogos/Randoms/random_wave_8.dtl",
-"random_wave_9": "res://dialogos/Randoms/random_wave_9.dtl"
+"random_wave_9": "res://dialogos/Randoms/random_wave_9.dtl",
+"sacrificio": "res://dialogos/Fin/sacrificio.dtl"
 }
 glossary/default_case_sensitive=true
 layout/style_list=["res://dialogos/Characters/New_File.tres"]

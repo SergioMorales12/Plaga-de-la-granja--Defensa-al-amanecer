@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://c0ghwwmjwdigr"]
+
+[ext_resource type="Script" uid="uid://b0ow3b2ejpeqm" path="res://game_over.gd" id="1_racf3"]
+[ext_resource type="Theme" uid="uid://bmf31mho1mjjt" path="res://scenes/UII/Sprout-Lands-UI-0.2.0/Sprout-Lands-UI-0.2.0/addons/sprout_lands_ui/content/sprout_lands_theme.tres" id="2_7m3ot"]
+[ext_resource type="Texture2D" uid="uid://b5hf3v20h0wta" path="res://asserts/1114991.jpg" id="2_v3hpu"]
+[ext_resource type="FontFile" uid="uid://cuo0ktsc7a7mt" path="res://scenes/Tagesschrift-Regular.ttf" id="4_irg28"]
+[ext_resource type="AudioStream" uid="uid://cxv40uupqvfws" path="res://asserts/audios/the-matt-laugh-107134.mp3" id="5_irg28"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wawo4"]
+font = ExtResource("4_irg28")
+font_size = 45
+
+[node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_racf3")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = -1
+anchor_right = 1.0026
+anchor_bottom = 1.01296
+offset_right = 0.00012207
+texture = ExtResource("2_v3hpu")
+expand_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Menu" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.346354
+anchor_top = 0.725926
+anchor_right = 0.660937
+anchor_bottom = 0.844444
+theme = ExtResource("2_7m3ot")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0471264
+anchor_top = 0.220779
+anchor_right = 0.952874
+anchor_bottom = 0.779221
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back to Menu"
+label_settings = SubResource("LabelSettings_wawo4")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_irg28")
+
+[connection signal="pressed" from="Menu" to="." method="_on_quit_button_pressed"]

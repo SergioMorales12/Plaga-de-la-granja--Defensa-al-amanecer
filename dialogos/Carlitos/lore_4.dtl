@@ -1,4 +1,4 @@
-[signal arg="stop_wave"]
+[signal arg="pause"]
 set {Espanta.Lore4} = true
 Carlitos: No puedo callar más... ¡Él PROVOCÓ el apocalipsis!
 label decision_final

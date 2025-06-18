@@ -248,4 +248,5 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_rr3as")
 
 [node name="TurretMenu" parent="." instance=ExtResource("5_rr3as")]
 
+[connection signal="input_event" from="colision" to="." method="_on_input_event"]
 [connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]

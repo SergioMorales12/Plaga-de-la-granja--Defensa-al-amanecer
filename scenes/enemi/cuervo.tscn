@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cl6tplu7eq42w"]
+[gd_scene load_steps=29 format=3 uid="uid://cl6tplu7eq42w"]
 
 [ext_resource type="Script" uid="uid://c6ev00y820xtc" path="res://scenes/enemi/cuervo1.gd" id="1_bs70i"]
 [ext_resource type="Texture2D" uid="uid://6vafrxffpeo4" path="res://asserts/Explosions/Red/frame0000.png" id="2_6nowa"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cvbeejjgeo5ub" path="res://asserts/Explosions/Red/frame0008.png" id="10_bcx5i"]
 [ext_resource type="Texture2D" uid="uid://b23uddvcby73h" path="res://asserts/Explosions/Red/frame0009.png" id="11_t763l"]
 [ext_resource type="Texture2D" uid="uid://cldhefqeeowvg" path="res://asserts/Explosions/Red/frame0010.png" id="12_oj60k"]
+[ext_resource type="AudioStream" uid="uid://q1yfbkc8nn3x" path="res://asserts/audios/hit-flesh-02-266309.mp3" id="14_xovc1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cpn02"]
 atlas = ExtResource("2_bs70i")
@@ -171,7 +172,7 @@ texture_filter = 1
 position = Vector2(1, 2.38419e-07)
 scale = Vector2(1.21875, 1.1875)
 sprite_frames = SubResource("SpriteFrames_xl8t6")
-animation = &"die"
+animation = &"down"
 autoplay = "down"
 
 [node name="area2D" type="Area2D" parent="." groups=["enemi"]]
@@ -184,5 +185,8 @@ shape = SubResource("CircleShape2D_v540k")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.7
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_xovc1")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]

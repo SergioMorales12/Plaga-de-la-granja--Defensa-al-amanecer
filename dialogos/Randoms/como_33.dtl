@@ -1,4 +1,4 @@
-#wave33_start
+# #wave33_start
 [signal arg="stop_wave"]
 
 "Granjero Loco": ¡FERNANDO ALONSOOO LOLOLO LOLO LO!
@@ -10,6 +10,7 @@
 - ¿De qué hablas si no hay F1 hoy?
 
 "Granjero Loco": ¡¡¡NOOOOOOOO!!! ¡ERAAAN MEDIOOOOSSSS!
+audio "res://asserts/audios/tv-glitch-6245.mp3"
 
 "Granjero Loco": Maldita tele vieja... esto debe ser culpa de la antena.
 
@@ -21,7 +22,7 @@
 
 - ¿Eso es seguro?
 
-"Granjero Loco": Por supuesto que si...Pero ten cuidado no te pongos delante.  
+"Granjero Loco": Por supuesto que si...Pero ten cuidado no te pongos delante.
 
 [signal arg="unlock_microwave"]
 [signal arg="start_wave"]

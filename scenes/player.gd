@@ -26,6 +26,8 @@ var gold_label
 var wave_label
 var damage_overlay
 
+signal game_over
+
 func _ready():
 	await get_tree().process_frame
 	call_deferred("_init_ui")
@@ -89,7 +91,6 @@ func update_ui():
 		damage_overlay.color = color
 
 	if player_life <= 0:
-		player_life = 100
-		player_gold = 1000
-		wave = 1
-		Global.change_scene("res://scenes/main_menu.tscn")
+		reset_to_defaults()
+		Global.save_game_named(Global.current_save_name)
+		emit_signal("game_over")

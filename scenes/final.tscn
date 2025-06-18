@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://d2tmwov0mehfn"]
+
+[ext_resource type="Script" uid="uid://dolt7fq5hnnde" path="res://scripts/final.gd" id="1_2ksrq"]
+[ext_resource type="Texture2D" uid="uid://dbqt0inroba3x" path="res://asserts/finalBUeno.jpg" id="2_3hs2o"]
+[ext_resource type="FontFile" uid="uid://df6abl7cibvvx" path="res://Tagesschrift-Regular.ttf" id="3_dqvmu"]
+[ext_resource type="Theme" uid="uid://bmf31mho1mjjt" path="res://scenes/UII/Sprout-Lands-UI-0.2.0/Sprout-Lands-UI-0.2.0/addons/sprout_lands_ui/content/sprout_lands_theme.tres" id="4_xxe6l"]
+[ext_resource type="FontFile" uid="uid://cuo0ktsc7a7mt" path="res://scenes/Tagesschrift-Regular.ttf" id="5_vf3a0"]
+[ext_resource type="AudioStream" uid="uid://cw4nkjytnwxof" path="res://asserts/audios/anthem-of-victory-111206.mp3" id="6_3hs2o"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6b1qv"]
+font = ExtResource("3_dqvmu")
+font_size = 216
+
+[sub_resource type="LabelSettings" id="LabelSettings_wawo4"]
+font = ExtResource("5_vf3a0")
+font_size = 45
+
+[node name="Final" type="CanvasLayer"]
+script = ExtResource("1_2ksrq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = -1
+anchor_right = 1.0026
+anchor_bottom = 1.01296
+offset_right = 0.00012207
+texture = ExtResource("2_3hs2o")
+expand_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -394.0
+offset_right = 394.0
+offset_bottom = 281.0
+grow_horizontal = 2
+text = "The End"
+label_settings = SubResource("LabelSettings_6b1qv")
+
+[node name="Menu" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.0244792
+anchor_top = 0.84537
+anchor_right = 0.339063
+anchor_bottom = 0.963889
+theme = ExtResource("4_xxe6l")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0471264
+anchor_top = 0.220779
+anchor_right = 0.952874
+anchor_bottom = 0.779221
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back to Menu"
+label_settings = SubResource("LabelSettings_wawo4")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_3hs2o")
+parameters/looping = true
+
+[connection signal="pressed" from="Menu" to="." method="_on_quit_button_pressed"]

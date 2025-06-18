@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://dlg605w6r75a0"]
+[gd_scene load_steps=61 format=3 uid="uid://dlg605w6r75a0"]
 
 [ext_resource type="Script" uid="uid://by65d88yvr82u" path="res://scripts/rat.gd" id="1_ey65g"]
 [ext_resource type="Texture2D" uid="uid://wuodmv7ichwm" path="res://asserts/enemy/rat/D_Death.png" id="2_sv64d"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://tuy6nvpsps5p" path="res://asserts/enemy/rat/S_Run.png" id="7_rhq6r"]
 [ext_resource type="Texture2D" uid="uid://b8b8oto8tck3y" path="res://asserts/enemy/rat/R_Run.png" id="8_xanxd"]
 [ext_resource type="Texture2D" uid="uid://brfrheopryum6" path="res://asserts/enemy/rat/U_Run.png" id="9_yh1ho"]
+[ext_resource type="AudioStream" uid="uid://q1yfbkc8nn3x" path="res://asserts/audios/hit-flesh-02-266309.mp3" id="10_sv64d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_him4y"]
 atlas = ExtResource("2_sv64d")
@@ -412,5 +413,8 @@ shape = SubResource("RectangleShape2D_5wpo4")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.7
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_sv64d")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timeout"]

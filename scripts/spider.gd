@@ -58,13 +58,10 @@ func get_damage(amount: float):
 		is_dead = true
 		animated_sprite.stop()
 		Player.add_player_gold(reward)
+		$AudioStreamPlayer.play()
 		emit_signal("enemy_died")
 		animated_sprite.play("die")
 
-		#animated_sprite.play("die"+direction)
-		#$Timer.start()
 
-func _on_timeout() -> void:
-	queue_free()
 func _on_animation_finished() -> void:
 	queue_free()

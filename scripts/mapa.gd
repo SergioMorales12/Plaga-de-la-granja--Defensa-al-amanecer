@@ -6,7 +6,9 @@ var special_wave_dialogs := {
 	5: "primer_enjambre",
 	10: "primer_boss",
 	33: "como_33",
-	40: "lore_planta"
+	40: "lore_planta",
+	70:"aviso",
+	100:"margarita"
 }
 
 # Referencia al contenedor de torres
@@ -70,7 +72,7 @@ func _instantiate_tower(tower_data: Dictionary) -> void:
 	
 	# Instanciar la torre
 	var tower_instance = tower_scene.instantiate()
-	
+	tower_instance.load_save_data(tower_data)
 	# Establecer posición
 	var position = _parse_position(tower_data["position"])
 	tower_instance.global_position = position
@@ -79,6 +81,20 @@ func _instantiate_tower(tower_data: Dictionary) -> void:
 	towers_container.add_child(tower_instance)
 	
 	# Configurar propiedades adicionales
+	if tower_data.has("damage"):
+		tower_instance.damage = tower_data["damage"]
+	if tower_data.has("bulletSpeed"):
+		tower_instance.bulletSpeed = tower_data["bulletSpeed"]
+	if tower_data.has("bulletPierce"):
+		tower_instance.bulletPierce = tower_data["bulletPierce"]
+	if tower_data.has("attack_interval"):
+		tower_instance.attack_interval = tower_data["attack_interval"]
+	if tower_data.has("speed_reduction"):
+		tower_instance.speed_reduction = tower_data["speed_reduction"]
+	if tower_data.has("gold"):
+		tower_instance.gold = tower_data["gold"]
+	if tower_data.has("hp"):
+		tower_instance.hp = tower_data["hp"]
 	if tower_data.has("level"):
 		tower_instance.level = tower_data["level"]
 	if tower_data.has("upgrades"):
@@ -117,5 +133,5 @@ func play_wave_dialog(current_wave: int) -> void:
 		Dialogic.start(special_wave_dialogs[current_wave])
 	else:
 		# Mostrar diálogo aleatorio (30% de probabilidad)
-		if randi_range(0, 100) < 0:  # Nota: 0% de probabilidad actualmente
+		if randi_range(0, 100) < 30:  
 			Dialogic.start("random_wave_%d" % randi_range(1, 19))

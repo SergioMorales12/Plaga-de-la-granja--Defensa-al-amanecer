@@ -50,6 +50,12 @@ func _on_dialogic_signal(argument:String):
 	elif argument == "pause":
 		get_node("/root/Mapa").process_mode = Node.PROCESS_MODE_INHERIT
 
+	elif argument == "end_good":
+		Global.change_scene("res://scenes/final.tscn")
+	elif argument == "end_pacifist":
+		Global.change_scene("res://scenes/final.tscn")
+
+
 func start_wave() -> void:
 	if spawning:
 		
@@ -68,7 +74,9 @@ func start_wave() -> void:
 
 	# Oleada de jefe cada 10 niveles
 	if wave  == 100:
-		margarita = true
+		await spawn_margarita()
+		spawning = false
+		return
 	if wave % 10 == 0:
 		await spawn_boss_wave(wave)
 	# Oleada especial cada 5 niveles
@@ -77,22 +85,34 @@ func start_wave() -> void:
 	# Oleada normal
 	else:
 		await spawn_normal_wave(wave, enemies_to_spawn)
-	
+	print("Stop spwaninf")
 	spawning = false
+func spawn_margarita():
+	print("👑 ¡Oleada de Margarita!")
+	var boss = minotauro.instantiate()
+	connect_enemy(boss)
+	add_child(boss)
+	enemies_alive += 1
 
 func spawn_boss_wave(wave: int) -> void:
 	print("👑 ¡Oleada de Jefe! (Nivel %d)" % wave)
 	await get_tree().create_timer(1.0).timeout
 	var boss = select_enemy_for_wave(wave).instantiate()
-	if margarita:
-		boss = minotauro.instantiate()
 	boss.runSpeed *= 0.8
-	boss.live *= 6.0
-	boss.damage *= 2
+	boss.live *= 10.0 * wave
+	boss.damage *= 4 
 	boss.reward *= 6
 	boss.scale *= 2.2
-
-	
+	if wave >= 50:
+		var boss2 = select_enemy_for_wave(wave).instantiate()
+		boss2.runSpeed *= 0.8
+		boss2.live *= 10.0 * wave
+		boss2.damage *= 4
+		boss2.reward *= 6
+		boss2.scale *= 2.2
+		connect_enemy(boss2)
+		add_child(boss2)
+		enemies_alive += 1
 	connect_enemy(boss)
 	add_child(boss)
 	enemies_alive += 1
@@ -100,16 +120,18 @@ func spawn_boss_wave(wave: int) -> void:
 func spawn_special_wave(wave: int, base_count: int) -> void:
 	print("🔥 Oleada especial: Enjambre (Nivel %d)" % wave)
 	var total_enemies = base_count + 5
-	
 	var enjambre = select_enemy_for_wave(wave)
 	for i in range(total_enemies):
 		await spawn_enemy_delayed(enjambre, wave,  min_spawn_delay)
 
+
 func spawn_normal_wave(wave: int, enemies_to_spawn: int) -> void:
-	var spawn_delay = max(min_spawn_delay, 1 - (wave / 100))
+	var spawn_delay = max(min_spawn_delay, 1.0 - (wave / 100.0))
 	for i in range(enemies_to_spawn):
 		var enemy_scene = select_enemy_for_wave(wave)
-		await spawn_enemy_delayed(enemy_scene, wave,spawn_delay)
+		await spawn_enemy_delayed(enemy_scene, wave, spawn_delay)
+
+
 
 func select_enemy_for_wave(wave: int) -> PackedScene:
 	var rand = randi_range(0, 100)
@@ -135,10 +157,11 @@ func spawn_enemy_delayed(enemy_scene: PackedScene, wave: int, delay: float) -> v
 	enemy.runSpeed += 0.0015 * wave
 	enemy.live += 2.5 * wave
 	enemy.reward += wave
-	enemies_alive += 1
 
 	connect_enemy(enemy)
 	add_child(enemy)
+	enemies_alive += 1
+
 
 func connect_enemy(enemy: Node) -> void:
 	if not enemy.has_signal("enemy_died"):
@@ -151,8 +174,7 @@ func connect_enemy(enemy: Node) -> void:
 func _on_enemy_died(_enemy:Node) -> void:
 	enemies_alive -= 1
 	print("Enemigos restantes: %d" % enemies_alive)
-	
-	if enemies_alive <= 0 and not spawning and wave_active:
+	if enemies_alive < 1 and !spawning and wave_active:
 		end_wave()
 
 func end_wave() -> void:

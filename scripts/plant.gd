@@ -26,7 +26,7 @@ const MAX_SPEED_LEVEL := 8
 const MAX_SPECIAL_LEVEL := 7
 const MIN_ATTACK_INTERVAL := 0.2  
 
-var can_attack = false
+var can_attack = true
 var upgrade_levels = {
 	"damage": 0,
 	"speed": 0,
@@ -43,7 +43,7 @@ func _ready():
 
 
 func _on_attack_timer_timeout():
-	if can_attack:
+	if can_attack and !is_preview:
 		var action = randi() % 2
 		match action:
 			0:
@@ -58,6 +58,7 @@ func heal():
 	$AnimatedSprite2D.play("idle")
 	Player.player_life += hp
 	Player.update_ui()
+	$attack_timer.start()
 
 
 func generate_money():
@@ -66,11 +67,12 @@ func generate_money():
 	$AnimatedSprite2D.play("idle")
 	Player.player_gold += gold
 	Player.update_ui()
+	$attack_timer.start()
 
 
 func get_save_data() -> Dictionary:
 	return {
-		"scene_path": "res://scenes/towers/barril.tscn",
+		"scene_path": "res://scenes/towers/plant.tscn",
 		"position": position,
 		"hp": hp,
 		"gold": gold,

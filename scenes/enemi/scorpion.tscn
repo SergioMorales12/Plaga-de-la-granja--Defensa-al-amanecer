@@ -1,9 +1,10 @@
-[gd_scene load_steps=78 format=3 uid="uid://dpimiyfhgom4j"]
+[gd_scene load_steps=79 format=3 uid="uid://dpimiyfhgom4j"]
 
 [ext_resource type="Texture2D" uid="uid://c600iiodvjhvk" path="res://asserts/enemy/Scorpion.png" id="1_67nwp"]
 [ext_resource type="Script" uid="uid://dyfjkxc6p5ew4" path="res://scripts/scorpion.gd" id="1_qnwgn"]
 [ext_resource type="Texture2D" uid="uid://c3cplxhgufbhg" path="res://asserts/enemy/dead.png" id="2_lxa5m"]
 [ext_resource type="Texture2D" uid="uid://c5nc2qspoaddq" path="res://asserts/enemy/deadScorpion.png" id="2_t2071"]
+[ext_resource type="AudioStream" uid="uid://q1yfbkc8nn3x" path="res://asserts/audios/hit-flesh-02-266309.mp3" id="5_iucht"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g8g1a"]
 atlas = ExtResource("2_lxa5m")
@@ -576,5 +577,8 @@ shape = SubResource("CapsuleShape2D_qnwgn")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.7
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_iucht")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timeout"]

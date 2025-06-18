@@ -5,7 +5,7 @@ signal enemy_died
 
 @export var runSpeed = 0.01
 @export var damage = 100000000000  
-@export var live = 11000
+@export var live = 100000
 @export var reward = 10000
 
 var previous_position: Vector2
@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 	previous_position = global_position
 	
 	if progress_ratio >= 0.99:
-		Player.reduce_player_life(damage)
+		Dialogic.start("sacrificio")
 		emit_signal("enemy_died")
 		queue_free()
 
@@ -61,6 +61,7 @@ func get_damage(amount: float):
 		Player.add_player_gold(reward)
 		emit_signal("enemy_died")
 		$AnimatedSprite2D.play("die")
+		Dialogic.start("bad_end")
 
 func _on_timeout() -> void:
 	queue_free()

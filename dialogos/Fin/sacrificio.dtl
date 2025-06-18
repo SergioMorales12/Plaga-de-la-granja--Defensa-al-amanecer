@@ -1,0 +1,29 @@
+# Final Especial - Dejarse Matar por Margarita
+[signal arg="stop_wave"]
+
+*Carlitos intenta gritar algo, pero te quedas quieto mientras Margarita se acerca.*
+
+Carlitos: ¡¿Qué estás haciendo?! ¡Muévete!
+
+"Granjero Loco": ¡DÉJALO! ¡DÉJALO! ¡MIRA CÓMO SE ACERCA! ¡NO PUEDES ESCAPAR AHORA!
+
+*Dejas que Margarita te embista. Pero en vez de matarte... simplemente te olfatea y te ignora.*
+
+Carlitos: ...¿Te perdonó?
+[signal arg="destroy"]
+
+"Margarita": *Embiste al Granjero y lo destruye por completo.*
+
+"Granjero Loco": ¡Nooooo! ¡Maldita vaca, eras mía! ¡Este era mi plan perfecto!
+*El granjero a muerto*
+
+Carlitos: Parece que entendió que tú no eras su enemigo... pero el Granjero sí.
+
+"Margarita": *Te mira, te da un último mugido y se aleja.*
+
+**Final Desbloqueado: "Paz con Cuernos"**
+*"Elegiste no luchar. Margarita decidió perdonarte. Ella destruyó al verdadero enemigo. Quizá la vaca era la heroína que necesitábamos."*
+
+[signal arg="pause"]
+[signal arg="end_pacifist"]
+[end_timeline]

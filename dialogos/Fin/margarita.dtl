@@ -1,0 +1,48 @@
+[signal arg="stop_wave"]
+
+"Granjero Loco": ¡Ahí está! ¡La bestia final! Mi... digo, *un monstruo sin importancia llamado Margarita... total, quién la recuerda, ¿no?*
+
+"Carlitos": Por favor... escucha... no le hagas daño. Déjala ir...
+
+"Granjero Loco": ¡No le escuches! ¡Acaba con ella o acabará con nosotros!
+
+- Granjero... este es tu FIN.  
+	jump perdonar
+
+- ¡AHHHHH, UN PUTO MINOTAURO, A ATACAAAAAR!  
+	[signal arg="start_wave"]
+	[end_timeline]
+
+- Vamos a hacer un asado.  
+	[signal arg="start_wave"]
+	[end_timeline]
+
+- Me sacrificaré…  
+	[signal arg="start_wave"]
+	[end_timeline]
+
+# Final Bueno - Perdonar a Margarita
+label perdonar
+
+"Carlitos": Gracias... Ella solo quería ser libre...
+
+"Margarita": *Ruge y se abalanza sobre el Granjero.*
+
+"Granjero Loco": ¡No! ¡No lo entiendes! ¡Ella era parte de mi plan!
+
+"Margarita": *Embiste brutalmente al Granjero, lo lanza por los aires y lo destruye.*
+
+"Granjero Loco": ¡Noooo! ¡Yo era la última esperanza del campo! ¡Aaaaaahh!  
+*El granjero a muerto*
+
+"Carlitos": Lo siento, viejo amigo... pero alguien tenía que detenerte.
+
+"Margarita": *Muuuuu...* (Traducción: Gracias, humano.)
+
+"Carlitos": Tú sobreviviste... y Margarita también. Quizá este sea un nuevo comienzo.
+
+**Final Desbloqueado: "La Libertad Apestosa"**  
+*"Dejaste que Margarita siguiera su camino. Ahora ella reina sobre las tierras... mientras tú encuentras algo parecido a la paz."*
+
+[signal arg="end_good"]
+[end_timeline]

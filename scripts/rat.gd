@@ -15,7 +15,6 @@ var direction = null
 
 func _ready():
 	previous_position = global_position
-	print("Damage: "+str(damage)+"\nRunSpeed: "+str(runSpeed)+"\nLive: "+str(live)+"\nReward: "+str(reward))
 
 func _process(delta: float) -> void:
 	if is_dead:
@@ -59,6 +58,7 @@ func get_damage(amount: float):
 		is_dead = true
 		animated_sprite.stop()
 		Player.add_player_gold(reward)
+		$AudioStreamPlayer.play()
 		emit_signal("enemy_died")
 		animated_sprite.play("die"+direction)
 		$Timer.start()
