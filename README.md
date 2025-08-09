@@ -1,6 +1,8 @@
 # Plaga_de_la_Granja__Defensa_al_amanecer
 <img width="593" height="324" alt="image" src="https://github.com/user-attachments/assets/8ae3aa4b-0705-4809-a93d-532301a095f7" />
+
 https://sergio12morales.itch.io/plaga
+
 Plaga de la Granja: Defensa al Amanecer transporta al jugador a una granja sumida en el caos de un apocalipsis, donde nada es lo que parece. En medio de la incertidumbre, un granjero enloquecido y fuerzas desconocidas amenazan con destruir la tierra. La única defensa del jugador serán torres estratégicas y herramientas agrícolas, que deberá emplear con astucia para resistir las oleadas de enemigos.
 El juego incorpora varias funcionalidades clave:
 Autenticación flexible, con inicio de sesión mediante email y Google.
